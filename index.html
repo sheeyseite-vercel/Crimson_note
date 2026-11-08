@@ -698,6 +698,12 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .cd{position:relative;display:grid;place-items:center;padding:0}.cd b{line-height:1;text-align:center;margin:0;width:auto}.cd .dots{position:absolute;left:0;right:0;bottom:3px;width:auto;margin:0}.cd.today b{width:26px;height:26px;display:grid;place-items:center}.cd.sel,.cd.ev.sel{outline:3px solid var(--ac);outline-offset:-2px}
 .cd .dots{display:none!important}.cd.today b,.cd.ev.today b{background:none!important;width:auto;height:auto;color:var(--ac-text,var(--ac))}.cd.ev.today b{color:inherit}.cd.sel,.cd.ev.sel{outline:1.5px solid var(--ac);outline-offset:-1.5px}
 .cd.ev.sel,.cd.ev:focus-visible{outline:none!important;box-shadow:none}.cd.ev{border-color:var(--ec)!important}
+.dbl{display:flex;flex-direction:column;gap:10px}.dbc{display:flex;align-items:center;gap:12px;width:100%;padding:14px;text-align:start}.dbi{font-size:calc(28px*var(--fz));width:46px;height:46px;display:grid;place-items:center;background:var(--ac-soft);border-radius:14px;flex:none}.dbc .tx b{display:block;font-size:calc(16px*var(--fz))}.dbc small{color:var(--fg3)}
+.dbt{padding:10px}.dbs{overflow-x:auto;margin:0 -2px;-webkit-overflow-scrolling:touch}.dbs table{border-collapse:collapse;min-width:100%;font-size:calc(14px*var(--fz))}.dbs th,.dbs td{border-bottom:1px solid var(--line);padding:0;text-align:start;white-space:nowrap}.dbs th:not(.dbx){min-width:110px}.dbh{display:block;width:100%;padding:10px 10px;color:var(--fg3);font-weight:600;font-size:calc(12.5px*var(--fz));text-align:start}.dbadd{width:44px;min-width:0;padding:10px 12px}.dbadd .ic{width:calc(16px*var(--fz));height:calc(16px*var(--fz))}
+.dbx{width:40px;position:sticky;inset-inline-start:0;background:var(--solid,#fff);z-index:1}.dbo{width:36px;height:40px;display:grid;place-items:center;color:var(--fg3)}.dbo .ic{width:calc(15px*var(--fz));height:calc(15px*var(--fz))}
+.dbcell{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;width:100%;min-height:42px;padding:6px 10px;text-align:start}.dbck{width:20px;height:20px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center}.dbck.on{background:var(--ac);border-color:var(--ac);color:var(--on-ac)}.dbck .ic{width:calc(13px*var(--fz));height:calc(13px*var(--fz))}
+.dbch{display:inline-block;padding:2px 10px;border-radius:99px;font-size:calc(12.5px*var(--fz));font-weight:600;background:color-mix(in srgb,var(--oc) 16%,var(--solid,#fff));color:var(--oc)}.dblk{color:var(--ac-text);text-decoration:underline;text-underline-offset:3px}.dbsm{padding:8px 10px;color:var(--fg3);font-size:calc(12px*var(--fz));font-weight:600}
+.dbnr{margin-top:12px}.dbmv{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.dbmv .dbch{border:1.5px solid transparent}.dbmv .dbch.on{border-color:var(--oc)}.dbtg{display:flex;align-items:center;gap:10px}.dbtg input{width:20px;height:20px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1022,6 +1028,9 @@ Object.assign(TR.de,{noRem:"Keine Erinnerung"});
 Object.assign(TR.fr,{"evMeet": "Note de réunion", "mtAgenda": "Ordre du jour", "mtNotes": "Notes", "mtActions": "Actions convenues", "mtWho": "Participants"});
 Object.assign(TR.es,{"evMeet": "Nota de reunión", "mtAgenda": "Orden del día", "mtNotes": "Notas", "mtActions": "Acciones acordadas", "mtWho": "Asistentes"});
 Object.assign(TR.de,{"evMeet": "Besprechungsnotiz", "mtAgenda": "Agenda", "mtNotes": "Notizen", "mtActions": "Vereinbarte Aufgaben", "mtWho": "Teilnehmer"});
+Object.assign(TR.fr,{"dbs": "Bases de données", "dbsSub": "Tableaux personnalisés pour tout ce que vous suivez", "dbNew": "Nouvelle base", "dbName": "Nom", "dbTpl": "Commencer avec", "dbBlank": "Tableau vierge", "dbBooks": "Mes livres", "dbExp": "Dépenses", "dbProj": "Projets", "dbRows": "lignes", "dbRowNew": "Nouvelle ligne", "dbRowEdit": "Modifier la ligne", "dbDup": "Dupliquer", "dbColNew": "Nouvelle colonne", "dbColEdit": "Modifier la colonne", "dbColName": "Nom de la colonne", "dbType": "Type", "dbOpts": "Options (une par ligne)", "tpText": "Texte", "tpNum": "Nombre", "tpDate": "Date", "tpLink": "Lien", "tpStatus": "Statut", "tpMulti": "Choix multiple", "tpCheck": "Case à cocher", "dbEmpty": "Aucune base de données", "dbEmptyH": "Créez un tableau pour vos livres, dépenses ou projets", "dbDel": "Supprimer cette base et toutes ses lignes ?", "dbDelRow": "Supprimer cette ligne ?", "dbDelCol": "Supprimer la colonne et ses données ?", "dbRename": "Modifier la base", "dbOpen": "Ouvrir le lien", "dbNone": "— Aucun —", "dbSum": "Somme", "dbTitle": "Titre", "dbState": "Statut", "dbRate": "Note", "dbDone": "Terminé le", "dbAmount": "Montant", "dbCat": "Catégorie", "dbDate": "Date", "dbCats": "Nourriture\nTransport\nFactures\nLoisirs\nAutre", "dbProjN": "Projet", "dbDue": "Échéance", "dbPrio": "Priorité", "dbProjSt": "Pas commencé\nEn cours\nTerminé", "dbPrios": "Haute\nMoyenne\nBasse"});
+Object.assign(TR.es,{"dbs": "Bases de datos", "dbsSub": "Tablas personalizadas para lo que quieras organizar", "dbNew": "Nueva base", "dbName": "Nombre", "dbTpl": "Empezar con", "dbBlank": "Tabla vacía", "dbBooks": "Mis libros", "dbExp": "Gastos", "dbProj": "Proyectos", "dbRows": "filas", "dbRowNew": "Nueva fila", "dbRowEdit": "Editar fila", "dbDup": "Duplicar", "dbColNew": "Nueva columna", "dbColEdit": "Editar columna", "dbColName": "Nombre de la columna", "dbType": "Tipo", "dbOpts": "Opciones (una por línea)", "tpText": "Texto", "tpNum": "Número", "tpDate": "Fecha", "tpLink": "Enlace", "tpStatus": "Estado", "tpMulti": "Selección múltiple", "tpCheck": "Casilla", "dbEmpty": "Aún no hay bases de datos", "dbEmptyH": "Crea una tabla para libros, gastos o proyectos", "dbDel": "¿Eliminar esta base y todas sus filas?", "dbDelRow": "¿Eliminar esta fila?", "dbDelCol": "¿Eliminar la columna y sus datos?", "dbRename": "Editar base", "dbOpen": "Abrir enlace", "dbNone": "— Ninguno —", "dbSum": "Suma", "dbTitle": "Título", "dbState": "Estado", "dbRate": "Puntuación", "dbDone": "Terminado el", "dbAmount": "Importe", "dbCat": "Categoría", "dbDate": "Fecha", "dbCats": "Comida\nTransporte\nFacturas\nOcio\nOtro", "dbProjN": "Proyecto", "dbDue": "Vence", "dbPrio": "Prioridad", "dbProjSt": "Sin empezar\nEn curso\nHecho", "dbPrios": "Alta\nMedia\nBaja"});
+Object.assign(TR.de,{"dbs": "Datenbanken", "dbsSub": "Eigene Tabellen für alles, was du verfolgst", "dbNew": "Neue Datenbank", "dbName": "Name", "dbTpl": "Starten mit", "dbBlank": "Leere Tabelle", "dbBooks": "Meine Bücher", "dbExp": "Ausgaben", "dbProj": "Projekte", "dbRows": "Zeilen", "dbRowNew": "Neue Zeile", "dbRowEdit": "Zeile bearbeiten", "dbDup": "Duplizieren", "dbColNew": "Neue Spalte", "dbColEdit": "Spalte bearbeiten", "dbColName": "Spaltenname", "dbType": "Typ", "dbOpts": "Optionen (eine pro Zeile)", "tpText": "Text", "tpNum": "Zahl", "tpDate": "Datum", "tpLink": "Link", "tpStatus": "Status", "tpMulti": "Mehrfachauswahl", "tpCheck": "Kontrollkästchen", "dbEmpty": "Noch keine Datenbanken", "dbEmptyH": "Erstelle eine Tabelle für Bücher, Ausgaben oder Projekte", "dbDel": "Diese Datenbank und alle Zeilen löschen?", "dbDelRow": "Diese Zeile löschen?", "dbDelCol": "Spalte und Daten löschen?", "dbRename": "Datenbank bearbeiten", "dbOpen": "Link öffnen", "dbNone": "— Keine —", "dbSum": "Summe", "dbTitle": "Titel", "dbState": "Status", "dbRate": "Bewertung", "dbDone": "Beendet am", "dbAmount": "Betrag", "dbCat": "Kategorie", "dbDate": "Datum", "dbCats": "Essen\nVerkehr\nRechnungen\nFreizeit\nSonstiges", "dbProjN": "Projekt", "dbDue": "Fällig", "dbPrio": "Priorität", "dbProjSt": "Nicht begonnen\nIn Arbeit\nErledigt", "dbPrios": "Hoch\nMittel\nNiedrig"});
 L.restoreQ=['استبدال بياناتك الحالية بهذه النسخة؟','Replace your current data with this backup?'];
 L.profile=['الملف الشخصي','Profile'];L.pName=['الاسم','Name'];L.pPhoto=['تغيير الصورة','Change photo'];L.pRemove=['إزالة الصورة','Remove photo'];L.pSettings=['الإعدادات','Settings'];L.tasksDone=['مهمة منجزة','tasks done'];
 L.upPhone=['رفع صورة من الهاتف','Upload from phone'];L.pColors=['أو اختر لوناً','Or pick a color'];L.pEdit=['تعديل','Edit'];L.bannerL=['صورة الغلاف','Cover picture'];L.avatarL=['الصورة الشخصية','Profile picture'];
@@ -1152,7 +1161,7 @@ const GRAD=['linear-gradient(135deg,var(--ac),var(--ac2))','linear-gradient(135d
 function avStyle(){const p=S.profile||{};return p.avatar?'':`background:${GRAD[p.avCol??0]}`}
 function avInner(){const p=S.profile||{};if(p.avatar)return `<img alt="" src="${esc(p.avatar)}">`;const n=(p.name||'').trim();return n?esc([...n][0].toUpperCase()):ic('user')}
 /* ---------- shell ---------- */
-const NAV=[['home','home'],['notes','file'],['notebooks','book'],['tasks','check'],['habits','habit'],['goals','target'],['pomo','timer'],['docs','pdf'],['ai','spark'],['calendar','cal'],['favs','star'],['archive','archive'],['trash','trash'],['prefs','sliders']];
+const NAV=[['home','home'],['notes','file'],['notebooks','book'],['tasks','check'],['habits','habit'],['goals','target'],['dbs','table'],['pomo','timer'],['docs','pdf'],['ai','spark'],['calendar','cal'],['favs','star'],['archive','archive'],['trash','trash'],['prefs','sliders']];
 let route='home',postRender=null,pendingEd=false,curNote=null,edTimer=null;
 function shell(){
  $('#side').innerHTML=`<div class="wm"><b>Spark</b></div>`+
@@ -1843,8 +1852,8 @@ let fbP=null;
 function fb(){if(window.__fbMock)return Promise.resolve(window.__fbMock);return fbP||(fbP=(async()=>{const V='10.12.2',B='https://www.gstatic.com/firebasejs/'+V+'/';const [app,auth,fs]=await Promise.all([import(B+'firebase-app.js'),import(B+'firebase-auth.js'),import(B+'firebase-firestore.js')]);const ap=app.getApps().length?app.getApp():app.initializeApp(FBC);return {auth,a:auth.getAuth(ap),fs,db:fs.getFirestore(ap)}})().catch(e=>{fbP=null;throw e}))}
 /* ---------- cloud sync (Firestore) ---------- */
 const SEEDIDS=['nWel','nPlan','nIdea'];let syncBusy=false,syncT=null;
-const metaHash=()=>JSON.stringify({n:S.notebooks,t:S.tasks,h:S.habits,l:S.hlog,g:S.goals,e:S.events,p:(S.pomo||{}).log});
-function mergeMeta(rem){const byId=(a,b)=>{const m=new Map();(a||[]).forEach(x=>m.set(x.id,x));(b||[]).forEach(x=>m.set(x.id,x));return [...m.values()]};const hl={};for(const k of new Set([...Object.keys(rem.hlog||{}),...Object.keys(S.hlog||{})])){const u=[...new Set([...((rem.hlog||{})[k]||[]),...((S.hlog||{})[k]||[])])];if(u.length)hl[k]=u}return {notebooks:byId(rem.notebooks,S.notebooks),tasks:byId(rem.tasks,S.tasks),habits:byId(rem.habits,S.habits).filter(h=>!(S.hgone||{})[h.id]),hlog:hl,goals:byId(rem.goals,S.goals).filter(g=>!(S.ggone||{})[g.id]),events:byId(rem.events,S.events).filter(g=>!(S.egone||{})[g.id]),pl:(()=>{const o={...(rem.pl||{})},l=(S.pomo||{}).log||{};for(const k in l){const a=o[k]||{m:0,n:0};o[k]={m:Math.max(a.m,l[k].m),n:Math.max(a.n,l[k].n)}}return o})()}}
+const metaHash=()=>JSON.stringify({n:S.notebooks,t:S.tasks,h:S.habits,l:S.hlog,g:S.goals,e:S.events,d:S.dbs,p:(S.pomo||{}).log});
+function mergeMeta(rem){const byId=(a,b)=>{const m=new Map();(a||[]).forEach(x=>m.set(x.id,x));(b||[]).forEach(x=>m.set(x.id,x));return [...m.values()]};const hl={};for(const k of new Set([...Object.keys(rem.hlog||{}),...Object.keys(S.hlog||{})])){const u=[...new Set([...((rem.hlog||{})[k]||[]),...((S.hlog||{})[k]||[])])];if(u.length)hl[k]=u}return {notebooks:byId(rem.notebooks,S.notebooks),tasks:byId(rem.tasks,S.tasks),habits:byId(rem.habits,S.habits).filter(h=>!(S.hgone||{})[h.id]),hlog:hl,goals:byId(rem.goals,S.goals).filter(g=>!(S.ggone||{})[g.id]),events:byId(rem.events,S.events).filter(g=>!(S.egone||{})[g.id]),dbs:byId(rem.dbs,S.dbs).filter(g=>!(S.dgone||{})[g.id]),pl:(()=>{const o={...(rem.pl||{})},l=(S.pomo||{}).log||{};for(const k in l){const a=o[k]||{m:0,n:0};o[k]={m:Math.max(a.m,l[k].m),n:Math.max(a.n,l[k].n)}}return o})()}}
 async function syncNow(manual){
  if(syncBusy||!S)return;const p=S.profile||{};if(!p.google)return;
  if(navigator.onLine===false){if(manual)toast(t('gOffline'));return}
@@ -1870,8 +1879,8 @@ async function syncNow(manual){
   for(const id in S.gone){if(!(remote[id]&&remote[id].gone))writes.push([fs.doc(base,id),{gone:true,updated:S.gone[id]}])}
   const h=metaHash(),localCh=first?!rm:(h!==sy.mh),remNewer=!!rm&&(rm.updated||0)>(sy.mu||0);
   if(remNewer&&(!localCh)){let m=null;try{m=JSON.parse(rm.json)}catch(e){}if(m){S.notebooks=m.notebooks||S.notebooks;S.tasks=m.tasks||S.tasks;S.habits=m.habits||S.habits;S.hlog=m.hlog||S.hlog;sy.mu=rm.updated;sy.mh=metaHash();changed=true}}
-  else if(remNewer&&localCh){let m=null;try{m=JSON.parse(rm.json)}catch(e){}if(m){const mg=mergeMeta(m);S.notebooks=mg.notebooks;S.tasks=mg.tasks;S.habits=mg.habits;S.hlog=mg.hlog;S.goals=mg.goals;S.events=mg.events;S.pomo=S.pomo||{};S.pomo.log=mg.pl;changed=true}const now=Date.now();writes.push([metaRef,{json:JSON.stringify({notebooks:S.notebooks,tasks:S.tasks,habits:S.habits,hlog:S.hlog,goals:S.goals,events:S.events,pl:(S.pomo||{}).log}),updated:now}]);sy.mu=now;sy.mh=metaHash()}
-  else if(localCh||!rm){const now=Date.now();writes.push([metaRef,{json:JSON.stringify({notebooks:S.notebooks,tasks:S.tasks,habits:S.habits,hlog:S.hlog,goals:S.goals,events:S.events,pl:(S.pomo||{}).log}),updated:now}]);sy.mu=now;sy.mh=h}
+  else if(remNewer&&localCh){let m=null;try{m=JSON.parse(rm.json)}catch(e){}if(m){const mg=mergeMeta(m);S.notebooks=mg.notebooks;S.tasks=mg.tasks;S.habits=mg.habits;S.hlog=mg.hlog;S.goals=mg.goals;S.events=mg.events;S.dbs=mg.dbs;S.pomo=S.pomo||{};S.pomo.log=mg.pl;changed=true}const now=Date.now();writes.push([metaRef,{json:JSON.stringify({notebooks:S.notebooks,tasks:S.tasks,habits:S.habits,hlog:S.hlog,goals:S.goals,events:S.events,dbs:S.dbs,pl:(S.pomo||{}).log}),updated:now}]);sy.mu=now;sy.mh=metaHash()}
+  else if(localCh||!rm){const now=Date.now();writes.push([metaRef,{json:JSON.stringify({notebooks:S.notebooks,tasks:S.tasks,habits:S.habits,hlog:S.hlog,goals:S.goals,events:S.events,dbs:S.dbs,pl:(S.pomo||{}).log}),updated:now}]);sy.mu=now;sy.mh=h}
   {const pref=fs.doc(db,'users',u.uid,'meta','profile'),ps=await fs.getDoc(pref),rp=ps.exists()?ps.data():null,pr=S.profile||{},lu=pr.upd||0;
    if(rp&&(rp.updated||0)>lu){let m=null;try{m=JSON.parse(rp.json)}catch(e){}if(m){S.profile={...m,google:pr.google,upd:rp.updated};changed=true;const ab=$('#avb');if(ab){ab.innerHTML=avInner();ab.style.cssText=avStyle()}}}
    else if((pr.name||pr.avatar||pr.banner)&&(!rp||lu>(rp.updated||0))){const json=JSON.stringify({name:pr.name,avatar:pr.avatar,avCol:pr.avCol,banner:pr.banner,bnCol:pr.bnCol,bnFit:pr.bnFit});if(json.length<900000){const now=lu||Date.now();pr.upd=now;writes.push([pref,{json,updated:now}])}}}
@@ -2963,6 +2972,96 @@ Object.assign(A,{
 
 function evPop(ee){const o=document.createElement('div');o.className='evpop';o.innerHTML=ee.slice(0,4).map(e=>{const c=e.color||EVC[4],l=lum(hex2rgb(c))>.4;return `<div class="evpc"><i style="background:${c}"></i><b>${esc(e.title)}</b><small>${esc(evTime(e))}${e.loc?' • '+esc(e.loc):''}</small></div>`}).join('')+(ee.length>4?`<div class="evpm">+${ee.length-4}</div>`:'');
  o.onclick=()=>{o.classList.add('out');setTimeout(()=>o.remove(),180)};document.body.appendChild(o)}
+
+/* =====================================================================
+   Databases (phase 1): custom tables, typed columns, table view
+   ===================================================================== */
+Object.assign(L,{
+ dbs:['قواعد البيانات','Databases'],dbsSub:['جداول مخصصة لكل ما تريد تنظيمه','Custom tables for anything you track'],dbNew:['قاعدة جديدة','New database'],dbName:['الاسم','Name'],dbTpl:['ابدأ من','Start from'],dbBlank:['جدول فارغ','Blank table'],dbBooks:['كتبي','Books'],dbExp:['المصاريف','Expenses'],dbProj:['المشاريع','Projects'],
+ dbRows:['سجل','rows'],dbRowNew:['سجل جديد','New row'],dbRowEdit:['تعديل السجل','Edit row'],dbDup:['نسخ','Duplicate'],dbColNew:['عمود جديد','New column'],dbColEdit:['تعديل العمود','Edit column'],dbColName:['اسم العمود','Column name'],dbType:['النوع','Type'],dbOpts:['الخيارات (واحد في كل سطر)','Options (one per line)'],
+ tpText:['نص','Text'],tpNum:['رقم','Number'],tpDate:['تاريخ','Date'],tpLink:['رابط','Link'],tpStatus:['حالة','Status'],tpMulti:['اختيار متعدد','Multi-select'],tpCheck:['مربع تحقق','Checkbox'],tpPerson:['شخص','Person'],
+ dbEmpty:['لا توجد قواعد بيانات بعد','No databases yet'],dbEmptyH:['أنشئ جدولاً للكتب أو المصاريف أو المشاريع','Create a table for books, expenses or projects'],dbDel:['حذف القاعدة وكل سجلاتها؟','Delete this database and all its rows?'],dbDelRow:['حذف هذا السجل؟','Delete this row?'],dbDelCol:['حذف العمود وبياناته؟','Delete this column and its data?'],dbRename:['تعديل القاعدة','Edit database'],dbOpen:['فتح الرابط','Open link'],dbNone:['— بدون —','— None —'],dbSum:['المجموع','Sum'],
+ dbTitle:['العنوان','Title'],dbState:['الحالة','Status'],dbRate:['التقييم','Rating'],dbDone:['انتهى في','Finished'],dbToRead:['أريد قراءته\nأقرؤه\nانتهيت','To read\nReading\nDone'],dbAmount:['المبلغ','Amount'],dbCat:['الفئة','Category'],dbDate:['التاريخ','Date'],dbCats:['طعام\nمواصلات\nفواتير\nترفيه\nأخرى','Food\nTransport\nBills\nFun\nOther'],dbProjN:['المشروع','Project'],dbDue:['الموعد','Due'],dbPrio:['الأولوية','Priority'],dbProjSt:['لم يبدأ\nجارٍ\nمكتمل','Not started\nIn progress\nDone'],dbPrios:['عالية\nمتوسطة\nمنخفضة','High\nMedium\nLow']
+});
+const DBTP=['text','number','date','link','status','multi','check'];
+const DBTPL={text:'tpText',number:'tpNum',date:'tpDate',link:'tpLink',status:'tpStatus',multi:'tpMulti',check:'tpCheck'};
+const OPC=['#e0264a','#e8870e','#d4a800','#1f9d63','#3b82f6','#8b5cf6','#d946a8','#64748b'];
+const dbs=()=>S.dbs||(S.dbs=[]);
+const dbById=id=>dbs().find(d=>d.id===id);
+const mkOpts=txt=>String(txt).split('\n').map(s=>s.trim()).filter(Boolean).map((n,i)=>({id:uid(),n,c:OPC[i%OPC.length]}));
+function mkDb(name,tpl){const d={id:uid(),name,icon:'📋',created:Date.now(),cols:[],rows:[]};const C=(n,ty,o)=>d.cols.push({id:uid(),n,t:ty,o:o?mkOpts(o):[]});
+ const T=k=>L[k][lang==='ar'?0:1];
+ if(tpl==='books'){d.icon='📚';C(T('dbTitle'),'text');C(T('dbState'),'status',T('dbToRead'));C(T('dbRate'),'number');C(T('dbDone'),'date')}
+ else if(tpl==='exp'){d.icon='💸';C(T('dbTitle'),'text');C(T('dbAmount'),'number');C(T('dbCat'),'status',T('dbCats'));C(T('dbDate'),'date')}
+ else if(tpl==='proj'){d.icon='🗂️';C(T('dbProjN'),'text');C(T('dbState'),'status',T('dbProjSt'));C(T('dbPrio'),'status',T('dbPrios'));C(T('dbDue'),'date')}
+ else{C(T('dbTitle'),'text');C('','text')&&d.cols.pop()}
+ return d}
+const optOf=(c,id)=>(c.o||[]).find(o=>o.id===id);
+function cellHtml(c,v){
+ if(c.t==='check')return `<span class="dbck ${v?'on':''}">${v?ic('check'):''}</span>`;
+ if(v==null||v===''||(Array.isArray(v)&&!v.length))return '';
+ if(c.t==='status'){const o=optOf(c,v);return o?`<span class="dbch" style="--oc:${o.c}">${esc(o.n)}</span>`:''}
+ if(c.t==='multi')return (v||[]).map(i=>optOf(c,i)).filter(Boolean).map(o=>`<span class="dbch" style="--oc:${o.c}">${esc(o.n)}</span>`).join('');
+ if(c.t==='date')return esc(fdate(v,{day:'numeric',month:'short'}));
+ if(c.t==='link'){let h=String(v);try{h=new URL(/^https?:/.test(v)?v:'https://'+v).hostname.replace(/^www\./,'')}catch(_){}return `<span class="dblk">${esc(h)}</span>`}
+ return esc(String(v))}
+function fieldHtml(c,v,id){const i=id||'f_'+c.id;
+ if(c.t==='check')return `<label class="dbtg"><input type="checkbox" id="${i}" ${v?'checked':''}><span>${esc(c.n||'')}</span></label>`;
+ if(c.t==='status')return `<select class="in" id="${i}"><option value="">${t('dbNone')}</option>${(c.o||[]).map(o=>`<option value="${o.id}" ${v===o.id?'selected':''}>${esc(o.n)}</option>`).join('')}</select>`;
+ if(c.t==='multi')return `<div class="dbmv" id="${i}">${(c.o||[]).map(o=>`<button type="button" class="dbch ${(v||[]).includes(o.id)?'on':''}" data-o="${o.id}" style="--oc:${o.c}">${esc(o.n)}</button>`).join('')}</div>`;
+ if(c.t==='number')return `<input class="in" id="${i}" type="number" inputmode="decimal" value="${v??''}">`;
+ if(c.t==='date')return `<input class="in" id="${i}" type="date" value="${esc(v||'')}">`;
+ if(c.t==='link')return `<input class="in" id="${i}" type="url" inputmode="url" value="${esc(v||'')}">`;
+ return `<input class="in" id="${i}" maxlength="500" value="${esc(v||'')}">`}
+function readField(c,ov){const e=$('#f_'+c.id,ov);if(!e)return null;
+ if(c.t==='check')return e.checked;if(c.t==='multi')return $$('[data-o].on',e).map(b=>b.dataset.o);
+ if(c.t==='number'){const n=parseFloat(e.value);return isNaN(n)?'':n}return e.value.trim()}
+function bindMulti(ov){$$('.dbmv',ov).forEach(m=>m.onclick=ev=>{const b=ev.target.closest('[data-o]');if(b)b.classList.toggle('on')})}
+function rowDialog(db,row,only){const isNew=!row;const r=row||{id:uid(),c:{},created:Date.now()};const cols=only?db.cols.filter(c=>c.id===only):db.cols;
+ const ov=openModal(`<h3>${only?esc(cols[0].n||t('dbRowEdit')):(isNew?t('dbRowNew'):t('dbRowEdit'))}</h3>${cols.map(c=>c.t==='check'?`<div class="fld">${fieldHtml(c,r.c[c.id])}</div>`:`<label class="fld">${esc(c.n)}${c.t==='multi'?'':''}${fieldHtml(c,r.c[c.id])}</label>`).join('')}
+ <div class="dlg-a">${!isNew&&!only?`<button class="btn ghost" data-del type="button">${t('del')}</button><button class="btn ghost" data-dup type="button">${t('dbDup')}</button>`:''}${only&&cols[0].t==='link'&&r.c[only]?`<button class="btn ghost" data-go type="button">${t('dbOpen')}</button>`:''}<button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);
+ bindMulti(ov);const f=$('input.in,select.in',ov);if(f&&isNew&&!('ontouchstart' in window))f.focus();
+ $('[data-x]',ov).onclick=()=>ov.remove();
+ const dl=$('[data-del]',ov);if(dl)dl.onclick=async()=>{if(await sure(t('dbDelRow'))){db.rows=db.rows.filter(z=>z.id!==r.id);dbTouch(db);ov.remove();render(1)}};
+ const dp=$('[data-dup]',ov);if(dp)dp.onclick=()=>{db.rows.push({id:uid(),c:JSON.parse(JSON.stringify(r.c)),created:Date.now()});dbTouch(db);ov.remove();render(1)};
+ const gl=$('[data-go]',ov);if(gl)gl.onclick=()=>{let u=r.c[only];if(!/^https?:/.test(u))u='https://'+u;window.open(u,'_blank','noopener')};
+ $('[data-ok]',ov).onclick=()=>{cols.forEach(c=>{r.c[c.id]=readField(c,ov)});if(isNew)db.rows.push(r);dbTouch(db);ov.remove();render(1)}}
+function dbTouch(db){db.updated=Date.now();save();window.__pushSync&&window.__pushSync()}
+function colDialog(db,col){const x=col||{n:'',t:'text',o:[]};
+ const ov=openModal(`<h3>${col?t('dbColEdit'):t('dbColNew')}</h3><label class="fld">${t('dbColName')}<input class="in" id="cn" maxlength="40" value="${esc(x.n)}"></label>
+ <label class="fld">${t('dbType')}<select class="in" id="ct">${DBTP.map(k=>`<option value="${k}" ${x.t===k?'selected':''}>${t(DBTPL[k])}</option>`).join('')}</select></label>
+ <label class="fld" id="cow" ${['status','multi'].includes(x.t)?'':'hidden'}>${t('dbOpts')}<textarea class="in" id="co" rows="5">${esc((x.o||[]).map(o=>o.n).join('\n'))}</textarea></label>
+ <div class="dlg-a">${col&&db.cols.length>1?`<button class="btn ghost" data-del type="button">${t('del')}</button>`:''}<button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);
+ $('#ct',ov).onchange=e=>{$('#cow',ov).hidden=!['status','multi'].includes(e.target.value)};$('[data-x]',ov).onclick=()=>ov.remove();
+ const dl=$('[data-del]',ov);if(dl)dl.onclick=async()=>{if(await sure(t('dbDelCol'))){db.cols=db.cols.filter(z=>z.id!==col.id);db.rows.forEach(r=>delete r.c[col.id]);dbTouch(db);ov.remove();render(1)}};
+ $('[data-ok]',ov).onclick=()=>{const n=$('#cn',ov).value.trim();if(!n){$('#cn',ov).focus();return}const ty=$('#ct',ov).value;
+  const names=ty==='status'||ty==='multi'?$('#co',ov).value.split('\n').map(s=>s.trim()).filter(Boolean):[];
+  const old=(col&&col.o)||[];const o=names.map((nm,i)=>{const m=old.find(z=>z.n===nm);return m||{id:uid(),n:nm,c:OPC[i%OPC.length]}});
+  if(col){if(col.t!==ty){db.rows.forEach(r=>{delete r.c[col.id]})}Object.assign(col,{n,t:ty,o})}else db.cols.push({id:uid(),n,t:ty,o});
+  dbTouch(db);ov.remove();render(1)}}
+function dbDialog(db){const ov=openModal(`<h3>${db?t('dbRename'):t('dbNew')}</h3><label class="fld">${t('dbName')}<input class="in" id="dn" maxlength="60" value="${esc(db?db.name:'')}"></label>
+ ${db?'':`<label class="fld">${t('dbTpl')}<select class="in" id="dt"><option value="">${t('dbBlank')}</option><option value="books">${t('dbBooks')}</option><option value="exp">${t('dbExp')}</option><option value="proj">${t('dbProj')}</option></select></label>`}
+ <div class="dlg-a">${db?`<button class="btn ghost" data-del type="button">${t('del')}</button>`:''}<button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);
+ $('#dn',ov).focus();$('[data-x]',ov).onclick=()=>ov.remove();
+ const dl=$('[data-del]',ov);if(dl)dl.onclick=async()=>{if(await sure(t('dbDel'))){S.dbs=dbs().filter(z=>z.id!==db.id);S.dgone=S.dgone||{};S.dgone[db.id]=Date.now();memUI.dbid=null;save();ov.remove();render(1);window.__pushSync&&window.__pushSync()}};
+ $('[data-ok]',ov).onclick=()=>{const n=$('#dn',ov).value.trim();if(!n){$('#dn',ov).focus();return}
+  if(db){db.name=n;dbTouch(db)}else{const tp=$('#dt',ov).value;const d=mkDb(n,tp);if(!tp){d.cols=[{id:uid(),n:t('dbTitle'),t:'text',o:[]}]}else if(tp==='books')d.icon='📚';dbs().unshift(d);memUI.dbid=d.id;dbTouch(d)}
+  ov.remove();render(1)}}
+V.dbs=()=>{const cur=memUI.dbid&&dbById(memUI.dbid);
+ if(!cur)return `<div class="vh"><div><h1 class="h1">${t('dbs')}</h1><p class="sub">${t('dbsSub')}</p></div><div class="sp"></div><button type="button" class="btn" data-act="db-new">${ic('plus')}${t('dbNew')}</button></div>
+ ${dbs().length?`<div class="dbl">${dbs().map(d=>`<button type="button" class="card dbc" data-act="db-open" data-id="${d.id}"><span class="dbi">${d.icon||'📋'}</span><span class="tx"><b>${esc(d.name)}</b><small>${d.rows.length} ${t('dbRows')} · ${d.cols.length} ${t('tpText')===''?'':''}${lang==='ar'?'أعمدة':'cols'}</small></span></button>`).join('')}</div>`:empty(t('dbEmpty'),t('dbEmptyH'))}`;
+ const sums=cur.cols.map(c=>c.t==='number'?cur.rows.reduce((a,r)=>a+(+r.c[c.id]||0),0):null);
+ return `<div class="vh"><button type="button" class="ib" data-act="db-back" aria-label="back">${ic(lang==='ar'?'chr':'chl')}</button><div><h1 class="h1">${cur.icon||''} ${esc(cur.name)}</h1><p class="sub">${cur.rows.length} ${t('dbRows')}</p></div><div class="sp"></div><button type="button" class="ib" data-act="db-edit" aria-label="${t('dbRename')}">${ic('dots')}</button></div>
+ <section class="card sec dbt"><div class="dbs"><table><thead><tr><th class="dbx"></th>${cur.cols.map(c=>`<th><button type="button" class="dbh" data-act="col-edit" data-id="${c.id}">${esc(c.n)}</button></th>`).join('')}<th><button type="button" class="dbh dbadd" data-act="col-new" aria-label="${t('dbColNew')}">${ic('plus')}</button></th></tr></thead>
+ <tbody>${cur.rows.map(r=>`<tr><td class="dbx"><button type="button" class="dbo" data-act="row-edit" data-id="${r.id}" aria-label="${t('dbRowEdit')}">${ic('edit')}</button></td>${cur.cols.map(c=>`<td><button type="button" class="dbcell" data-act="cell" data-r="${r.id}" data-c="${c.id}">${cellHtml(c,r.c[c.id])}</button></td>`).join('')}<td></td></tr>`).join('')}</tbody>
+ ${sums.some(s=>s!=null)?`<tfoot><tr><td class="dbx"></td>${sums.map(s=>`<td class="dbsm">${s==null?'':t('dbSum')+' '+Math.round(s*100)/100}</td>`).join('')}<td></td></tr></tfoot>`:''}</table></div>
+ <button type="button" class="btn dbnr" data-act="row-new">${ic('plus')}${t('dbRowNew')}</button></section>`};
+Object.assign(A,{
+ 'db-new':()=>dbDialog(),'db-open':el=>{memUI.dbid=el.dataset.id;render(1)},'db-back':()=>{memUI.dbid=null;render(1)},'db-edit':()=>dbDialog(dbById(memUI.dbid)),
+ 'col-new':()=>colDialog(dbById(memUI.dbid)),'col-edit':el=>{const d=dbById(memUI.dbid);colDialog(d,d.cols.find(c=>c.id===el.dataset.id))},
+ 'row-new':()=>rowDialog(dbById(memUI.dbid)),'row-edit':el=>{const d=dbById(memUI.dbid);rowDialog(d,d.rows.find(r=>r.id===el.dataset.id))},
+ 'cell':el=>{const d=dbById(memUI.dbid),r=d.rows.find(z=>z.id===el.dataset.r),c=d.cols.find(z=>z.id===el.dataset.c);if(c.t==='check'){r.c[c.id]=!r.c[c.id];dbTouch(d);render(1)}else rowDialog(d,r,c.id)}
+});
 
 })();
 
