@@ -791,6 +791,22 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .sksel{top:auto}
 .skh .okb{display:inline-flex;flex-direction:row;align-items:center;justify-content:center;white-space:nowrap}.skdt button{width:36px;height:40px}.skdt{gap:0}.skdt .skcd{width:36px;height:36px}
 .skh .okb span{display:none}.skh .okb{width:46px;padding:0}.skh>button{width:38px;height:38px}.skz button{width:32px!important}.skz b{min-width:38px}
+
+/* section 8 */
+.pgo{position:fixed;inset:0;z-index:300;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.pgo .pgt{flex:1;text-align:center;font-size:calc(15px*var(--fz));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.pgg{flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;padding:12px;align-content:start}
+.pgc{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px;border-radius:14px;border:2px solid transparent;background:var(--solid-2)}.pgc.on{border-color:var(--ac);background:var(--ac-soft)}
+.pgc span{font-size:calc(12px*var(--fz));font-weight:700;color:var(--fg2)}
+.pgi{width:100%;aspect-ratio:3/4;display:grid;place-items:center;overflow:hidden;background:#fff;border-radius:6px;border:1px solid var(--line)}.pgi img{max-width:100%;max-height:100%;transition:transform .2s}.pgb{display:block;width:100%;height:100%;background:#fff}
+.pgbar{display:flex;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:var(--solid);border-top:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.pgbar::-webkit-scrollbar{display:none}
+.pgbar button{flex:1 0 auto;min-width:60px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;border-radius:12px;background:none;border:0;color:var(--fg);font-size:calc(11px*var(--fz));font-weight:600}.pgbar svg{width:21px;height:21px;color:var(--ac)}
+.sgw{flex:1;overflow:auto;display:flex;justify-content:center;padding:12px;background:#999}.sgp{position:relative;width:min(100%,640px);height:max-content;background:#fff;align-self:flex-start;box-shadow:0 4px 20px rgba(0,0,0,.3)}.sgp>img:first-child{width:100%;display:block}
+.sgs{position:absolute;touch-action:none;cursor:grab;outline:2px dashed var(--ac);outline-offset:3px;background:rgba(255,255,255,.35)}
+.mgl{display:flex;flex-direction:column;gap:6px;max-height:55vh;overflow:auto;margin:6px 0}
+.mgr{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--solid-2);border:1px solid var(--line);color:var(--fg);text-align:start}.mgr.on{border-color:var(--ac);background:var(--ac-soft)}.mgr b{min-width:22px;text-align:center;color:var(--ac)}.mgr span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mgr small{color:var(--fg2)}
+.mgb{padding:12px;font-weight:600}.mgb svg{width:20px;height:20px;color:var(--ac)}
+.dxg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-height:50vh;overflow:auto;margin:8px 0}.dxi{position:relative;background:var(--solid-2);border-radius:12px;padding:6px}.dxi img{width:100%;height:110px;object-fit:contain;display:block}.dxi button{position:absolute;inset-inline-end:6px;bottom:6px;padding:4px 8px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1148,6 +1164,10 @@ Object.assign(TR.fr,{skDone:'OK',skOcrS:'En texte',skColor:'Couleur et taille',s
 Object.assign(TR.es,{skDone:'Hecho',skOcrS:'A texto',skColor:'Color y tamaño',skSize:'Tamaño',skPaperPick:'Elige el papel',skBg:'Color del papel',skMargin:'Rayas + margen',skGraph:'Milimetrado',skCustom:'Color personalizado'});
 Object.assign(TR.de,{skDone:'Fertig',skOcrS:'In Text',skColor:'Farbe und Größe',skSize:'Größe',skPaperPick:'Papier wählen',skBg:'Papierfarbe',skMargin:'Liniert + Rand',skGraph:'Millimeterpapier',skCustom:'Eigene Farbe'});
 
+Object.assign(TR.fr,{pgTools:'Outils du fichier',pgDraw:'Dessiner sur la page actuelle',pgSign:'Ajouter une signature',pgOrg:'Organiser, supprimer et diviser les pages',pgAsImg:'Pages en images dans une note',pgDl:'Télécharger le fichier',pgImgs:'Extraire les images',pgToNote:'Vers une note',noImgs:'Aucune image dans ce document',pgLimit:'Seules les 12 premières pages ont été prises',pgSave:'Enregistrer',pgAll:'Tout sélectionner',pgNone:'Désélectionner',pgRot:'Pivoter',pgL:'Avant',pgR:'Après',pgDup:'Dupliquer',pgBlank:'Page vide',pgExt:'Extraire',pgPick:'Sélectionnez d’abord des pages',pgLast:'Impossible de supprimer toutes les pages',pgName:'Nom du nouveau fichier',pgDone:'Fichier créé',pgApplied:'Modification appliquée au fichier',pgRotNo:'Les pages pivotées ne sont pas prises en charge ici',pdfNew:'Créer un PDF',pdfNewD:'Fusionnez des PDF ou transformez des images en PDF dans l’ordre voulu',pdfImgs:'Ajouter des images',pdfMake:'Créer',sigDraw:'Dessinez votre signature',sigBig:'Agrandir',sigSm:'Réduire',sigNew:'Nouvelle signature',skClear:'Effacer',mExpPdf:'Exporter en PDF',mExpWord:'Exporter en Word',pdfHint:'Choisissez « Enregistrer en PDF » dans la fenêtre d’impression'});
+Object.assign(TR.es,{pgTools:'Herramientas del archivo',pgDraw:'Dibujar en la página actual',pgSign:'Añadir firma',pgOrg:'Organizar, eliminar y dividir páginas',pgAsImg:'Páginas como imágenes en una nota',pgDl:'Descargar archivo',pgImgs:'Extraer imágenes',pgToNote:'A una nota',noImgs:'No hay imágenes en el documento',pgLimit:'Solo se tomaron las primeras 12 páginas',pgSave:'Guardar',pgAll:'Seleccionar todo',pgNone:'Deseleccionar',pgRot:'Girar',pgL:'Antes',pgR:'Después',pgDup:'Duplicar',pgBlank:'Página en blanco',pgExt:'Extraer',pgPick:'Selecciona páginas primero',pgLast:'No se pueden eliminar todas las páginas',pgName:'Nombre del nuevo archivo',pgDone:'Archivo creado',pgApplied:'Cambio aplicado al archivo',pgRotNo:'Las páginas giradas no son compatibles aquí',pdfNew:'Crear PDF',pdfNewD:'Une PDF o convierte imágenes en PDF en el orden que quieras',pdfImgs:'Añadir imágenes',pdfMake:'Crear',sigDraw:'Dibuja tu firma',sigBig:'Agrandar',sigSm:'Reducir',sigNew:'Nueva firma',skClear:'Borrar',mExpPdf:'Exportar PDF',mExpWord:'Exportar Word',pdfHint:'Elige «Guardar como PDF» en el diálogo de impresión'});
+Object.assign(TR.de,{pgTools:'Dateiwerkzeuge',pgDraw:'Auf aktueller Seite zeichnen',pgSign:'Unterschrift hinzufügen',pgOrg:'Seiten ordnen, löschen und teilen',pgAsImg:'Seiten als Bilder in einer Notiz',pgDl:'Datei herunterladen',pgImgs:'Bilder extrahieren',pgToNote:'In eine Notiz',noImgs:'Keine Bilder im Dokument',pgLimit:'Nur die ersten 12 Seiten wurden übernommen',pgSave:'Speichern',pgAll:'Alle auswählen',pgNone:'Auswahl aufheben',pgRot:'Drehen',pgL:'Früher',pgR:'Später',pgDup:'Duplizieren',pgBlank:'Leere Seite',pgExt:'Extrahieren',pgPick:'Zuerst Seiten auswählen',pgLast:'Nicht alle Seiten löschbar',pgName:'Name der neuen Datei',pgDone:'Datei erstellt',pgApplied:'Änderung auf die Datei angewendet',pgRotNo:'Gedrehte Seiten werden hier nicht unterstützt',pdfNew:'PDF erstellen',pdfNewD:'PDFs zusammenführen oder Bilder in der gewünschten Reihenfolge in PDF umwandeln',pdfImgs:'Bilder hinzufügen',pdfMake:'Erstellen',sigDraw:'Unterschrift zeichnen',sigBig:'Größer',sigSm:'Kleiner',sigNew:'Neue Unterschrift',skClear:'Löschen',mExpPdf:'Als PDF exportieren',mExpWord:'Als Word exportieren',pdfHint:'Wähle im Druckdialog „Als PDF speichern“'});
+
 L.restoreQ=['استبدال بياناتك الحالية بهذه النسخة؟','Replace your current data with this backup?'];
 L.profile=['الملف الشخصي','Profile'];L.pName=['الاسم','Name'];L.pPhoto=['تغيير الصورة','Change photo'];L.pRemove=['إزالة الصورة','Remove photo'];L.pSettings=['الإعدادات','Settings'];L.tasksDone=['مهمة منجزة','tasks done'];
 L.upPhone=['رفع صورة من الهاتف','Upload from phone'];L.pColors=['أو اختر لوناً','Or pick a color'];L.pEdit=['تعديل','Edit'];L.bannerL=['صورة الغلاف','Cover picture'];L.avatarL=['الصورة الشخصية','Profile picture'];
@@ -1443,12 +1463,12 @@ async function addDocs(files){
  if(route==='docs')render(1)}
 V.docs=()=>{
  const a=S.docs||[];
- return `<div class="vh"><div><h1 class="h1">${t('docs')}</h1><p class="sub">${t('docsSub')}</p></div><button class="btn" type="button" data-act="doc-up">${ic('plus')}${t('addFile')}</button></div>
+ return `<div class="vh"><div><h1 class="h1">${t('docs')}</h1><p class="sub">${t('docsSub')}</p></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn ghost" type="button" data-act="pdf-new">${ic('pdf')}${t('pdfNew')}</button><button class="btn" type="button" data-act="doc-up">${ic('plus')}${t('addFile')}</button></div></div>
  ${a.length?`<div class="dgrid">${a.map(d=>`<div class="card dcard"><div class="dmain" data-go="doc-${d.id}" role="button" tabindex="0"><span class="dk dk-${d.kind}">${DKIND[d.kind]}</span><div class="dinf"><b>${esc(d.name)}</b><small>${fmtSize(d.size)} · ${(d.hl||[]).length} ${t('dHl')}</small></div></div><button type="button" class="ib" data-act="doc-ren" data-id="${d.id}" aria-label="${t('dRename')}">${ic('edit')}</button><button type="button" class="ib" data-act="doc-del" data-id="${d.id}" aria-label="${t('del')}">${ic('trash')}</button></div>`).join('')}</div>`:empty(t('noDocs'),t('noDocsH'))}`};
 const DV={};
 V.doc=id=>{const d=(S.docs||[]).find(x=>x.id===id);if(!d)return empty(t('dGone'),'');
  postRender=()=>openDoc(d);
- return `<div class="dvbar"><button type="button" class="ib" data-go="docs" aria-label="back">${ic('chr','flip')}</button><b class="dvt">${esc(d.name)}</b><span class="dvsp"></span>${S.ai&&S.ai.on===false?'':`<button type="button" class="ib dvai" data-act="ai-reader" aria-label="${t('rdAsk')}" title="${t('rdAsk')}">${ic('ai')}</button>`}<button type="button" class="dvz" id="dvz" data-act="dv-fit">100%</button><button type="button" class="dvpg" id="dvpg" data-act="dv-goto" hidden></button><button type="button" class="ib" id="dvpen" data-act="dv-pen" aria-label="${t('dPen')}" title="${t('dPen')}">${ic('hl')}</button><button type="button" class="ib" data-act="dv-list" aria-label="${t('dHlAll')}">${ic('list')}</button></div>
+ return `<div class="dvbar"><button type="button" class="ib" data-go="docs" aria-label="back">${ic('chr','flip')}</button><b class="dvt">${esc(d.name)}</b><span class="dvsp"></span>${S.ai&&S.ai.on===false?'':`<button type="button" class="ib dvai" data-act="ai-reader" aria-label="${t('rdAsk')}" title="${t('rdAsk')}">${ic('ai')}</button>`}<button type="button" class="dvz" id="dvz" data-act="dv-fit">100%</button><button type="button" class="dvpg" id="dvpg" data-act="dv-goto" hidden></button><button type="button" class="ib" id="dvpen" data-act="dv-pen" aria-label="${t('dPen')}" title="${t('dPen')}">${ic('hl')}</button><button type="button" class="ib" data-act="dv-list" aria-label="${t('dHlAll')}">${ic('list')}</button>${d.kind==='pdf'||d.kind==='docx'?`<button type="button" class="ib" data-act="pdf-menu" aria-label="${t('pgTools')}">${ic('dots')}</button>`:''}</div>
  <div class="dvbody" id="dvb"><div class="dvload" id="dvl">${t('dLoading')}</div></div>`};
 function dcleanup(){const vv=$('#view');if(vv)vv.onscroll=null;if(DV.io){DV.io.disconnect()}if(DV.pdf){try{DV.pdf.destroy()}catch(e){}}Object.keys(DV).forEach(k=>delete DV[k]);hideBar();document.removeEventListener('selectionchange',selChange)}
 async function openDoc(d){
@@ -1877,7 +1897,7 @@ function noteMenu(el,id,cur){
  const items=n.trashed?[{l:t('restore'),ic:'restore',run:()=>{delete n.trashed;save();toast(t('restoredN'));render(1)}},{l:t('delForever'),ic:'trash',dg:1,run:async()=>{if(await sure(t('delForever')+'?')){S.gone=S.gone||{};S.gone[n.id]=Date.now();S.notes=S.notes.filter(x=>x.id!==n.id);save();render(1)}}}]:
  [...(cur?[]:[{l:t('open'),ic:'file',run:()=>openNote(n.id)}]),{l:n.pin?t('unpin'):t('pin'),ic:'pin',run:()=>{n.pin=n.pin?0:Date.now();save();render(1)}},{l:n.fav?t('unfav'):t('fav'),ic:'star',run:()=>{n.fav=!n.fav;save();cur?render(1):render(1)}},
   {l:t('moveTo'),ic:'folder',run:()=>setTimeout(()=>menu(el,[{l:t('noNb'),run:()=>{n.nb=null;n.updated=Date.now();save();render(1)}},...nbTree().map(({b,d})=>({l:(d?'↳ ':'')+b.name,ic:b.icon,run:()=>{n.nb=b.id;n.updated=Date.now();save();render(1)}}))]),0)},
-  ...(cur?[{l:t('mCover'),ic:'image',run:()=>setTimeout(()=>coverMenu(el,n),0)},{l:t('mFocus'),ic:'focus',run:()=>focusMode(true)},{l:t('mExpMd'),ic:'down',run:()=>{flushEditor();exportFile((n.title||'note')+'.md',noteMd(n))}},{l:t('mExpHtml'),ic:'down',run:()=>{flushEditor();exportFile((n.title||'note')+'.html',noteHtml(n))}}]:[]),
+  ...(cur?[{l:t('mCover'),ic:'image',run:()=>setTimeout(()=>coverMenu(el,n),0)},{l:t('mFocus'),ic:'focus',run:()=>focusMode(true)},{l:t('mExpMd'),ic:'down',run:()=>{flushEditor();exportFile((n.title||'note')+'.md',noteMd(n))}},{l:t('mExpHtml'),ic:'down',run:()=>{flushEditor();exportFile((n.title||'note')+'.html',noteHtml(n))}},{l:t('mExpPdf'),ic:'pdf',run:()=>{flushEditor();exportNotePdf(n)}},{l:t('mExpWord'),ic:'file',run:()=>{flushEditor();exportNoteWord(n)}}]:[]),
   {l:t('dup'),ic:'copy',run:()=>{flushEditor();const c=newNote({title:(n.title||'')+' (2)',html:n.html,nb:n.nb,icon:n.icon,tags:[...n.tags]});toast(t('dup'));cur?openNote(c.id):render(1)}},
   {l:n.archived?t('unarchive'):t('toArchive'),ic:'archive',run:()=>{flushEditor();n.archived=!n.archived;save();toast(n.archived?t('archivedN'):t('restoredN'));cur?go('notes'):render(1)}},'-',
   {l:t('toTrash'),ic:'trash',dg:1,run:()=>{flushEditor();n.trashed=Date.now();save();toast(t('trashed'));cur?go('notes'):render(1)}}];
@@ -3337,12 +3357,12 @@ function sugTags(){const w=$('#tagsug');if(!w||!curNote)return;const d=$('#doc')
  w.innerHTML=s.map(x=>`<button type="button" class="tg sug" data-act="sug-tag" data-id="${esc(x)}" title="${t('tagSug')}">+ #${esc(x)}</button>`).join('')}
 function tagStats(){const m=new Map();live().forEach(n=>n.tags.forEach(x=>m.set(x,(m.get(x)||0)+1)));return [...m].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))}
 function tagsDialog(){const ov=openModal('');const draw=()=>{const st=tagStats();
- $('.dlg',ov).innerHTML=`<h3>${ic('tag')} ${t('tagsMgr')}</h3>${st.length?`<div class="tgl">${st.map(([x,n])=>`<div class="tgr" data-t="${esc(x)}"><button type="button" class="tgn" data-go>#${esc(x)}</button><span class="tgc">${n} ${t('nNotes')}</span><button type="button" class="ib" data-rn aria-label="${t('tagRen')}">${ic('edit')}</button><button type="button" class="ib" data-dl aria-label="${t('del')}">${ic('trash')}</button></div>`).join('')}</div>`:`<div class="empty" style="padding:18px 4px">${t('noTags')}</div>`}<div class="dlg-a"><button class="btn" data-x type="button">${t('tagClose')}</button></div>`};
+ $('.dlg',ov).innerHTML=`<h3>${ic('tag')} ${t('tagsMgr')}</h3>${st.length?`<div class="tgl">${st.map(([x,n])=>`<div class="tgr" data-t="${esc(x)}"><button type="button" class="tgn" data-tg>#${esc(x)}</button><span class="tgc">${n} ${t('nNotes')}</span><button type="button" class="ib" data-rn aria-label="${t('tagRen')}">${ic('edit')}</button><button type="button" class="ib" data-dl aria-label="${t('del')}">${ic('trash')}</button></div>`).join('')}</div>`:`<div class="empty" style="padding:18px 4px">${t('noTags')}</div>`}<div class="dlg-a"><button class="btn" data-x type="button">${t('tagClose')}</button></div>`};
  draw();
  ov.addEventListener('click',async e=>{const r=e.target.closest('.tgr'),x=r&&r.dataset.t;
   if(e.target.closest('[data-x]')){ov.remove();return}
   if(!r)return;
-  if(e.target.closest('[data-go]')){memUI.tag=x;ov.remove();go('notes');return}
+  if(e.target.closest('[data-tg]')){memUI.tag=x;ov.remove();go('notes');return}
   if(e.target.closest('[data-dl]')){if(await sure(t('tagDel').replace('{n}','#'+x))){live().forEach(n=>{if(n.tags.includes(x)){n.tags=n.tags.filter(z=>z!==x);n.updated=Date.now()}});if(memUI.tag===x)memUI.tag=null;bump();save();draw();render(1)}return}
   if(e.target.closest('[data-rn]')){r.innerHTML=`<input class="in" maxlength="30" value="${esc(x)}"><button type="button" class="btn" data-ok>${t('save')}</button>`;$('input',r).focus();return}
   if(e.target.closest('[data-ok]')){const v=$('input',r).value.trim().replace(/^#/,'').replace(/,/g,'');if(!v||v===x){draw();return}
@@ -3406,10 +3426,11 @@ function skPattern(x,sk,a,b,c,d){if(sk.paper==='blank')return;const g=sk.gap||32
  if(sk.paper==='dots'){for(let y=y0;y<=d;y+=g)for(let X=x0;X<=c;X+=g){x.moveTo(X+1.6,y);x.arc(X,y,1.6,0,7)}x.fill()}else x.stroke();x.restore()}
 function skPack(sk){return{paper:sk.paper,pbg:sk.pbg,gap:sk.gap,layers:sk.layers,strokes:sk.strokes,view:sk.view,txt:sk.txt||''}}
 function skThumb(a,bg){const g=[];const ln='rgba(120,120,120,.55)';if(a==='lines'||a==='margin')for(let y=14;y<80;y+=10)g.push(`<path d="M0 ${y}H64" stroke="${ln}"/>`);if(a==='margin')g.push('<path d="M16 0V80" stroke="rgba(220,20,60,.6)"/>');if(a==='grid'){for(let y=10;y<80;y+=10)g.push(`<path d="M0 ${y}H64" stroke="${ln}"/>`);for(let x=10;x<64;x+=10)g.push(`<path d="M${x} 0V80" stroke="${ln}"/>`)}if(a==='graph'){for(let y=4;y<80;y+=4)g.push(`<path d="M0 ${y}H64" stroke="${ln}" stroke-width=".4"/>`);for(let x=4;x<64;x+=4)g.push(`<path d="M${x} 0V80" stroke="${ln}" stroke-width=".4"/>`);for(let y=20;y<80;y+=20)g.push(`<path d="M0 ${y}H64" stroke="${ln}"/>`);for(let x=20;x<64;x+=20)g.push(`<path d="M${x} 0V80" stroke="${ln}"/>`)}if(a==='dots')for(let y=10;y<80;y+=10)for(let x=10;x<64;x+=10)g.push(`<circle cx="${x}" cy="${y}" r="1.3" fill="${ln}"/>`);return `<svg viewBox="0 0 64 80" width="64" height="80"><rect width="64" height="80" rx="4" fill="${bg}"/>${g.join('')}</svg>`}
-function drawDialog(editId){
+function drawDialog(editId,opts){
  let sk={paper:(()=>{try{return localStorage.skPaper||'blank'}catch(_){return'blank'}})(),pbg:(()=>{try{return localStorage.skBg||'#ffffff'}catch(_){return'#ffffff'}})(),gap:32,layers:[{id:'l1',n:'1',v:1}],strokes:[],view:{x:0,y:0,z:1},txt:''};
  if(editId&&curNote&&curNote.sk&&curNote.sk[editId])sk=Object.assign(sk,skClone(curNote.sk[editId]));
- const id=editId||uid();let tool='pen',color=SKCOL[0],size=4,act=sk.layers[0].id,hist=[],redo=[],sel=[],pop=null,live=null,penSeen=false,hint=false,snapP=null,snapT=null;
+ const PG=opts&&opts.page;if(PG){sk.paper='blank';sk.pbg='#ffffff';sk.layers=[{id:'bg',n:'PDF',v:1,lock:1},{id:'l1',n:'1',v:1}];sk.strokes=[{id:'pg'+uid(),t:'img',x:0,y:0,w:PG.w,h:PG.h,src:PG.src,l:'bg',lock:1}]}
+ const id=editId||uid();let tool='pen',color=SKCOL[0],size=4,act=PG?'l1':sk.layers[0].id,hist=[],redo=[],sel=[],pop=null,live=null,penSeen=false,hint=false,snapP=null,snapT=null;
  const ov=document.createElement('div');ov.className='skov';
  ov.innerHTML=`<div class="skh"><button type="button" data-a="close" title="${t('cancel')}">${ic('x')}</button><button type="button" data-a="undo" title="${t('b_undo')}">${ic('undo')}</button><button type="button" data-a="redo" title="${t('b_redo')}">${ic('redo')}</button><span class="skz"><button type="button" data-a="zo">${ic('zoomout')}</button><b id="skzl">100%</b><button type="button" data-a="zi">${ic('zoomin')}</button><button type="button" data-a="fit">${ic('fit')}</button></span><button type="button" class="okb" data-a="done" title="${t('insertDraw')}">${ic('check2')}<span>${t('skDone')}</span></button></div>
  <div class="skrb"><button type="button" data-a="paper">${ic('paper')}<span>${t('skPaper')}</span></button><button type="button" data-a="layers">${ic('layers')}<span>${t('skLayers')}</span></button><button type="button" data-a="stick">${ic('smile')}<span>${t('skSticker')}</span></button><button type="button" data-a="ocr">${ic('text')}<span>${t('skOcrS')}</span></button></div>
@@ -3442,7 +3463,7 @@ function drawDialog(editId){
   if(tool==='eraser'){push();drag={k:'er',n:0};erase(w);return}
   const pr=e.pointerType==='pen'?(e.pressure||.5):.5;live={id:uid(),t:tool,c:color,w:size,l:act,p:[+w[0].toFixed(1),+w[1].toFixed(1),+pr.toFixed(2)]};snapP=null;overlay();armHold()};
  function armHold(){clearHold();hold=setTimeout(()=>{if(live&&live.t!=='hl'||live){const s=skSnap(live.p);if(s){snapP=s;overlay();if(navigator.vibrate)navigator.vibrate(12)}}},650)}
- function erase(w){const r=14/V().z,gone=sk.strokes.filter(s=>vis(s)&&s.l===act||vis(s)&&s.t==='img'||0).filter(s=>{const b=skBox(s);if(w[0]<b[0]-r||w[0]>b[2]+r||w[1]<b[1]-r||w[1]>b[3]+r)return false;if(s.t==='img'||s.t==='txt')return true;for(let i=0;i<s.p.length;i+=3){if(Math.hypot(s.p[i]-w[0],s.p[i+1]-w[1])<r+s.w)return true;if(i&&Math.hypot((s.p[i]+s.p[i-3])/2-w[0],(s.p[i+1]+s.p[i-2])/2-w[1])<r+s.w)return true}return false});
+ function erase(w){const r=14/V().z,gone=sk.strokes.filter(s=>!s.lock&&(vis(s)&&s.l===act||vis(s)&&s.t==='img')).filter(s=>{const b=skBox(s);if(w[0]<b[0]-r||w[0]>b[2]+r||w[1]<b[1]-r||w[1]>b[3]+r)return false;if(s.t==='img'||s.t==='txt')return true;for(let i=0;i<s.p.length;i+=3){if(Math.hypot(s.p[i]-w[0],s.p[i+1]-w[1])<r+s.w)return true;if(i&&Math.hypot((s.p[i]+s.p[i-3])/2-w[0],(s.p[i+1]+s.p[i-2])/2-w[1])<r+s.w)return true}return false});
   if(gone.length){sk.strokes=sk.strokes.filter(s=>!gone.includes(s));drag.n+=gone.length;redraw()}}
  lc.onpointermove=e=>{if(!ptr.has(e.pointerId))return;const o=ptr.get(e.pointerId);o.x=e.clientX;o.y=e.clientY;
   if(pinch&&ptr.size>=2){const [p,q]=[...ptr.values()],d=Math.hypot(p.x-q.x,p.y-q.y),cx=(p.x+q.x)/2,cy=(p.y+q.y)/2,r=lc.getBoundingClientRect(),v=V();const nz=Math.max(.2,Math.min(5,v.z*d/pinch.d));const wx=(pinch.cx-r.left)/v.z+v.x,wy=(pinch.cy-r.top)/v.z+v.y;v.z=nz;v.x=wx-(cx-r.left)/nz;v.y=wy-(cy-r.top)/nz;pinch={d,cx,cy};redraw();return}
@@ -3457,13 +3478,13 @@ function drawDialog(editId){
   if(drag&&drag.k==='mv'){const dx=drag.dx,dy=drag.dy;sk.strokes=sk.strokes.map(s=>sel.includes(s.id)?skMove(s,dx,dy):s);drag=null;redraw();return}
   if(drag&&drag.k==='er'){if(!drag.n)hist.pop();drag=null;return}
   if(drag){drag=null;return}
-  if(lasso){const poly=lasso;lasso=null;if(poly.length>3){sel=sk.strokes.filter(s=>{if(!vis(s))return false;if(s.t==='img'||s.t==='txt'){const b=skBox(s);return skInside([(b[0]+b[2])/2,(b[1]+b[3])/2],poly)}let n=0,m=0;for(let i=0;i<s.p.length;i+=3){m++;if(skInside([s.p[i],s.p[i+1]],poly))n++}return m&&n/m>=.5}).map(s=>s.id)}redraw();return}
+  if(lasso){const poly=lasso;lasso=null;if(poly.length>3){sel=sk.strokes.filter(s=>{if(!vis(s)||s.lock)return false;if(s.t==='img'||s.t==='txt'){const b=skBox(s);return skInside([(b[0]+b[2])/2,(b[1]+b[3])/2],poly)}let n=0,m=0;for(let i=0;i<s.p.length;i+=3){m++;if(skInside([s.p[i],s.p[i+1]],poly))n++}return m&&n/m>=.5}).map(s=>s.id)}redraw();return}
   if(live){const s=live;live=null;if(snapP){s.p=snapP;s.g=1}snapP=null;push();sk.strokes.push(s);redraw();if(!hint&&s.p.length>20){hint=true;try{if(!localStorage.skHint){localStorage.skHint=1;toast(t('skHint'))}}catch(_){}}}};
  lc.onwheel=e=>{e.preventDefault();const v=V(),r=lc.getBoundingClientRect(),wx=(e.clientX-r.left)/v.z+v.x,wy=(e.clientY-r.top)/v.z+v.y;v.z=Math.max(.2,Math.min(5,v.z*(e.deltaY<0?1.12:.89)));v.x=wx-(e.clientX-r.left)/v.z;v.y=wy-(e.clientY-r.top)/v.z;redraw()};
  function closePop(){const p=$('#skp',ov);p.hidden=true;p.innerHTML='';pop=null}
  function openPop(k){if(pop===k){closePop();return}$('#skts',ov).hidden=true;pop=k;const p=$('#skp',ov);p.hidden=false;
   if(k==='paper')p.innerHTML=`<div class="skpt">${t('skPaperPick')}</div><div class="skpg">${SKPP.map(([a,l])=>`<button type="button" class="${sk.paper===a?'on':''}" data-pp="${a}">${skThumb(a,sk.pbg)}<span>${t(l)}</span></button>`).join('')}</div><div class="skpt">${t('skBg')}</div><div class="skr">${SKBG.map(c=>`<button type="button" class="c ${sk.pbg===c?'on':''}" data-pb="${c}" style="background:${c}"></button>`).join('')}<label class="skcc" title="${t('skCustom')}"><input type="color" value="${/^#[0-9a-f]{6}$/i.test(sk.pbg)?sk.pbg:'#ffffff'}" data-pbc></label></div><label class="skr">${t('skSpacing')}<input type="range" min="16" max="64" value="${sk.gap}" data-gap></label>`;
-  else if(k==='layers')p.innerHTML=`${sk.layers.map(l=>`<div class="skr ly"><button type="button" class="${l.id===act?'on':''}" data-ls="${l.id}">${t('skLayer')} ${esc(l.n)}</button><button type="button" data-lv="${l.id}">${ic(l.v?'eye':'eyeoff')}</button>${sk.layers.length>1?`<button type="button" data-ld="${l.id}">${ic('trash')}</button>`:''}</div>`).join('')}${sk.layers.length<5?`<div class="skr"><button type="button" data-ladd>${ic('plus')} ${t('skLayer')}</button></div>`:''}`;
+  else if(k==='layers')p.innerHTML=`${sk.layers.map(l=>`<div class="skr ly"><button type="button" class="${l.id===act?'on':''}" data-ls="${l.id}">${t('skLayer')} ${esc(l.n)}</button><button type="button" data-lv="${l.id}">${ic(l.v?'eye':'eyeoff')}</button>${sk.layers.length>1&&!l.lock?`<button type="button" data-ld="${l.id}">${ic('trash')}</button>`:''}</div>`).join('')}${sk.layers.length<5?`<div class="skr"><button type="button" data-ladd>${ic('plus')} ${t('skLayer')}</button></div>`:''}`;
   else if(k==='stick')p.innerHTML=`<div class="skr st">${SKST.map(x=>`<button type="button" data-st="${x}">${x}</button>`).join('')}</div><div class="skr"><button type="button" data-img>${ic('image')} ${t('skAddImg')}</button></div>`}
  function place(o){const v=V(),r=lc.getBoundingClientRect();const cx=v.x+r.width/2/v.z,cy=v.y+r.height/2/v.z;push();const s=Object.assign({id:uid(),l:act},o);const w=s.t==='img'?s.w:s.s*1.15,h=s.t==='img'?s.h:s.s*1.2;s.x=cx-w/2;s.y=cy-h/2;sk.strokes.push(s);tool='lasso';$$('[data-t]',ov).forEach(x=>x.classList.toggle('on',x.dataset.t==='lasso'));sel=[s.id];redraw()}
  $('#skfi',ov).onchange=async e=>{const f=e.target.files[0];if(!f)return;const src=await readImg(f,500);if(!src)return;const im=new Image();im.onload=()=>{const k=Math.min(1,260/Math.max(im.width,im.height)),z=1/V().z;place({t:'img',src,w:im.width*k*z,h:im.height*k*z})};im.src=src;closePop()};
@@ -3472,7 +3493,9 @@ function drawDialog(editId){
    const tx=(r.text||'').trim();if(!tx){toast(t('skNoText'));return}sk.txt=tx;
    const o=openModal(`<h3>${t('skOcr')}</h3><textarea class="in" id="skot" rows="8" style="width:100%">${esc(tx)}</textarea><div class="dlg-a"><button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('skInsText')}</button></div>`);o.style.zIndex=400;
    $('[data-x]',o).onclick=()=>o.remove();$('[data-ok]',o).onclick=()=>{const v=$('#skot',o).value.trim();sk.txt=v;o.remove();finish(v)}}catch(e){toast(aiErr(e)||t('skNoText'))}}
- function finish(text){const url=skRender(sk,1400);
+ function finish(text){
+  if(PG){const k=Math.min(2,2400/Math.max(PG.w,PG.h)),cv=document.createElement('canvas');cv.width=Math.round(PG.w*k);cv.height=Math.round(PG.h*k);const x=cv.getContext('2d');x.setTransform(k,0,0,k,0,0);let n=0;sk.strokes.forEach(s=>{if(s.lock||!vis(s))return;n++;x.save();skPaint(x,s);x.restore()});close();if(n)opts.onDone(cv.toDataURL('image/png'));return}
+  const url=skRender(sk,1400);
   if(!url){if(editId&&curNote&&curNote.sk){delete curNote.sk[editId];const im=$('#doc img[data-sk="'+editId+'"]');if(im){im.remove();onDoc()}save()}close();return}
   const pk=skPack(sk);
   if(curNote&&$('#doc')){curNote.sk=curNote.sk||{};curNote.sk[id]=pk;const im=editId?$('#doc img[data-sk="'+editId+'"]'):null;
@@ -3494,7 +3517,7 @@ function drawDialog(editId){
   if(b.dataset.st){place({t:'txt',v:b.dataset.st,s:64/V().z});closePop();return}
   if('img' in b.dataset){$('#skfi',ov).value='';$('#skfi',ov).click();return}
   const a=b.dataset.a;if(!a)return;
-  if(a==='close'){(async()=>{if(!sk.strokes.length||hist.length===0&&editId||await sure(t('skDiscard')))close()})();return}
+  if(a==='close'){(async()=>{if(!sk.strokes.length||hist.length===0&&(editId||PG)||await sure(t('skDiscard')))close()})();return}
   if(a==='undo'&&hist.length){redo.push(sk.strokes.slice());sk.strokes=hist.pop();sel=[];redraw()}
   else if(a==='redo'&&redo.length){hist.push(sk.strokes.slice());sk.strokes=redo.pop();sel=[];redraw()}
   else if(a==='zi'||a==='zo'){const v=V(),r=lc.getBoundingClientRect(),cx=v.x+r.width/2/v.z,cy=v.y+r.height/2/v.z;v.z=Math.max(.2,Math.min(5,v.z*(a==='zi'?1.3:.77)));v.x=cx-r.width/2/v.z;v.y=cy-r.height/2/v.z;redraw()}
@@ -3507,14 +3530,121 @@ function drawDialog(editId){
   else if(a==='sbig'||a==='ssm'){push();const bx=selBox();if(!bx)return;const k=a==='sbig'?1.25:.8,ox=(bx[0]+bx[2])/2,oy=(bx[1]+bx[3])/2;sk.strokes=sk.strokes.map(s=>sel.includes(s.id)?skMove(s,0,0,k,ox,oy):s);redraw()}
   else if(a==='scol'){push();sk.strokes=sk.strokes.map(s=>sel.includes(s.id)&&s.t!=='img'&&s.t!=='txt'?Object.assign({},s,{c:color}):s);redraw()}});
  ov.addEventListener('input',e=>{if(e.target.id==='sksz'){size=+e.target.value;tsPrev()}else if(e.target.dataset.gap!==undefined){sk.gap=+e.target.value;redraw()}else if(e.target.dataset.pbc!==undefined){sk.pbg=e.target.value;try{localStorage.skBg=sk.pbg}catch(_){}redraw()}else if(e.target.dataset.cc!==undefined){setColor(e.target.value,1)}});
- let starting=!editId;
+ let starting=!editId&&!PG;
  function setColor(c,keep){color=c;if(['eraser','hand','lasso'].includes(tool)){tool='pen';$$('#skt [data-t]',ov).forEach(x=>x.classList.toggle('on',x.dataset.t==='pen'))}$('#skdot',ov).style.background=c;if(!keep)toggleTs(true);else tsPrev();$$('#skts .c',ov).forEach(x=>x.classList.toggle('on',x.dataset.c===c))}
  function tsPrev(){const s=$('#skts svg path',ov);if(!s)return;const hl=tool==='hl';s.setAttribute('stroke',color);s.setAttribute('stroke-width',hl?size*4:tool==='brush'?size*2.2:tool==='pencil'?size*.55:size);s.setAttribute('opacity',hl?.35:tool==='pencil'?.6:1);const v=$('#skszv',ov);if(v)v.textContent=size}
  function toggleTs(force){const p=$('#skts',ov);const open=force===undefined?p.hidden:force;if(!open){p.hidden=true;return}closePop();p.hidden=false;
   p.innerHTML=`<svg viewBox="0 0 200 44" class="skpv"><path d="M10 30 C45 4 70 40 100 22 S160 6 190 24" fill="none" stroke-linecap="round"/></svg><label class="skr sz"><span>${t('skSize')}</span><input type="range" min="1" max="24" value="${size}" id="sksz"><b id="skszv">${size}</b></label><div class="skcg">${SKCOL.map(c=>`<button type="button" class="c ${c===color?'on':''}" data-c="${c}" style="background:${c}"></button>`).join('')}</div>`;tsPrev()}
- window.addEventListener('resize',size_);requestAnimationFrame(()=>{size_();$('#skdot',ov).style.background=color;if(starting)openPop('paper')});
+ window.addEventListener('resize',size_);requestAnimationFrame(()=>{size_();if(PG){const r=lc.getBoundingClientRect(),z=Math.min(1,r.width/PG.w);sk.view={z,x:-(r.width/z-PG.w)/2,y:0};redraw()}$('#skdot',ov).style.background=color;if(starting)openPop('paper')});
 }
 Object.assign(L,{skDone:['تم','Done'],skOcrS:['إلى نص','To text'],skColor:['اللون والسماكة','Color & size'],skSize:['السماكة','Size'],skPaperPick:['اختر نوع الورق','Choose paper'],skBg:['لون الورقة','Paper color'],skMargin:['مسطرة بهامش','Ruled + margin'],skGraph:['رسم بياني','Graph'],skCustom:['لون مخصص','Custom color'],skPen:['قلم حبر','Ink pen'],skPencil:['قلم رصاص','Pencil'],skHl:['ماركر','Highlighter'],skBrush:['فرشاة عريضة','Bold brush'],skCal:['خط عريض','Calligraphy'],skEr:['ممحاة','Eraser'],skLasso:['تحديد وتحريك','Select & move'],skHand:['تحريك الصفحة','Pan'],skPaper:['الورقة','Paper'],skLayers:['الطبقات','Layers'],skSticker:['ملصقات وصور','Stickers & images'],skOcr:['تحويل الخط إلى نص','Handwriting to text'],skHint:['أبقِ إصبعك ثابتاً في نهاية الخط ليتحول إلى شكل هندسي','Hold still at the end of a stroke to snap it to a shape'],skBlank:['فارغة','Blank'],skLines:['مسطرة','Ruled'],skGrid:['مربعات','Grid'],skDots:['نقاط','Dots'],skSpacing:['المسافة','Spacing'],skLayer:['طبقة','Layer'],skAddImg:['إضافة صورة','Add image'],skEmpty:['لا يوجد شيء مكتوب بعد','Nothing written yet'],skOcrWait:['جارٍ قراءة الخط…','Reading handwriting…'],skNoText:['لم أستطع قراءة نص','Could not read any text'],skInsText:['إدراج النص','Insert text'],skDiscard:['تجاهل الرسم؟','Discard the drawing?']});
+
+/* =====================================================================
+   Section 8: PDF & documents tools
+   ===================================================================== */
+const PDLIB='https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js';
+async function pdfW(){if(!window.PDFLib)await loadJs(PDLIB);return window.PDFLib}
+function u8(b){return b instanceof Uint8Array?b:new Uint8Array(b)}
+function dl64(u){const s=atob(u.split(',')[1]),a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+function saveBlob(name,blob){try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),6000);toast(t('exported'))}catch(e){toast(t('noDl'))}}
+async function addPdfBytes(name,bytes){const id=uid();const buf=bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength);await fput(id,buf);S.docs=S.docs||[];S.docs.unshift({id,name,kind:'pdf',size:bytes.byteLength,added:Date.now(),hl:[]});await persist();return id}
+async function pdfPageImg(pdf,n,scale,type){const pg=await pdf.getPage(n),vp=pg.getViewport({scale}),c=document.createElement('canvas');c.width=Math.round(vp.width);c.height=Math.round(vp.height);await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;return{url:c.toDataURL(type||'image/jpeg',.88),w:vp.width/scale,h:vp.height/scale,cw:c.width,ch:c.height}}
+async function pdfOpen(d){const lib=await pdfLib(),buf=await fget(d.id);return{pdf:await lib.getDocument({data:new Uint8Array(buf.slice(0))}).promise,buf}}
+function imgToPdfPage(out,im,bytes){const W=595,H=842;const land=im.width>im.height,pw=land?H:W,ph=land?W:H,m=24,k=Math.min((pw-m*2)/im.width,(ph-m*2)/im.height),w=im.width*k,h=im.height*k;const p=out.addPage([pw,ph]);p.drawImage(im,{x:(pw-w)/2,y:(ph-h)/2,width:w,height:h})}
+/* ---- organizer: reorder / rotate / delete / duplicate / blank / split ---- */
+async function pagesDialog(d){
+ toast(t('dLoading'));const {pdf,buf}=await pdfOpen(d);const P=await pdfW();
+ let pages=[...Array(pdf.numPages)].map((_,i)=>({s:i,r:0,sel:false})),th={};
+ const ov=document.createElement('div');ov.className='pgo';document.body.appendChild(ov);
+ const draw=()=>{const n=pages.filter(p=>p.sel).length;ov.innerHTML=`<div class="skh"><button type="button" data-a="x">${ic('x')}</button><b class="pgt">${esc(d.name)} · ${pages.length}</b><button type="button" class="okb" data-a="save" title="${t('pgSave')}">${ic('check2')}</button></div><div class="pgg">${pages.map((p,i)=>`<div class="pgc ${p.sel?'on':''}" data-i="${i}"><div class="pgi">${p.b?'<i class="pgb"></i>':th[p.s]?`<img src="${th[p.s]}" style="transform:rotate(${p.r}deg)${p.r%180?';max-width:none;height:auto;width:var(--pw)':''}" alt="">`:'<i class="pgb"></i>'}</div><span>${i+1}</span></div>`).join('')}</div><div class="pgbar"><button type="button" data-a="all">${ic('check2')}<span>${n===pages.length?t('pgNone'):t('pgAll')}</span></button><button type="button" data-a="rot">${ic('restore')}<span>${t('pgRot')}</span></button><button type="button" data-a="l">${ic('chr')}<span>${t('pgL')}</span></button><button type="button" data-a="r">${ic('chl')}<span>${t('pgR')}</span></button><button type="button" data-a="dup">${ic('copy')}<span>${t('pgDup')}</span></button><button type="button" data-a="blank">${ic('plus')}<span>${t('pgBlank')}</span></button><button type="button" data-a="del">${ic('trash')}<span>${t('del')}</span></button><button type="button" data-a="ext">${ic('file')}<span>${t('pgExt')}</span></button></div>`};
+ const load=async()=>{for(let i=1;i<=pdf.numPages;i++){if(!ov.isConnected)return;try{const r=await pdfPageImg(pdf,i,.28);th[i-1]=r.url}catch(e){}draw()}};
+ draw();load();
+ const pick=()=>{const s=pages.filter(p=>p.sel);if(!s.length)toast(t('pgPick'));return s};
+ async function build(list,name){const src=await P.PDFDocument.load(buf,{ignoreEncryption:true}),out=await P.PDFDocument.create();const f=src.getPage(0).getSize();
+  for(const p of list){if(p.b){out.addPage([f.width,f.height]);continue}const [cp]=await out.copyPages(src,[p.s]);if(p.r)cp.setRotation(P.degrees(((cp.getRotation().angle+p.r)%360+360)%360));out.addPage(cp)}
+  const id=await addPdfBytes(name,await out.save());toast(t('pgDone'));return id}
+ ov.addEventListener('click',async e=>{const c=e.target.closest('.pgc'),b=e.target.closest('button[data-a]');
+  if(c){const p=pages[+c.dataset.i];p.sel=!p.sel;draw();return}if(!b)return;const a=b.dataset.a;
+  if(a==='x'){ov.remove();return}
+  if(a==='all'){const all=pages.every(p=>p.sel);pages.forEach(p=>p.sel=!all);draw();return}
+  if(a==='rot'){const s=pick();s.forEach(p=>p.r=(p.r+90)%360);draw();return}
+  if(a==='del'){const s=pick();if(!s.length)return;if(s.length===pages.length){toast(t('pgLast'));return}pages=pages.filter(p=>!p.sel);draw();return}
+  if(a==='dup'){const s=pick();if(!s.length)return;const o=[];pages.forEach(p=>{o.push(p);if(p.sel)o.push(Object.assign({},p,{sel:false}))});pages=o;draw();return}
+  if(a==='blank'){const i=pages.map(p=>p.sel).lastIndexOf(true);pages.splice(i<0?pages.length:i+1,0,{b:1,s:0,r:0,sel:false});draw();return}
+  if(a==='l'||a==='r'){const s=pick();if(!s.length)return;const o=pages.slice();if(a==='l'){for(let i=1;i<o.length;i++)if(o[i].sel&&!o[i-1].sel){[o[i-1],o[i]]=[o[i],o[i-1]]}}else{for(let i=o.length-2;i>=0;i--)if(o[i].sel&&!o[i+1].sel){[o[i+1],o[i]]=[o[i],o[i+1]]}}pages=o;draw();return}
+  if(a==='ext'){const s=pick();if(!s.length)return;const nm=await ask({title:t('pgName'),value:d.name+' ✂'});if(!nm)return;try{await build(s,nm.trim()||d.name);ov.remove();go('docs')}catch(er){toast(t('dFail'))}return}
+  if(a==='save'){const nm=await ask({title:t('pgName'),value:d.name+' ✎'});if(!nm)return;try{await build(pages,nm.trim()||d.name);ov.remove();go('docs')}catch(er){console.error(er);toast(t('dFail'))}}})}
+/* ---- merge PDFs + images -> PDF ---- */
+async function mergeDialog(){
+ const pdfs=(S.docs||[]).filter(x=>x.kind==='pdf');let items=[];
+ const ov=openModal('');const draw=()=>{$('.dlg',ov).innerHTML=`<h3>${t('pdfNew')}</h3><p class="sub" style="margin:2px 0 8px">${t('pdfNewD')}</p><div class="mgl">${items.map((it,i)=>`<div class="mgr on" data-k="${i}"><b>${i+1}</b><span>${esc(it.name)}</span><button type="button" class="ib" data-up="${i}">${ic('up')}</button><button type="button" class="ib" data-rm="${i}">${ic('x')}</button></div>`).join('')}${pdfs.filter(x=>!items.some(i=>i.id===x.id)).map(x=>`<div class="mgr" data-add="${x.id}"><b>+</b><span>${esc(x.name)}</span><small>PDF</small></div>`).join('')}</div><div class="dlg-a" style="flex-wrap:wrap"><button class="btn ghost" data-img type="button">${ic('image')} ${t('pdfImgs')}</button><button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-mk type="button" ${items.length?'':'disabled'}>${t('pdfMake')}</button></div><input type="file" id="mgf" accept="image/*" multiple hidden>`};
+ draw();
+ ov.addEventListener('click',async e=>{const g=e.target;
+  if(g.closest('[data-x]')){ov.remove();return}
+  const ad=g.closest('[data-add]');if(ad){const x=pdfs.find(p=>p.id===ad.dataset.add);items.push({k:'doc',id:x.id,name:x.name});draw();return}
+  const up=g.closest('[data-up]');if(up){const i=+up.dataset.up;if(i>0){[items[i-1],items[i]]=[items[i],items[i-1]];draw()}return}
+  const rm=g.closest('[data-rm]');if(rm){items.splice(+rm.dataset.rm,1);draw();return}
+  if(g.closest('[data-img]')){$('#mgf',ov).click();return}
+  if(g.closest('[data-mk]')){const nm=await ask({title:t('pgName'),value:t('pdfNew')});if(!nm)return;try{toast(t('dLoading'));const P=await pdfW(),out=await P.PDFDocument.create();
+    for(const it of items){if(it.k==='doc'){const s=await P.PDFDocument.load(await fget(it.id),{ignoreEncryption:true});(await out.copyPages(s,s.getPageIndices())).forEach(p=>out.addPage(p))}
+     else{const u=await readImg(it.file,2200);const im=u.startsWith('data:image/png')?await out.embedPng(dl64(u)):await out.embedJpg(dl64(u));imgToPdfPage(out,im)}}
+    await addPdfBytes(nm.trim()||t('pdfNew'),await out.save());ov.remove();toast(t('pgDone'));go('docs')}catch(er){console.error(er);toast(t('dFail'))}}});
+ ov.addEventListener('change',e=>{if(e.target.id!=='mgf')return;[...e.target.files].forEach(f=>items.push({k:'img',file:f,name:f.name}));draw()})}
+/* ---- draw on page / signature ---- */
+async function pdfDraw(d){const n=DV.cur||1;toast(t('dLoading'));const {pdf,buf}=await pdfOpen(d);const r=await pdfPageImg(pdf,n,Math.min(2,1800/Math.max(1,(await(await pdf.getPage(n)).getViewport({scale:1}).width))));
+ drawDialog(null,{page:{src:r.url,w:r.w*1,h:r.h*1},onDone:async ov=>{try{await stampPng(d,buf,n,dl64(ov),{x:0,y:0,w:1,h:1});}catch(er){console.error(er);toast(t('dFail'))}}})}
+async function stampPng(d,buf,n,png,box){const P=await pdfW(),doc=await P.PDFDocument.load(buf,{ignoreEncryption:true}),pg=doc.getPage(n-1),sz=pg.getSize(),im=await doc.embedPng(png);
+ if(pg.getRotation().angle){toast(t('pgRotNo'));return}
+ pg.drawImage(im,{x:box.x*sz.width,y:sz.height-(box.y+box.h)*sz.height,width:box.w*sz.width,height:box.h*sz.height});
+ const bytes=await doc.save();await fput(d.id,bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength));d.size=bytes.byteLength;await persist();toast(t('pgApplied'));render(1)}
+function sigPad(){return new Promise(res=>{const ov=openModal(`<h3>${t('sigDraw')}</h3><canvas id="sgc" width="600" height="260" style="width:100%;height:auto;background:#f5f5f5;border-radius:14px;touch-action:none;display:block"></canvas><div class="dlg-a"><button class="btn ghost" data-c type="button">${t('skClear')}</button><button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);ov.style.zIndex=400;
+  const c=$('#sgc',ov),x=c.getContext('2d');x.lineWidth=5;x.lineCap=x.lineJoin='round';x.strokeStyle='#1a2b6d';let dn=false,any=false,L;
+  const pt=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};
+  c.onpointerdown=e=>{dn=true;any=true;L=pt(e);c.setPointerCapture(e.pointerId);x.beginPath();x.arc(L[0],L[1],2.5,0,7);x.fillStyle='#1a2b6d';x.fill()};
+  c.onpointermove=e=>{if(!dn)return;const p=pt(e);x.beginPath();x.moveTo(L[0],L[1]);x.lineTo(p[0],p[1]);x.stroke();L=p};c.onpointerup=()=>dn=false;
+  $('[data-c]',ov).onclick=()=>{x.clearRect(0,0,c.width,c.height);any=false};$('[data-x]',ov).onclick=()=>{ov.remove();res(null)};
+  $('[data-ok]',ov).onclick=()=>{if(!any){toast(t('skEmpty'));return}const im=x.getImageData(0,0,c.width,c.height).data;let a=1e9,b=1e9,m=-1,n=-1;for(let i=0;i<im.length;i+=4)if(im[i+3]>10){const p=i/4,X=p%c.width,Y=(p/c.width)|0;if(X<a)a=X;if(X>m)m=X;if(Y<b)b=Y;if(Y>n)n=Y}
+   const o=document.createElement('canvas');o.width=m-a+9;o.height=n-b+9;o.getContext('2d').drawImage(c,a-4,b-4,o.width,o.height,0,0,o.width,o.height);const u=o.toDataURL('image/png');S.sig=u;save();ov.remove();res(u)}})}
+async function sigPlace(d){let sig=S.sig;if(!sig){sig=await sigPad();if(!sig)return}
+ toast(t('dLoading'));const {pdf,buf}=await pdfOpen(d);let n=DV.cur||1,pg;
+ const ov=document.createElement('div');ov.className='pgo sgo';ov.innerHTML=`<div class="skh"><button type="button" data-a="x">${ic('x')}</button><span class="skz"><button type="button" data-a="pv">${ic('chr')}</button><b id="sgn"></b><button type="button" data-a="nx">${ic('chl')}</button></span><button type="button" class="okb" data-a="ok">${ic('check2')}</button></div><div class="sgw"><div class="sgp" id="sgp"><img id="sgi" alt=""><img id="sgs" class="sgs" src="${sig}" alt=""></div></div><div class="pgbar"><button type="button" data-a="big">${ic('zoomin')}<span>${t('sigBig')}</span></button><button type="button" data-a="sm">${ic('zoomout')}<span>${t('sigSm')}</span></button><button type="button" data-a="new">${ic('pen')}<span>${t('sigNew')}</span></button></div>`;document.body.appendChild(ov);
+ const sg=$('#sgs',ov),pp=$('#sgp',ov);let bx={x:.55,y:.8,w:.3};
+ const ar=()=>sg.naturalHeight/sg.naturalWidth||.4;
+ const put=()=>{sg.style.left=bx.x*100+'%';sg.style.top=bx.y*100+'%';sg.style.width=bx.w*100+'%'};
+ const show=async()=>{$('#sgn',ov).textContent=n+' / '+pdf.numPages;pg=await pdfPageImg(pdf,n,1.4);$('#sgi',ov).src=pg.url;pp.style.aspectRatio=pg.w+'/'+pg.h;put()};
+ await show();
+ let dr=null;sg.onpointerdown=e=>{e.preventDefault();sg.setPointerCapture(e.pointerId);const r=pp.getBoundingClientRect();dr={x:e.clientX,y:e.clientY,bx:bx.x,by:bx.y,r}};
+ sg.onpointermove=e=>{if(!dr)return;bx.x=Math.max(0,Math.min(1-bx.w,dr.bx+(e.clientX-dr.x)/dr.r.width));bx.y=Math.max(0,Math.min(1-bx.w*ar()*pg.w/pg.h,dr.by+(e.clientY-dr.y)/dr.r.height));put()};sg.onpointerup=()=>dr=null;
+ ov.addEventListener('click',async e=>{const b=e.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a;
+  if(a==='x'){ov.remove();return}
+  if(a==='pv'&&n>1){n--;await show();return}if(a==='nx'&&n<pdf.numPages){n++;await show();return}
+  if(a==='big'){bx.w=Math.min(.9,bx.w*1.15);put();return}if(a==='sm'){bx.w=Math.max(.06,bx.w/1.15);put();return}
+  if(a==='new'){const u=await sigPad();if(u){sig=u;sg.src=u;setTimeout(put,50)}return}
+  if(a==='ok'){const h=bx.w*ar()*pg.w/pg.h;try{await stampPng(d,buf,n,dl64(sig),{x:bx.x,y:bx.y,w:bx.w,h});ov.remove()}catch(er){console.error(er);toast(t('dFail'))}}})}
+/* ---- pages as images / docx images ---- */
+async function pagesImages(d){toast(t('dLoading'));const {pdf}=await pdfOpen(d);const n=Math.min(pdf.numPages,12);let h='';for(let i=1;i<=n;i++){const r=await pdfPageImg(pdf,i,1.3);h+=`<p><img src="${r.url}" alt=""></p>`}
+ const nt=newNote({title:d.name+' 🖼',icon:'🖼',html:h});save();if(pdf.numPages>n)toast(t('pgLimit'));openNote(nt.id)}
+async function docxImages(d){toast(t('dLoading'));await loadJs('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');const z=await JSZip.loadAsync(await fget(d.id));const fs=Object.keys(z.files).filter(f=>/^word\/media\/.+\.(png|jpe?g|gif|webp|bmp)$/i.test(f));
+ if(!fs.length){toast(t('noImgs'));return}const imgs=[];for(const f of fs){const b=await z.files[f].async('blob');imgs.push({n:f.split('/').pop(),b,u:URL.createObjectURL(b)})}
+ const ov=openModal(`<h3>${t('pgImgs')} (${imgs.length})</h3><div class="dxg">${imgs.map((m,i)=>`<div class="dxi"><img src="${m.u}" alt=""><button type="button" class="btn ghost" data-s="${i}">${ic('down')}</button></div>`).join('')}</div><div class="dlg-a"><button class="btn ghost" data-x type="button">${t('close')}</button><button class="btn" data-n type="button">${t('pgToNote')}</button></div>`);
+ ov.addEventListener('click',async e=>{if(e.target.closest('[data-x]')){ov.remove();return}const s=e.target.closest('[data-s]');if(s){const m=imgs[+s.dataset.s];saveBlob(m.n,m.b);return}
+  if(e.target.closest('[data-n]')){const us=[];for(const m of imgs.slice(0,15)){us.push(await new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(m.b)}))}const nt=newNote({title:d.name+' 🖼',icon:'🖼',html:us.map(u=>`<p><img src="${u}" alt=""></p>`).join('')});save();ov.remove();openNote(nt.id)}})}
+/* ---- viewer menu ---- */
+function docMenu(d){const pdf=d.kind==='pdf';const it=pdf?[['draw','pen','pgDraw'],['sign','edit','pgSign'],['pages','layers','pgOrg'],['imgs','image','pgAsImg'],['save','down','pgDl']]:[['dximgs','image','pgImgs'],['save','down','pgDl']];
+ const ov=openModal(`<h3>${t('pgTools')}</h3><div class="mgl">${it.map(([k,i,l])=>`<button type="button" class="mgr mgb" data-k="${k}">${ic(i)}<span>${t(l)}</span></button>`).join('')}</div>`);
+ ov.addEventListener('click',async e=>{const b=e.target.closest('[data-k]');if(!b)return;ov.remove();const k=b.dataset.k;try{
+  if(k==='draw')await pdfDraw(d);else if(k==='sign')await sigPlace(d);else if(k==='pages')await pagesDialog(d);else if(k==='imgs')await pagesImages(d);else if(k==='dximgs')await docxImages(d);
+  else if(k==='save'){const buf=await fget(d.id);saveBlob(d.name+'.'+(d.kind==='pdf'?'pdf':d.kind),new Blob([buf]))}}catch(er){console.error(er);toast(t('dFail'))}})}
+/* ---- export notes: PDF (print) + Word ---- */
+function noteExportHtml(n,word){const h=noteHtml(n).replace('<body>','<body dir="auto">');return word?h.replace('<html>','<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'):h}
+function exportNotePdf(n){const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';document.body.append(f);const w=f.contentWindow;w.document.open();w.document.write(noteExportHtml(n));w.document.close();toast(t('pdfHint'));setTimeout(()=>{try{w.focus();w.print()}catch(e){toast(t('noDl'))}setTimeout(()=>f.remove(),4000)},500)}
+function exportNoteWord(n){saveBlob((n.title||'note')+'.doc',new Blob(['﻿'+noteExportHtml(n,1)],{type:'application/msword'}))}
+Object.assign(A,{'pdf-menu':()=>{if(DV.d)docMenu(DV.d)},'pdf-new':()=>mergeDialog()});
+Object.assign(L,{pgTools:['أدوات الملف','File tools'],pgDraw:['الرسم والكتابة على الصفحة الحالية','Draw on current page'],pgSign:['إضافة توقيع','Add signature'],pgOrg:['ترتيب الصفحات وحذفها وتقسيم الملف','Organize, delete & split pages'],pgAsImg:['الصفحات كصور في ملاحظة','Pages as images in a note'],pgDl:['تنزيل الملف','Download file'],pgImgs:['استخراج الصور','Extract images'],pgToNote:['إلى ملاحظة','To a note'],noImgs:['لا توجد صور داخل المستند','No images in this document'],pgLimit:['أُخذت أول 12 صفحة فقط','Only the first 12 pages were taken'],
+ pgSave:['حفظ','Save'],pgAll:['تحديد الكل','Select all'],pgNone:['إلغاء التحديد','Deselect'],pgRot:['تدوير','Rotate'],pgL:['قبل','Earlier'],pgR:['بعد','Later'],pgDup:['تكرار','Duplicate'],pgBlank:['صفحة فارغة','Blank page'],pgExt:['استخراج','Extract'],pgPick:['حدّد صفحة أو أكثر أولاً','Select pages first'],pgLast:['لا يمكن حذف كل الصفحات','Cannot delete all pages'],pgName:['اسم الملف الجديد','New file name'],pgDone:['تم إنشاء الملف','File created'],pgApplied:['تم تطبيق التعديل على الملف','Applied to the file'],pgRotNo:['الصفحات المدوّرة غير مدعومة هنا','Rotated pages are not supported here'],
+ pdfNew:['إنشاء PDF','Create PDF'],pdfNewD:['ادمج ملفات PDF أو حوّل صوراً إلى PDF بالترتيب الذي تريد','Merge PDFs or turn images into a PDF in your order'],pdfImgs:['إضافة صور','Add images'],pdfMake:['إنشاء','Create'],
+ sigDraw:['ارسم توقيعك','Draw your signature'],sigBig:['تكبير','Bigger'],sigSm:['تصغير','Smaller'],sigNew:['توقيع جديد','New signature'],skClear:['مسح','Clear'],
+ mExpPdf:['تصدير PDF','Export PDF'],mExpWord:['تصدير Word','Export Word'],pdfHint:['اختر «حفظ كملف PDF» من نافذة الطباعة','Choose “Save as PDF” in the print dialog']});
 
 })();
 
