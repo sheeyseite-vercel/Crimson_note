@@ -722,6 +722,15 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .kbl{display:flex;flex-direction:column;gap:8px}.kbc{display:block;width:100%;text-align:start;background:var(--solid);border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:var(--sh-sm);touch-action:pan-x pan-y;-webkit-user-select:none;user-select:none}.kbc b{font-size:calc(14.5px*var(--fz));line-height:1.35;display:block}.kbc.lift{opacity:.35}.kbg{box-shadow:0 14px 34px rgba(0,0,0,.28);transform:rotate(2deg)}
 .dbms{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;font-size:calc(12px*var(--fz));color:var(--fg3)}.dbhint{margin-top:2px;font-size:calc(12px*var(--fz))}
 .gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}.galc{display:flex;flex-direction:column;align-items:stretch;text-align:start;padding:0 0 12px;overflow:hidden;gap:0}.galc b{padding:12px 12px 0;font-size:calc(15px*var(--fz));line-height:1.3}.galc .dbms{padding:0 12px}.galb{height:56px;display:block;opacity:.9;margin-bottom:0}.galn{align-items:center;justify-content:center;gap:6px;min-height:120px;color:var(--fg3);border:2px dashed var(--line);background:transparent;box-shadow:none}.galn .ic{width:calc(22px*var(--fz));height:calc(22px*var(--fz))}
+.hsec.hfull .hgrid th.hn{background:#f5f5f5;color:#111;box-shadow:none;border:1px solid #e6e6e6;border-radius:14px}
+.hsec.hfull .hc{background:#f5f5f5;box-shadow:inset 0 0 0 1px #e4e4e4;color:#111}
+.hsec.hfull .hc.on{background:#f5f5f5;box-shadow:inset 0 0 0 2px #111;color:#111}.hsec.hfull .hc.on .ic{width:calc(16px*var(--fz));height:calc(16px*var(--fz))}
+.hsec.hfull .hgrid .tdy{background:rgba(0,0,0,.05)}.hsec.hfull .hgrid thead .tdy b{color:#111}
+.hsec.hfull .hc:disabled{opacity:.45}
+.dbq{margin:-4px 0 12px}.dbq .btn.on{background:var(--ac-soft);color:var(--ac-text)}.dbq .ic{width:calc(15px*var(--fz));height:calc(15px*var(--fz))}
+.qs{margin-bottom:14px;display:flex;flex-direction:column;gap:8px}.qs>b{font-size:calc(13px*var(--fz));color:var(--fg3)}.qr{display:flex;gap:6px;align-items:center}.qr .in{flex:1;min-width:0;padding:8px 8px;font-size:calc(14px*var(--fz))}.qr .ib{flex:none;width:calc(34px*var(--fz));height:calc(34px*var(--fz))}.qr .ib .ic{width:calc(14px*var(--fz));height:calc(14px*var(--fz))}.qs .btn{align-self:flex-start}
+.dbgr td{padding:12px 10px 6px;border-bottom:0;background:transparent}.dbgr b{font-size:calc(13px*var(--fz))}.dbgr span{margin-inline-start:8px;color:var(--fg3);font-size:calc(12px*var(--fz))}.dbmuted{color:var(--fg3)}.dbro{padding:8px 0;font-weight:600}
+.hsec.hfull .hgrid th.hn.hcorner{background:transparent!important;border:0!important;box-shadow:none!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -737,7 +746,7 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
 <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
-<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
 <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 17 5-5 4 4 3-3 4 4"/></symbol>
 <symbol id="i-brush" viewBox="0 0 24 24"><path d="M9 16 20 4l1 1-11 12"/><path d="M3 21c3 0 5-1 5-4a2.5 2.5 0 0 0-2.500-2.500C3 14.500 3 18 3 21z"/></symbol>
@@ -1052,6 +1061,9 @@ Object.assign(TR.de,{"dbs": "Datenbanken", "dbsSub": "Eigene Tabellen für alles
 Object.assign(TR.fr,{"vTable": "Tableau", "vBoard": "Tableau Kanban", "vGallery": "Galerie", "vCal": "Calendrier", "dbNoStatus": "Ajoutez une colonne Statut pour utiliser le tableau Kanban", "dbNoDate": "Ajoutez une colonne Date pour utiliser le calendrier", "dbGroup": "Grouper par", "dbDateBy": "Date selon", "dbNoGroup": "Sans statut", "dbHold": "Appui long puis glisser pour déplacer une carte", "dbUntitled": "Sans titre"});
 Object.assign(TR.es,{"vTable": "Tabla", "vBoard": "Tablero", "vGallery": "Galería", "vCal": "Calendario", "dbNoStatus": "Añade una columna Estado para usar el tablero", "dbNoDate": "Añade una columna Fecha para usar el calendario", "dbGroup": "Agrupar por", "dbDateBy": "Fecha según", "dbNoGroup": "Sin estado", "dbHold": "Mantén pulsado y arrastra para mover una tarjeta", "dbUntitled": "Sin título"});
 Object.assign(TR.de,{"vTable": "Tabelle", "vBoard": "Board", "vGallery": "Galerie", "vCal": "Kalender", "dbNoStatus": "Füge eine Status-Spalte hinzu, um das Board zu nutzen", "dbNoDate": "Füge eine Datums-Spalte hinzu, um den Kalender zu nutzen", "dbGroup": "Gruppieren nach", "dbDateBy": "Datum nach", "dbNoGroup": "Ohne Status", "dbHold": "Lange drücken und ziehen, um eine Karte zu verschieben", "dbUntitled": "Ohne Titel"});
+Object.assign(TR.fr,{"dbFormula": "Formule", "dbFormulaH": "Exemple : {Prix} * {Qté} — supporte + - * / parenthèses, round, min, max", "dbRelTo": "Lié à la base", "dbSelf": "celle-ci", "dbRollRel": "Via la colonne de relation", "dbRollCol": "Colonne à calculer", "dbRollAgg": "Calcul", "dbNoRel": "Ajoutez d'abord une colonne de relation", "tpFormula": "Formule", "tpRel": "Relation", "tpRollup": "Cumul", "agCount": "Nombre", "agSum": "Somme", "agAvg": "Moyenne", "agMin": "Min", "agMax": "Max", "agPct": "% terminé", "dbQuery": "Filtrer et trier", "dbFilter": "Filtres", "dbSort": "Tri", "dbGroupT": "Groupe", "dbGroupH": "Le groupement s'applique à la vue tableau", "dbAddFilter": "Ajouter un filtre", "dbAddSort": "Ajouter un tri", "dbAsc": "Croissant", "dbDesc": "Décroissant", "dbClear": "Tout effacer", "dbUnchecked": "Non coché", "dbRo": "", "opHas": "contient", "opEq": "égal à", "opNe": "différent de", "opFilled": "non vide", "opEmpty": "vide", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "avant", "opAfter": "après", "opOn": "le", "opIs": "est", "opIsnt": "n'est pas", "opHasOpt": "inclut", "opChecked": "coché", "opUnchecked": "non coché"});
+Object.assign(TR.es,{"dbFormula": "Fórmula", "dbFormulaH": "Ejemplo: {Precio} * {Cant} — admite + - * / paréntesis, round, min, max", "dbRelTo": "Vinculado a la base", "dbSelf": "esta misma", "dbRollRel": "Mediante la columna de relación", "dbRollCol": "Columna a calcular", "dbRollAgg": "Cálculo", "dbNoRel": "Añade primero una columna de relación", "tpFormula": "Fórmula", "tpRel": "Relación", "tpRollup": "Resumen", "agCount": "Recuento", "agSum": "Suma", "agAvg": "Promedio", "agMin": "Mín", "agMax": "Máx", "agPct": "% completado", "dbQuery": "Filtrar y ordenar", "dbFilter": "Filtros", "dbSort": "Orden", "dbGroupT": "Agrupar", "dbGroupH": "La agrupación se aplica a la vista de tabla", "dbAddFilter": "Añadir filtro", "dbAddSort": "Añadir orden", "dbAsc": "Ascendente", "dbDesc": "Descendente", "dbClear": "Borrar todo", "dbUnchecked": "Sin marcar", "dbRo": "", "opHas": "contiene", "opEq": "es igual a", "opNe": "es distinto de", "opFilled": "no está vacío", "opEmpty": "está vacío", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "antes", "opAfter": "después", "opOn": "el", "opIs": "es", "opIsnt": "no es", "opHasOpt": "incluye", "opChecked": "marcado", "opUnchecked": "sin marcar"});
+Object.assign(TR.de,{"dbFormula": "Formel", "dbFormulaH": "Beispiel: {Preis} * {Menge} — unterstützt + - * / Klammern, round, min, max", "dbRelTo": "Verknüpft mit Datenbank", "dbSelf": "diese", "dbRollRel": "Über Relationsspalte", "dbRollCol": "Zu berechnende Spalte", "dbRollAgg": "Berechnung", "dbNoRel": "Füge zuerst eine Relationsspalte hinzu", "tpFormula": "Formel", "tpRel": "Relation", "tpRollup": "Rollup", "agCount": "Anzahl", "agSum": "Summe", "agAvg": "Durchschnitt", "agMin": "Min", "agMax": "Max", "agPct": "% erledigt", "dbQuery": "Filtern & sortieren", "dbFilter": "Filter", "dbSort": "Sortierung", "dbGroupT": "Gruppe", "dbGroupH": "Gruppierung gilt für die Tabellenansicht", "dbAddFilter": "Filter hinzufügen", "dbAddSort": "Sortierung hinzufügen", "dbAsc": "Aufsteigend", "dbDesc": "Absteigend", "dbClear": "Alles löschen", "dbUnchecked": "Nicht angehakt", "dbRo": "", "opHas": "enthält", "opEq": "ist gleich", "opNe": "ist ungleich", "opFilled": "nicht leer", "opEmpty": "leer", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "vor", "opAfter": "nach", "opOn": "am", "opIs": "ist", "opIsnt": "ist nicht", "opHasOpt": "enthält", "opChecked": "angehakt", "opUnchecked": "nicht angehakt"});
 L.restoreQ=['استبدال بياناتك الحالية بهذه النسخة؟','Replace your current data with this backup?'];
 L.profile=['الملف الشخصي','Profile'];L.pName=['الاسم','Name'];L.pPhoto=['تغيير الصورة','Change photo'];L.pRemove=['إزالة الصورة','Remove photo'];L.pSettings=['الإعدادات','Settings'];L.tasksDone=['مهمة منجزة','tasks done'];
 L.upPhone=['رفع صورة من الهاتف','Upload from phone'];L.pColors=['أو اختر لوناً','Or pick a color'];L.pEdit=['تعديل','Edit'];L.bannerL=['صورة الغلاف','Cover picture'];L.avatarL=['الصورة الشخصية','Profile picture'];
@@ -3008,8 +3020,9 @@ Object.assign(L,{
  dbEmpty:['لا توجد قواعد بيانات بعد','No databases yet'],dbEmptyH:['أنشئ جدولاً للكتب أو المصاريف أو المشاريع','Create a table for books, expenses or projects'],dbDel:['حذف القاعدة وكل سجلاتها؟','Delete this database and all its rows?'],dbDelRow:['حذف هذا السجل؟','Delete this row?'],dbDelCol:['حذف العمود وبياناته؟','Delete this column and its data?'],dbRename:['تعديل القاعدة','Edit database'],dbOpen:['فتح الرابط','Open link'],dbNone:['— بدون —','— None —'],dbSum:['المجموع','Sum'],
  dbTitle:['العنوان','Title'],dbState:['الحالة','Status'],dbRate:['التقييم','Rating'],dbDone:['انتهى في','Finished'],dbToRead:['أريد قراءته\nأقرؤه\nانتهيت','To read\nReading\nDone'],dbAmount:['المبلغ','Amount'],dbCat:['الفئة','Category'],dbDate:['التاريخ','Date'],dbCats:['طعام\nمواصلات\nفواتير\nترفيه\nأخرى','Food\nTransport\nBills\nFun\nOther'],dbProjN:['المشروع','Project'],dbDue:['الموعد','Due'],dbPrio:['الأولوية','Priority'],dbProjSt:['لم يبدأ\nجارٍ\nمكتمل','Not started\nIn progress\nDone'],dbPrios:['عالية\nمتوسطة\nمنخفضة','High\nMedium\nLow']
 });
-const DBTP=['text','number','date','link','status','multi','check'];
-const DBTPL={text:'tpText',number:'tpNum',date:'tpDate',link:'tpLink',status:'tpStatus',multi:'tpMulti',check:'tpCheck'};
+Object.assign(L,{"dbFormula": ["الصيغة", "Formula"], "dbFormulaH": ["مثال: {السعر} * {الكمية} — يدعم + - * / وأقواس و round و min و max", "Example: {Price} * {Qty} — supports + - * / parentheses, round, min, max"], "dbRelTo": ["مرتبط بقاعدة", "Linked to database"], "dbSelf": ["هذه القاعدة", "this one"], "dbRollRel": ["عبر عمود العلاقة", "Via relation column"], "dbRollCol": ["العمود المراد حسابه", "Column to calculate"], "dbRollAgg": ["الحساب", "Calculation"], "dbNoRel": ["أضف عمود علاقة أولاً", "Add a relation column first"], "tpFormula": ["صيغة", "Formula"], "tpRel": ["علاقة", "Relation"], "tpRollup": ["تجميع", "Rollup"], "agCount": ["العدد", "Count"], "agSum": ["المجموع", "Sum"], "agAvg": ["المتوسط", "Average"], "agMin": ["الأصغر", "Min"], "agMax": ["الأكبر", "Max"], "agPct": ["النسبة المنجزة %", "% done"], "dbQuery": ["تصفية وفرز", "Filter & sort"], "dbFilter": ["الفلاتر", "Filters"], "dbSort": ["الفرز", "Sort"], "dbGroupT": ["التجميع", "Group"], "dbGroupH": ["التجميع يظهر في عرض الجدول", "Grouping applies to the table view"], "dbAddFilter": ["إضافة فلتر", "Add filter"], "dbAddSort": ["إضافة فرز", "Add sort"], "dbAsc": ["تصاعدي", "Ascending"], "dbDesc": ["تنازلي", "Descending"], "dbClear": ["مسح الكل", "Clear all"], "dbUnchecked": ["غير مكتمل", "Unchecked"], "dbRo": ["", ""], "opHas": ["يحتوي", "contains"], "opEq": ["يساوي", "equals"], "opNe": ["لا يساوي", "not equal"], "opFilled": ["غير فارغ", "is not empty"], "opEmpty": ["فارغ", "is empty"], "opGt": ["أكبر من", ">"], "opLt": ["أصغر من", "<"], "opGte": ["أكبر أو يساوي", "≥"], "opLte": ["أصغر أو يساوي", "≤"], "opBefore": ["قبل", "before"], "opAfter": ["بعد", "after"], "opOn": ["في", "on"], "opIs": ["هو", "is"], "opIsnt": ["ليس", "is not"], "opHasOpt": ["يحتوي", "includes"], "opChecked": ["مفعّل", "checked"], "opUnchecked": ["غير مفعّل", "unchecked"]});
+const DBTP=['text','number','date','link','status','multi','check','formula','relation','rollup'];
+const DBTPL={text:'tpText',number:'tpNum',date:'tpDate',link:'tpLink',status:'tpStatus',multi:'tpMulti',check:'tpCheck',formula:'tpFormula',relation:'tpRel',rollup:'tpRollup'};
 const OPC=['#e0264a','#e8870e','#d4a800','#1f9d63','#3b82f6','#8b5cf6','#d946a8','#64748b'];
 const dbs=()=>S.dbs||(S.dbs=[]);
 const dbById=id=>dbs().find(d=>d.id===id);
@@ -3022,7 +3035,33 @@ function mkDb(name,tpl){const d={id:uid(),name,icon:'📋',created:Date.now(),co
  else{C(T('dbTitle'),'text');C('','text')&&d.cols.pop()}
  return d}
 const optOf=(c,id)=>(c.o||[]).find(o=>o.id===id);
+
+const COMP=c=>c.t==='formula'||c.t==='rollup';
+function fEval(db,r,c,dep){dep=dep||0;const src=String(c.f||'');if(!src.trim()||dep>4)return '';let i=0;
+ const ws=()=>{while(src[i]===' ')i++};
+ const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n};
+ const ref=name=>{const k=db.cols.find(z=>z.n.trim().toLowerCase()===name.trim().toLowerCase());if(!k||k.id===c.id)return 0;const v=val(db,r,k,dep+1);return Array.isArray(v)?v.length:(v===true?1:v===false?0:num(v))};
+ function P(){let a=T();for(;;){ws();const o=src[i];if(o==='+'||o==='-'){i++;const b=T();a=o==='+'?a+b:a-b}else return a}}
+ function T(){let a=U();for(;;){ws();const o=src[i];if(o==='*'||o==='/'){i++;const b=U();if(o==='/'&&b===0)throw 0;a=o==='*'?a*b:a/b}else return a}}
+ function U(){ws();if(src[i]==='-'){i++;return -U()}if(src[i]==='+'){i++;return U()}return F()}
+ function F(){ws();const ch=src[i];
+  if(ch==='('){i++;const v=P();ws();if(src[i]!==')')throw 0;i++;return v}
+  if(ch==='{'){const j=src.indexOf('}',i);if(j<0)throw 0;const nm=src.slice(i+1,j);i=j+1;return ref(nm)}
+  const m=/^\d+(\.\d+)?/.exec(src.slice(i));if(m){i+=m[0].length;return parseFloat(m[0])}
+  const f=/^[a-zA-Z]+/.exec(src.slice(i));if(f){const fn=f[0].toLowerCase();i+=f[0].length;ws();if(src[i]!=='(')throw 0;i++;const args=[];ws();if(src[i]===')')i++;else{for(;;){args.push(P());ws();if(src[i]===','){i++;continue}if(src[i]===')'){i++;break}throw 0}}
+   const A=args;switch(fn){case 'round':return Math.round(A[0]*Math.pow(10,A[1]||0))/Math.pow(10,A[1]||0);case 'min':return Math.min(...A);case 'max':return Math.max(...A);case 'abs':return Math.abs(A[0]);case 'sum':return A.reduce((x,y)=>x+y,0);case 'avg':return A.reduce((x,y)=>x+y,0)/(A.length||1);case 'floor':return Math.floor(A[0]);case 'ceil':return Math.ceil(A[0]);default:throw 0}}
+  throw 0}
+ try{const v=P();ws();if(i<src.length||!isFinite(v))return '';return Math.round(v*100)/100}catch(_){return ''}}
+function rollup(db,r,c){const rc=db.cols.find(z=>z.id===c.rc);if(!rc)return '';const td=dbById(rc.rel);if(!td)return '';const tf=td.cols.find(z=>z.id===c.rf);const ids=r.c[rc.id]||[];const rs=ids.map(id=>td.rows.find(z=>z.id===id)).filter(Boolean);
+ if(c.ra==='count')return rs.length;if(!tf)return '';const vs=rs.map(z=>val(td,z,tf));
+ if(c.ra==='pct'){if(!rs.length)return 0;return Math.round(vs.filter(v=>v===true||(v!==''&&v!=null&&v!==false&&!(Array.isArray(v)&&!v.length))).length*100/rs.length)}
+ const ns=vs.map(v=>parseFloat(v)).filter(n=>!isNaN(n));if(!ns.length)return c.ra==='sum'?0:'';
+ const rn=x=>Math.round(x*100)/100;return c.ra==='sum'?rn(ns.reduce((a,b)=>a+b,0)):c.ra==='avg'?rn(ns.reduce((a,b)=>a+b,0)/ns.length):c.ra==='min'?Math.min(...ns):Math.max(...ns)}
+function val(db,r,c,dep){return c.t==='formula'?fEval(db,r,c,dep):c.t==='rollup'?rollup(db,r,c):r.c[c.id]}
+const cellOf=(db,r,c)=>cellHtml(c,val(db,r,c));
 function cellHtml(c,v){
+ if(c.t==='relation'){const td=dbById(c.rel);return (v||[]).map(id=>td&&td.rows.find(z=>z.id===id)).filter(Boolean).map(z=>`<span class="dbch" style="--oc:var(--ac-text,#c2410c)">${esc(rowTitle(td,z))}</span>`).join('')}
+ if(c.t==='rollup'&&c.ra==='pct'&&v!=='')return esc(v+'%');
  if(c.t==='check')return `<span class="dbck ${v?'on':''}">${v?ic('check'):''}</span>`;
  if(v==null||v===''||(Array.isArray(v)&&!v.length))return '';
  if(c.t==='status'){const o=optOf(c,v);return o?`<span class="dbch" style="--oc:${o.c}">${esc(o.n)}</span>`:''}
@@ -3031,6 +3070,7 @@ function cellHtml(c,v){
  if(c.t==='link'){let h=String(v);try{h=new URL(/^https?:/.test(v)?v:'https://'+v).hostname.replace(/^www\./,'')}catch(_){}return `<span class="dblk">${esc(h)}</span>`}
  return esc(String(v))}
 function fieldHtml(c,v,id){const i=id||'f_'+c.id;
+ if(c.t==='relation'){const td=dbById(c.rel);return `<div class="dbmv" id="${i}">${td?td.rows.map(z=>`<button type="button" class="dbch ${(v||[]).includes(z.id)?'on':''}" data-o="${z.id}" style="--oc:var(--ac-text,#c2410c)">${esc(rowTitle(td,z))}</button>`).join(''):''}</div>`}
  if(c.t==='check')return `<label class="dbtg"><input type="checkbox" id="${i}" ${v?'checked':''}><span>${esc(c.n||'')}</span></label>`;
  if(c.t==='status')return `<select class="in" id="${i}"><option value="">${t('dbNone')}</option>${(c.o||[]).map(o=>`<option value="${o.id}" ${v===o.id?'selected':''}>${esc(o.n)}</option>`).join('')}</select>`;
  if(c.t==='multi')return `<div class="dbmv" id="${i}">${(c.o||[]).map(o=>`<button type="button" class="dbch ${(v||[]).includes(o.id)?'on':''}" data-o="${o.id}" style="--oc:${o.c}">${esc(o.n)}</button>`).join('')}</div>`;
@@ -3039,30 +3079,40 @@ function fieldHtml(c,v,id){const i=id||'f_'+c.id;
  if(c.t==='link')return `<input class="in" id="${i}" type="url" inputmode="url" value="${esc(v||'')}">`;
  return `<input class="in" id="${i}" maxlength="500" value="${esc(v||'')}">`}
 function readField(c,ov){const e=$('#f_'+c.id,ov);if(!e)return null;
- if(c.t==='check')return e.checked;if(c.t==='multi')return $$('[data-o].on',e).map(b=>b.dataset.o);
+ if(c.t==='check')return e.checked;if(c.t==='multi'||c.t==='relation')return $$('[data-o].on',e).map(b=>b.dataset.o);
  if(c.t==='number'){const n=parseFloat(e.value);return isNaN(n)?'':n}return e.value.trim()}
 function bindMulti(ov){$$('.dbmv',ov).forEach(m=>m.onclick=ev=>{const b=ev.target.closest('[data-o]');if(b)b.classList.toggle('on')})}
 function rowDialog(db,row,only){const isNew=!row;const r=row||{id:uid(),c:{},created:Date.now()};const cols=only?db.cols.filter(c=>c.id===only):db.cols;
- const ov=openModal(`<h3>${only?esc(cols[0].n||t('dbRowEdit')):(isNew?t('dbRowNew'):t('dbRowEdit'))}</h3>${cols.map(c=>c.t==='check'?`<div class="fld">${fieldHtml(c,r.c[c.id])}</div>`:`<label class="fld">${esc(c.n)}${c.t==='multi'?'':''}${fieldHtml(c,r.c[c.id])}</label>`).join('')}
+ const ov=openModal(`<h3>${only?esc(cols[0].n||t('dbRowEdit')):(isNew?t('dbRowNew'):t('dbRowEdit'))}</h3>${cols.map(c=>COMP(c)?`<div class="fld">${esc(c.n)}<div class="dbro">${cellOf(db,r,c)||'—'}</div></div>`:c.t==='check'?`<div class="fld">${fieldHtml(c,r.c[c.id])}</div>`:`<label class="fld">${esc(c.n)}${c.t==='multi'?'':''}${fieldHtml(c,r.c[c.id])}</label>`).join('')}
  <div class="dlg-a">${!isNew&&!only?`<button class="btn ghost" data-del type="button">${t('del')}</button><button class="btn ghost" data-dup type="button">${t('dbDup')}</button>`:''}${only&&cols[0].t==='link'&&r.c[only]?`<button class="btn ghost" data-go type="button">${t('dbOpen')}</button>`:''}<button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);
  bindMulti(ov);const f=$('input.in,select.in',ov);if(f&&isNew&&!('ontouchstart' in window))f.focus();
  $('[data-x]',ov).onclick=()=>ov.remove();
  const dl=$('[data-del]',ov);if(dl)dl.onclick=async()=>{if(await sure(t('dbDelRow'))){db.rows=db.rows.filter(z=>z.id!==r.id);dbTouch(db);ov.remove();render(1)}};
  const dp=$('[data-dup]',ov);if(dp)dp.onclick=()=>{db.rows.push({id:uid(),c:JSON.parse(JSON.stringify(r.c)),created:Date.now()});dbTouch(db);ov.remove();render(1)};
  const gl=$('[data-go]',ov);if(gl)gl.onclick=()=>{let u=r.c[only];if(!/^https?:/.test(u))u='https://'+u;window.open(u,'_blank','noopener')};
- $('[data-ok]',ov).onclick=()=>{cols.forEach(c=>{r.c[c.id]=readField(c,ov)});if(isNew)db.rows.push(r);dbTouch(db);ov.remove();render(1)}}
+ $('[data-ok]',ov).onclick=()=>{cols.forEach(c=>{if(!COMP(c))r.c[c.id]=readField(c,ov)});if(isNew)db.rows.push(r);dbTouch(db);ov.remove();render(1)}}
 function dbTouch(db){db.updated=Date.now();save();window.__pushSync&&window.__pushSync()}
 function colDialog(db,col){const x=col||{n:'',t:'text',o:[]};
+ const others=dbs().filter(d=>d.id!==db.id).concat([db]);
+ const relCols=()=>db.cols.filter(c=>c.t==='relation'&&c.id!==(col&&col.id));
  const ov=openModal(`<h3>${col?t('dbColEdit'):t('dbColNew')}</h3><label class="fld">${t('dbColName')}<input class="in" id="cn" maxlength="40" value="${esc(x.n)}"></label>
  <label class="fld">${t('dbType')}<select class="in" id="ct">${DBTP.map(k=>`<option value="${k}" ${x.t===k?'selected':''}>${t(DBTPL[k])}</option>`).join('')}</select></label>
- <label class="fld" id="cow" ${['status','multi'].includes(x.t)?'':'hidden'}>${t('dbOpts')}<textarea class="in" id="co" rows="5">${esc((x.o||[]).map(o=>o.n).join('\n'))}</textarea></label>
+ <label class="fld" id="cow" hidden>${t('dbOpts')}<textarea class="in" id="co" rows="5">${esc((x.o||[]).map(o=>o.n).join('\n'))}</textarea></label>
+ <label class="fld" id="cfw" hidden>${t('dbFormula')}<input class="in" id="cf" dir="ltr" placeholder="{Price} * {Qty}" value="${esc(x.f||'')}"><small class="sub">${t('dbFormulaH')}</small></label>
+ <label class="fld" id="crw" hidden>${t('dbRelTo')}<select class="in" id="cr">${others.map(d=>`<option value="${d.id}" ${x.rel===d.id?'selected':''}>${esc(d.name)}${d.id===db.id?' ('+t('dbSelf')+')':''}</option>`).join('')}</select></label>
+ <div id="cpw" hidden><label class="fld">${t('dbRollRel')}<select class="in" id="cpr"></select></label><label class="fld">${t('dbRollCol')}<select class="in" id="cpf"></select></label><label class="fld">${t('dbRollAgg')}<select class="in" id="cpa">${[['count','agCount'],['sum','agSum'],['avg','agAvg'],['min','agMin'],['max','agMax'],['pct','agPct']].map(([k,l])=>`<option value="${k}" ${(x.ra||'count')===k?'selected':''}>${t(l)}</option>`).join('')}</select></label></div>
  <div class="dlg-a">${col&&db.cols.length>1?`<button class="btn ghost" data-del type="button">${t('del')}</button>`:''}<button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`);
- $('#ct',ov).onchange=e=>{$('#cow',ov).hidden=!['status','multi'].includes(e.target.value)};$('[data-x]',ov).onclick=()=>ov.remove();
+ const fillRoll=()=>{const rs=relCols();$('#cpr',ov).innerHTML=rs.length?rs.map(c=>`<option value="${c.id}" ${x.rc===c.id?'selected':''}>${esc(c.n)}</option>`).join(''):`<option value="">${t('dbNoRel')}</option>`;
+  const rc=rs.find(c=>c.id===$('#cpr',ov).value),td=rc&&dbById(rc.rel);$('#cpf',ov).innerHTML=td?td.cols.filter(c=>!COMP(c)||true).map(c=>`<option value="${c.id}" ${x.rf===c.id?'selected':''}>${esc(c.n)}</option>`).join(''):''};
+ const sync=()=>{const ty=$('#ct',ov).value;$('#cow',ov).hidden=!['status','multi'].includes(ty);$('#cfw',ov).hidden=ty!=='formula';$('#crw',ov).hidden=ty!=='relation';$('#cpw',ov).hidden=ty!=='rollup';if(ty==='rollup')fillRoll()};
+ $('#ct',ov).onchange=sync;$('#cpr',ov).onchange=fillRoll;sync();$('[data-x]',ov).onclick=()=>ov.remove();
  const dl=$('[data-del]',ov);if(dl)dl.onclick=async()=>{if(await sure(t('dbDelCol'))){db.cols=db.cols.filter(z=>z.id!==col.id);db.rows.forEach(r=>delete r.c[col.id]);dbTouch(db);ov.remove();render(1)}};
  $('[data-ok]',ov).onclick=()=>{const n=$('#cn',ov).value.trim();if(!n){$('#cn',ov).focus();return}const ty=$('#ct',ov).value;
   const names=ty==='status'||ty==='multi'?$('#co',ov).value.split('\n').map(s=>s.trim()).filter(Boolean):[];
   const old=(col&&col.o)||[];const o=names.map((nm,i)=>{const m=old.find(z=>z.n===nm);return m||{id:uid(),n:nm,c:OPC[i%OPC.length]}});
-  if(col){if(col.t!==ty){db.rows.forEach(r=>{delete r.c[col.id]})}Object.assign(col,{n,t:ty,o})}else db.cols.push({id:uid(),n,t:ty,o});
+  const extra={f:ty==='formula'?$('#cf',ov).value.trim():undefined,rel:ty==='relation'?$('#cr',ov).value:undefined,rc:ty==='rollup'?$('#cpr',ov).value:undefined,rf:ty==='rollup'?$('#cpf',ov).value:undefined,ra:ty==='rollup'?$('#cpa',ov).value:undefined};
+  if(ty==='rollup'&&!extra.rc){toast(t('dbNoRel'));return}
+  if(col){if(col.t!==ty){db.rows.forEach(r=>{delete r.c[col.id]})}Object.assign(col,{n,t:ty,o},extra)}else db.cols.push({id:uid(),n,t:ty,o,...extra});
   dbTouch(db);ov.remove();render(1)}}
 function dbDialog(db){const ov=openModal(`<h3>${db?t('dbRename'):t('dbNew')}</h3><label class="fld">${t('dbName')}<input class="in" id="dn" maxlength="60" value="${esc(db?db.name:'')}"></label>
  ${db?'':`<label class="fld">${t('dbTpl')}<select class="in" id="dt"><option value="">${t('dbBlank')}</option><option value="books">${t('dbBooks')}</option><option value="exp">${t('dbExp')}</option><option value="proj">${t('dbProj')}</option></select></label>`}
@@ -3075,12 +3125,12 @@ function dbDialog(db){const ov=openModal(`<h3>${db?t('dbRename'):t('dbNew')}</h3
 V.dbs=()=>{const cur=memUI.dbid&&dbById(memUI.dbid);
  if(!cur)return `<div class="vh"><div><h1 class="h1">${t('dbs')}</h1><p class="sub">${t('dbsSub')}</p></div><div class="sp"></div><button type="button" class="btn" data-act="db-new">${ic('plus')}${t('dbNew')}</button></div>
  ${dbs().length?`<div class="dbl">${dbs().map(d=>`<button type="button" class="card dbc" data-act="db-open" data-id="${d.id}"><span class="dbi">${d.icon||'📋'}</span><span class="tx"><b>${esc(d.name)}</b><small>${d.rows.length} ${t('dbRows')} · ${d.cols.length} ${t('tpText')===''?'':''}${lang==='ar'?'أعمدة':'cols'}</small></span></button>`).join('')}</div>`:empty(t('dbEmpty'),t('dbEmptyH'))}`;
- const sums=cur.cols.map(c=>c.t==='number'?cur.rows.reduce((a,r)=>a+(+r.c[c.id]||0),0):null);
- return `<div class="vh"><button type="button" class="ib" data-act="db-back" aria-label="back">${ic(lang==='ar'?'chr':'chl')}</button><div><h1 class="h1">${cur.icon||''} ${esc(cur.name)}</h1><p class="sub">${cur.rows.length} ${t('dbRows')}</p></div><div class="sp"></div><button type="button" class="ib" data-act="db-edit" aria-label="${t('dbRename')}">${ic('dots')}</button></div>
+ const vr=dbRows(cur);const sums=cur.cols.map(c=>(c.t==='number'||COMP(c))?vr.reduce((a,r)=>a+(parseFloat(val(cur,r,c))||0),0):null);
+ return `<div class="vh"><button type="button" class="ib" data-act="db-back" aria-label="back">${ic(lang==='ar'?'chr':'chl')}</button><div><h1 class="h1">${cur.icon||''} ${esc(cur.name)}</h1><p class="sub">${vr.length}${vr.length!==cur.rows.length?' / '+cur.rows.length:''} ${t('dbRows')}</p></div><div class="sp"></div><button type="button" class="ib" data-act="db-edit" aria-label="${t('dbRename')}">${ic('dots')}</button></div>
  <div class="cvs dbv">${[['table','vTable'],['board','vBoard'],['gallery','vGallery'],['calendar','vCal']].map(([v,l])=>`<button type="button" class="${(cur.view||'table')===v?'on':''}" data-act="db-view" data-id="${v}">${t(l)}</button>`).join('')}</div>
- ${(cur.view||'table')==='table'?'':dbAlt(cur)}
+ <div class="dbq"><button type="button" class="btn ghost sm ${qCount(cur)?'on':''}" data-act="db-q">${ic('filter')}${t('dbQuery')}${qCount(cur)?` · ${qCount(cur)}`:''}</button></div>${(cur.view||'table')==='table'?'':dbAlt(cur)}
  <section class="card sec dbt" ${(cur.view||'table')==='table'?'':'hidden'}><div class="dbs"><table><thead><tr><th class="dbx"></th>${cur.cols.map(c=>`<th><button type="button" class="dbh" data-act="col-edit" data-id="${c.id}">${esc(c.n)}</button></th>`).join('')}<th><button type="button" class="dbh dbadd" data-act="col-new" aria-label="${t('dbColNew')}">${ic('plus')}</button></th></tr></thead>
- <tbody>${cur.rows.map(r=>`<tr><td class="dbx"><button type="button" class="dbo" data-act="row-edit" data-id="${r.id}" aria-label="${t('dbRowEdit')}">${ic('edit')}</button></td>${cur.cols.map(c=>`<td><button type="button" class="dbcell" data-act="cell" data-r="${r.id}" data-c="${c.id}">${cellHtml(c,r.c[c.id])}</button></td>`).join('')}<td></td></tr>`).join('')}</tbody>
+ <tbody>${dbGroups(cur,vr).map(g=>(g.h!=null?`<tr class="dbgr"><td colspan="${cur.cols.length+2}"><b>${g.h}</b><span>${g.rs.length}</span></td></tr>`:'')+g.rs.map(r=>`<tr><td class="dbx"><button type="button" class="dbo" data-act="row-edit" data-id="${r.id}" aria-label="${t('dbRowEdit')}">${ic('edit')}</button></td>${cur.cols.map(c=>`<td><button type="button" class="dbcell" data-act="cell" data-r="${r.id}" data-c="${c.id}">${cellOf(cur,r,c)}</button></td>`).join('')}<td></td></tr>`).join('')).join('')}</tbody>
  ${sums.some(s=>s!=null)?`<tfoot><tr><td class="dbx"></td>${sums.map(s=>`<td class="dbsm">${s==null?'':t('dbSum')+' '+Math.round(s*100)/100}</td>`).join('')}<td></td></tr></tfoot>`:''}</table></div>
  <button type="button" class="btn dbnr" data-act="row-new">${ic('plus')}${t('dbRowNew')}</button></section>`};
 Object.assign(A,{
@@ -3093,20 +3143,20 @@ Object.assign(A,{
 /* ---- phase 2: board / gallery / calendar views ---- */
 const rowTitle=(db,r)=>{const c=db.cols[0];const v=c&&r.c[c.id];return (v!=null&&v!=='')?(c.t==='date'?v:String(v)):t('dbUntitled')};
 const colsOf=(db,ty)=>db.cols.filter(c=>c.t===ty);
-function cardMeta(db,r,skipId){return db.cols.slice(1).filter(c=>c.id!==skipId&&c.t!=='check').map(c=>({c,h:cellHtml(c,r.c[c.id])})).filter(x=>x.h).slice(0,3).map(x=>`<span class="dbm">${x.h}</span>`).join('')}
+function cardMeta(db,r,skipId){return db.cols.slice(1).filter(c=>c.id!==skipId&&c.t!=='check').map(c=>({c,h:cellOf(db,r,c)})).filter(x=>x.h).slice(0,3).map(x=>`<span class="dbm">${x.h}</span>`).join('')}
 function dbAlt(db){const v=db.view;
  if(v==='board'){const sc=colsOf(db,'status');if(!sc.length)return `<section class="card sec">${empty(t('dbNoStatus'))}</section>`;
   const g=sc.find(c=>c.id===db.gcol)||sc[0];const cols=[...g.o.map(o=>({id:o.id,n:o.n,c:o.c})),{id:'',n:t('dbNoGroup'),c:'#94a3b8'}];
   return `${sc.length>1?`<label class="dbsel">${t('dbGroup')} <select class="in" data-dbsel="gcol">${sc.map(c=>`<option value="${c.id}" ${c.id===g.id?'selected':''}>${esc(c.n)}</option>`).join('')}</select></label>`:''}
-  <div class="kb">${cols.map(k=>{const rs=db.rows.filter(r=>(r.c[g.id]||'')===k.id);if(!k.id&&!rs.length)return '';return `<div class="kbcol" data-gv="${k.id}"><div class="kbh" style="--oc:${k.c}"><i></i><b>${esc(k.n)}</b><span>${rs.length}</span><button type="button" class="kbp" data-act="kb-add" data-g="${g.id}" data-v="${k.id}" aria-label="${t('dbRowNew')}">${ic('plus')}</button></div>
+  <div class="kb">${cols.map(k=>{const rs=dbRows(db).filter(r=>(r.c[g.id]||'')===k.id);if(!k.id&&!rs.length)return '';return `<div class="kbcol" data-gv="${k.id}"><div class="kbh" style="--oc:${k.c}"><i></i><b>${esc(k.n)}</b><span>${rs.length}</span><button type="button" class="kbp" data-act="kb-add" data-g="${g.id}" data-v="${k.id}" aria-label="${t('dbRowNew')}">${ic('plus')}</button></div>
    <div class="kbl">${rs.map(r=>`<button type="button" class="kbc" data-act="row-edit" data-id="${r.id}"><b>${esc(rowTitle(db,r))}</b><div class="dbms">${cardMeta(db,r,g.id)}</div></button>`).join('')}</div></div>`}).join('')}</div><p class="sub dbhint">${t('dbHold')}</p>`}
  if(v==='gallery'){const sc=colsOf(db,'status')[0];
-  return `<div class="gal">${db.rows.map(r=>{const o=sc&&optOf(sc,r.c[sc.id]);return `<button type="button" class="card galc" data-act="row-edit" data-id="${r.id}"><span class="galb" style="background:${o?o.c:'var(--ac)'}"></span><b>${esc(rowTitle(db,r))}</b><div class="dbms">${cardMeta(db,r)}</div></button>`}).join('')}<button type="button" class="card galc galn" data-act="row-new">${ic('plus')}<span>${t('dbRowNew')}</span></button></div>`}
+  return `<div class="gal">${dbRows(db).map(r=>{const o=sc&&optOf(sc,r.c[sc.id]);return `<button type="button" class="card galc" data-act="row-edit" data-id="${r.id}"><span class="galb" style="background:${o?o.c:'var(--ac)'}"></span><b>${esc(rowTitle(db,r))}</b><div class="dbms">${cardMeta(db,r)}</div></button>`}).join('')}<button type="button" class="card galc galn" data-act="row-new">${ic('plus')}<span>${t('dbRowNew')}</span></button></div>`}
  if(v==='calendar'){const dc=colsOf(db,'date');if(!dc.length)return `<section class="card sec">${empty(t('dbNoDate'))}</section>`;
   const g=dc.find(c=>c.id===db.dcol)||dc[0];const now=new Date(),cm=memUI.dbcal||(memUI.dbcal={y:now.getFullYear(),m:now.getMonth()});
   const start=lang==='ar'?6:1,first=new Date(cm.y,cm.m,1),off=(first.getDay()-start+7)%7,dim=new Date(cm.y,cm.m+1,0).getDate(),rows=Math.ceil((off+dim)/7);
   const wd=[...Array(7)].map((_,i)=>new Date(2024,0,7+((start+i)%7)).toLocaleDateString(dloc(),{weekday:'short'}));
-  const by={};db.rows.forEach(r=>{const k=r.c[g.id];if(k)(by[k]=by[k]||[]).push(r)});
+  const by={};dbRows(db).forEach(r=>{const k=r.c[g.id];if(k)(by[k]=by[k]||[]).push(r)});
   const sel=memUI.dbsel||dkey();let cells='';
   for(let i=0;i<rows*7;i++){const d=new Date(cm.y,cm.m,1-off+i),k=dkey(d),n=(by[k]||[]).length;cells+=`<button type="button" class="cd ${d.getMonth()!==cm.m?'o':''} ${n?'ev':''} ${k===dkey()?'today':''}" ${n?'style="--ec:var(--ac)"':''} data-act="dbcal-day" data-id="${k}"><b>${d.getDate()}</b></button>`}
   const sr=by[sel]||[];
@@ -3136,6 +3186,50 @@ document.addEventListener('change',e=>{const s=e.target.closest&&e.target.closes
   clear()};
  document.addEventListener('pointerup',end);document.addEventListener('pointercancel',()=>clear());
  document.addEventListener('click',e=>{if(moved&&e.target.closest&&e.target.closest('.kbc')){e.stopPropagation();e.preventDefault()}},true)})();
+
+/* ---- phase 3: filter / sort / group ---- */
+const OPS={text:['has','eq','ne','filled','empty'],link:['has','filled','empty'],number:['neq','gt','lt','gte','lte','filled','empty'],date:['before','after','on','filled','empty'],status:['is','isnt','filled','empty'],multi:['hasopt','filled','empty'],check:['checked','unchecked'],relation:['filled','empty'],formula:['neq','gt','lt','gte','lte','filled','empty'],rollup:['neq','gt','lt','gte','lte','filled','empty']};
+const NOVAL=['filled','empty','checked','unchecked'];
+const opT={has:'opHas',eq:'opEq',ne:'opNe',filled:'opFilled',empty:'opEmpty',neq:'opEq',gt:'opGt',lt:'opLt',gte:'opGte',lte:'opLte',before:'opBefore',after:'opAfter',on:'opOn',is:'opIs',isnt:'opIsnt',hasopt:'opHasOpt',checked:'opChecked',unchecked:'opUnchecked'};
+function fMatch(db,r,f){const c=db.cols.find(z=>z.id===f.c);if(!c)return true;const v=val(db,r,c);const e=v==null||v===''||(Array.isArray(v)&&!v.length);
+ switch(f.o){case 'filled':return !e&&v!==false;case 'empty':return e||v===false;case 'checked':return !!v;case 'unchecked':return !v;
+  case 'has':return String(v||'').toLowerCase().includes(String(f.v||'').toLowerCase());case 'eq':return String(v||'').toLowerCase()===String(f.v||'').toLowerCase();case 'ne':return String(v||'').toLowerCase()!==String(f.v||'').toLowerCase();
+  case 'neq':return parseFloat(v)===parseFloat(f.v);case 'gt':return parseFloat(v)>parseFloat(f.v);case 'lt':return parseFloat(v)<parseFloat(f.v);case 'gte':return parseFloat(v)>=parseFloat(f.v);case 'lte':return parseFloat(v)<=parseFloat(f.v);
+  case 'before':return !!v&&!!f.v&&v<f.v;case 'after':return !!v&&!!f.v&&v>f.v;case 'on':return v===f.v;
+  case 'is':return (v||'')===(f.v||'');case 'isnt':return (v||'')!==(f.v||'');case 'hasopt':return (v||[]).includes(f.v)}return true}
+function dbRows(db){const q=db.q||{};let rs=db.rows.filter(r=>(q.f||[]).every(f=>(f.o&&(NOVAL.includes(f.o)||f.v!==''&&f.v!=null))?fMatch(db,r,f):true));
+ (q.s||[]).slice().reverse().forEach(s=>{const c=db.cols.find(z=>z.id===s.c);if(!c)return;const d=s.d==='desc'?-1:1;
+  rs=rs.map((r,i)=>[r,i]).sort((A,B)=>{let a=val(db,A[0],c),b=val(db,B[0],c);const ea=a==null||a==='',eb=b==null||b==='';if(ea&&eb)return A[1]-B[1];if(ea)return 1;if(eb)return -1;
+   if(Array.isArray(a)){a=a.length;b=(b||[]).length}if(typeof a==='boolean'){a=+a;b=+b}
+   if(c.t==='status'){const o=c.o.map(x=>x.id);a=o.indexOf(a);b=o.indexOf(b)}
+   const na=parseFloat(a),nb=parseFloat(b);const k=(c.t==='number'||COMP(c)||c.t==='check'||c.t==='status')&&!isNaN(na)&&!isNaN(nb)?na-nb:String(a).localeCompare(String(b),undefined,{numeric:true});return k?k*d:A[1]-B[1]}).map(x=>x[0])});
+ return rs}
+function dbGroups(db,rs){const g=db.q&&db.q.g&&db.cols.find(c=>c.id===db.q.g);if(!g)return [{h:null,rs}];
+ const m=new Map();rs.forEach(r=>{const v=val(db,r,g);const keys=Array.isArray(v)?(v.length?v:['']):[v==null||v===false?'':v];keys.forEach(k=>{if(!m.has(k))m.set(k,[]);m.get(k).push(r)})});
+ let ks=[...m.keys()];if(g.t==='status'){const o=g.o.map(x=>x.id);ks.sort((a,b)=>(a===''?1e9:o.indexOf(a))-(b===''?1e9:o.indexOf(b)))}else ks.sort((a,b)=>a===''?1:b===''?-1:String(a).localeCompare(String(b),undefined,{numeric:true}));
+ return ks.map(k=>({h:k===''?`<span class="dbmuted">${t('dbNoGroup')}</span>`:(g.t==='check'?cellHtml(g,k)||t('dbUnchecked'):cellHtml(g,k)||esc(String(k))),rs:m.get(k)}))}
+const qCount=db=>{const q=db.q||{};return (q.f||[]).length+(q.s||[]).length+(q.g?1:0)};
+function qDialog(db){const q=JSON.parse(JSON.stringify(db.q||{}));q.f=q.f||[];q.s=q.s||[];q.g=q.g||'';
+ const colOpts=(sel,none)=>(none?`<option value="">${t('dbNone')}</option>`:'')+db.cols.map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${esc(c.n)}</option>`).join('');
+ const ov=openModal('');const box=$('.dlg',ov)||ov;
+ const draw=()=>{box.innerHTML=`<h3>${t('dbQuery')}</h3>
+  <div class="qs"><b>${t('dbFilter')}</b>${q.f.map((f,i)=>{const c=db.cols.find(z=>z.id===f.c)||db.cols[0];const ops=OPS[c.t]||OPS.text;return `<div class="qr" data-i="${i}"><select class="in" data-q="fc">${colOpts(c.id)}</select><select class="in" data-q="fo">${ops.map(o=>`<option value="${o}" ${f.o===o?'selected':''}>${t(opT[o])}</option>`).join('')}</select>${NOVAL.includes(f.o)?'':(c.t==='status'?`<select class="in" data-q="fv"><option value=""></option>${c.o.map(o=>`<option value="${o.id}" ${f.v===o.id?'selected':''}>${esc(o.n)}</option>`).join('')}</select>`:c.t==='multi'?`<select class="in" data-q="fv"><option value=""></option>${c.o.map(o=>`<option value="${o.id}" ${f.v===o.id?'selected':''}>${esc(o.n)}</option>`).join('')}</select>`:`<input class="in" data-q="fv" type="${c.t==='date'?'date':(c.t==='number'||COMP(c))?'number':'text'}" value="${esc(f.v||'')}">`)}<button type="button" class="ib" data-q="fx" aria-label="x">${ic('x')}</button></div>`}).join('')}<button type="button" class="btn ghost sm" data-q="fadd">${ic('plus')}${t('dbAddFilter')}</button></div>
+  <div class="qs"><b>${t('dbSort')}</b>${q.s.map((s,i)=>`<div class="qr" data-i="${i}"><select class="in" data-q="sc">${colOpts(s.c)}</select><select class="in" data-q="sd"><option value="asc" ${s.d!=='desc'?'selected':''}>${t('dbAsc')}</option><option value="desc" ${s.d==='desc'?'selected':''}>${t('dbDesc')}</option></select><button type="button" class="ib" data-q="sx" aria-label="x">${ic('x')}</button></div>`).join('')}${q.s.length<2?`<button type="button" class="btn ghost sm" data-q="sadd">${ic('plus')}${t('dbAddSort')}</button>`:''}</div>
+  <div class="qs"><b>${t('dbGroupT')}</b><div class="qr"><select class="in" data-q="g">${colOpts(q.g,true)}</select></div><small class="sub">${t('dbGroupH')}</small></div>
+  <div class="dlg-a"><button class="btn ghost" data-q="clear" type="button">${t('dbClear')}</button><button class="btn ghost" data-x type="button">${t('cancel')}</button><button class="btn" data-ok type="button">${t('save')}</button></div>`};
+ draw();
+ const row=e=>+e.target.closest('.qr').dataset.i;
+ ov.addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b)return;const k=b.dataset.q;
+  if(k==='fadd'){const c=db.cols[0];q.f.push({c:c.id,o:OPS[c.t][0],v:''});draw()}else if(k==='fx'){q.f.splice(+b.closest('.qr').dataset.i,1);draw()}
+  else if(k==='sadd'){q.s.push({c:db.cols[0].id,d:'asc'});draw()}else if(k==='sx'){q.s.splice(+b.closest('.qr').dataset.i,1);draw()}
+  else if(k==='clear'){db.q={f:[],s:[],g:''};dbTouch(db);ov.remove();render(1)}});
+ ov.addEventListener('change',e=>{const s=e.target.closest&&e.target.closest('select[data-q],input[data-q]');if(!s)return;const k=s.dataset.q;
+  if(k==='g'){q.g=s.value;return}const i=s.closest('.qr')?+s.closest('.qr').dataset.i:-1;
+  if(k==='fc'){const c=db.cols.find(z=>z.id===s.value);q.f[i]={c:c.id,o:OPS[c.t][0],v:''};draw()}else if(k==='fo'){q.f[i].o=s.value;if(NOVAL.includes(s.value))q.f[i].v='';draw()}else if(k==='fv'){q.f[i].v=s.value}
+  else if(k==='sc'){q.s[i].c=s.value}else if(k==='sd'){q.s[i].d=s.value}});
+ ov.addEventListener('input',e=>{const s=e.target;if(s.dataset&&s.dataset.q==='fv'&&s.tagName==='INPUT'){const i=+s.closest('.qr').dataset.i;q.f[i].v=s.value}});
+ ov.addEventListener('click',e=>{if(e.target.closest('[data-x]'))ov.remove();else if(e.target.closest('[data-ok]')){db.q=q;dbTouch(db);ov.remove();render(1)}})}
+Object.assign(A,{'db-q':()=>qDialog(dbById(memUI.dbid))});
 
 })();
 
