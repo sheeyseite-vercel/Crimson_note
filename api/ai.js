@@ -200,11 +200,11 @@ module.exports=async(req,res)=>{
       let last='';
       for(const model of ['whisper-large-v3','whisper-large-v3-turbo']){
         try{
-          const fd=new FormData();fd.append('file',new Blob([buf],{type:mime}),'a.'+ext);fd.append('model',model);fd.append('temperature','0');fd.append('response_format','json');
+          const fd=new FormData();fd.append('file',new Blob([buf],{type:mime}),'a.'+ext);fd.append('model',model);fd.append('temperature','0');fd.append('response_format',b.verbose?'verbose_json':'json');if(b.verbose)fd.append('timestamp_granularities[]','segment');
           if(/^(ar|en|fr|es|de)$/.test(String(b.lang||'')))fd.append('language',String(b.lang));if(b.prompt)fd.append('prompt',String(b.prompt).slice(0,200));
           const r=await fetch('https://api.groq.com/openai/v1/audio/transcriptions',{method:'POST',headers:{Authorization:'Bearer '+KEY.groq()},body:fd});
           const j=await r.json().catch(()=>({}));
-          if(r.ok)return res.status(200).json({text:String(j.text||'').trim(),model});
+          if(r.ok)return res.status(200).json({text:String(j.text||'').trim(),model,segs:b.verbose&&Array.isArray(j.segments)?j.segments.map(x=>({s:+x.start||0,e:+x.end||0,t:String(x.text||'').trim()})).filter(x=>x.t):undefined});
           last=r.status===429?'rate':'fail';if(r.status===401||r.status===403)last='key'
         }catch(e){last='network'}
       }
