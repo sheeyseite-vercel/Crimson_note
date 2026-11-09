@@ -733,6 +733,12 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .hsec.hfull .hgrid th.hn.hcorner{background:transparent!important;border:0!important;box-shadow:none!important}
 .hsec.hfull .hgrid th.hn:not(.hcorner){border-radius:8px!important}
 .hsec.hfull .hc.on{background:var(--ac)!important;box-shadow:none!important}.hsec.hfull .hc.on .ic{display:none}
+.tg.sug{background:transparent;border:1px dashed var(--ac);color:var(--ac-text);cursor:pointer;padding:3px 10px}
+.tgl{display:flex;flex-direction:column;gap:6px;max-height:55vh;overflow:auto;margin:10px 0}
+.tgr{display:flex;align-items:center;gap:8px;background:#f5f5f5;border-radius:12px;padding:6px 10px;color:#111}
+.tgr .tgn{flex:1;text-align:start;background:none;border:0;font-weight:700;font-size:calc(14px*var(--fz));color:#111;padding:6px 0}
+.tgr .tgc{font-size:calc(12px*var(--fz));color:#777}.tgr .ib{background:none;border:0;padding:6px;color:#444}.tgr .ib svg{width:18px;height:18px}
+.tgr input{flex:1;min-width:0;height:34px}.fchips button svg{width:14px;height:14px;vertical-align:-2px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1066,6 +1072,10 @@ Object.assign(TR.de,{"vTable": "Tabelle", "vBoard": "Board", "vGallery": "Galeri
 Object.assign(TR.fr,{"dbFormula": "Formule", "dbFormulaH": "Exemple : {Prix} * {Qté} — supporte + - * / parenthèses, round, min, max", "dbRelTo": "Lié à la base", "dbSelf": "celle-ci", "dbRollRel": "Via la colonne de relation", "dbRollCol": "Colonne à calculer", "dbRollAgg": "Calcul", "dbNoRel": "Ajoutez d'abord une colonne de relation", "tpFormula": "Formule", "tpRel": "Relation", "tpRollup": "Cumul", "agCount": "Nombre", "agSum": "Somme", "agAvg": "Moyenne", "agMin": "Min", "agMax": "Max", "agPct": "% terminé", "dbQuery": "Filtrer et trier", "dbFilter": "Filtres", "dbSort": "Tri", "dbGroupT": "Groupe", "dbGroupH": "Le groupement s'applique à la vue tableau", "dbAddFilter": "Ajouter un filtre", "dbAddSort": "Ajouter un tri", "dbAsc": "Croissant", "dbDesc": "Décroissant", "dbClear": "Tout effacer", "dbUnchecked": "Non coché", "dbRo": "", "opHas": "contient", "opEq": "égal à", "opNe": "différent de", "opFilled": "non vide", "opEmpty": "vide", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "avant", "opAfter": "après", "opOn": "le", "opIs": "est", "opIsnt": "n'est pas", "opHasOpt": "inclut", "opChecked": "coché", "opUnchecked": "non coché"});
 Object.assign(TR.es,{"dbFormula": "Fórmula", "dbFormulaH": "Ejemplo: {Precio} * {Cant} — admite + - * / paréntesis, round, min, max", "dbRelTo": "Vinculado a la base", "dbSelf": "esta misma", "dbRollRel": "Mediante la columna de relación", "dbRollCol": "Columna a calcular", "dbRollAgg": "Cálculo", "dbNoRel": "Añade primero una columna de relación", "tpFormula": "Fórmula", "tpRel": "Relación", "tpRollup": "Resumen", "agCount": "Recuento", "agSum": "Suma", "agAvg": "Promedio", "agMin": "Mín", "agMax": "Máx", "agPct": "% completado", "dbQuery": "Filtrar y ordenar", "dbFilter": "Filtros", "dbSort": "Orden", "dbGroupT": "Agrupar", "dbGroupH": "La agrupación se aplica a la vista de tabla", "dbAddFilter": "Añadir filtro", "dbAddSort": "Añadir orden", "dbAsc": "Ascendente", "dbDesc": "Descendente", "dbClear": "Borrar todo", "dbUnchecked": "Sin marcar", "dbRo": "", "opHas": "contiene", "opEq": "es igual a", "opNe": "es distinto de", "opFilled": "no está vacío", "opEmpty": "está vacío", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "antes", "opAfter": "después", "opOn": "el", "opIs": "es", "opIsnt": "no es", "opHasOpt": "incluye", "opChecked": "marcado", "opUnchecked": "sin marcar"});
 Object.assign(TR.de,{"dbFormula": "Formel", "dbFormulaH": "Beispiel: {Preis} * {Menge} — unterstützt + - * / Klammern, round, min, max", "dbRelTo": "Verknüpft mit Datenbank", "dbSelf": "diese", "dbRollRel": "Über Relationsspalte", "dbRollCol": "Zu berechnende Spalte", "dbRollAgg": "Berechnung", "dbNoRel": "Füge zuerst eine Relationsspalte hinzu", "tpFormula": "Formel", "tpRel": "Relation", "tpRollup": "Rollup", "agCount": "Anzahl", "agSum": "Summe", "agAvg": "Durchschnitt", "agMin": "Min", "agMax": "Max", "agPct": "% erledigt", "dbQuery": "Filtern & sortieren", "dbFilter": "Filter", "dbSort": "Sortierung", "dbGroupT": "Gruppe", "dbGroupH": "Gruppierung gilt für die Tabellenansicht", "dbAddFilter": "Filter hinzufügen", "dbAddSort": "Sortierung hinzufügen", "dbAsc": "Aufsteigend", "dbDesc": "Absteigend", "dbClear": "Alles löschen", "dbUnchecked": "Nicht angehakt", "dbRo": "", "opHas": "enthält", "opEq": "ist gleich", "opNe": "ist ungleich", "opFilled": "nicht leer", "opEmpty": "leer", "opGt": ">", "opLt": "<", "opGte": "≥", "opLte": "≤", "opBefore": "vor", "opAfter": "nach", "opOn": "am", "opIs": "ist", "opIsnt": "ist nicht", "opHasOpt": "enthält", "opChecked": "angehakt", "opUnchecked": "nicht angehakt"});
+Object.assign(TR.fr,{tagsMgr:'Tags',tagSug:'Suggéré depuis le texte',tagRen:'Renommer',noTags:'Aucun tag',tagDel:'Retirer {n} de toutes les notes ?',tagClose:'Fermer'});
+Object.assign(TR.es,{tagsMgr:'Etiquetas',tagSug:'Sugerida del texto',tagRen:'Renombrar',noTags:'Aún no hay etiquetas',tagDel:'¿Quitar {n} de todas las notas?',tagClose:'Cerrar'});
+Object.assign(TR.de,{tagsMgr:'Tags',tagSug:'Aus dem Text vorgeschlagen',tagRen:'Umbenennen',noTags:'Noch keine Tags',tagDel:'{n} aus allen Notizen entfernen?',tagClose:'Schließen'});
+
 L.restoreQ=['استبدال بياناتك الحالية بهذه النسخة؟','Replace your current data with this backup?'];
 L.profile=['الملف الشخصي','Profile'];L.pName=['الاسم','Name'];L.pPhoto=['تغيير الصورة','Change photo'];L.pRemove=['إزالة الصورة','Remove photo'];L.pSettings=['الإعدادات','Settings'];L.tasksDone=['مهمة منجزة','tasks done'];
 L.upPhone=['رفع صورة من الهاتف','Upload from phone'];L.pColors=['أو اختر لوناً','Or pick a color'];L.pEdit=['تعديل','Edit'];L.bannerL=['صورة الغلاف','Cover picture'];L.avatarL=['الصورة الشخصية','Profile picture'];
@@ -1268,7 +1278,7 @@ function vNotes(kind){
  const all=filtered(kind);
  return `<div class="vh"><div><h1 class="h1">${t(kind)}</h1><p class="sub">${all.length} ${t('nNotes')}${kind==='trash'?' • '+t('trashHint'):''}</p></div><div class="sp"></div>${kind==='trash'?`<button class="btn danger" type="button" data-act="empty-trash">${ic('trash')}${t('emptyTrash')}</button>`:`<button class="btn" type="button" data-act="new-note">${ic('plus')}${t('newNote')}</button>`}</div>
  <div class="tools"><input class="in" id="nq" data-in="nfilter" placeholder="${t('filterQ')}" value="${esc(memUI.q)}"><select class="in" style="width:auto" data-in="nsort"><option value="updated" ${memUI.sort==='updated'?'selected':''}>${t('sortU')}</option><option value="created" ${memUI.sort==='created'?'selected':''}>${t('sortC')}</option><option value="title" ${memUI.sort==='title'?'selected':''}>${t('sortT')}</option></select><div class="seg"><button type="button" class="${memUI.mode==='grid'?'on':''}" data-act="mode-grid" aria-label="grid">${ic('grid')}</button><button type="button" class="${memUI.mode==='list'?'on':''}" data-act="mode-list" aria-label="list">${ic('list')}</button></div></div>
- ${kind==='notes'?`<div class="fchips"><button type="button" class="${!memUI.nb?'on':''}" data-act="f-nb" data-id="">${t('all')}</button>${nbTree().map(({b,d})=>`<button type="button" class="${memUI.nb===b.id?'on':''}" data-act="f-nb" data-id="${b.id}">${d?'↳ ':''}${esc(b.name)}</button>`).join('')}<button type="button" class="${memUI.nb==='none'?'on':''}" data-act="f-nb" data-id="none">${t('noNb')}</button>${tags.map(x=>`<button type="button" class="${memUI.tag===x?'on':''}" data-act="f-tag" data-id="${esc(x)}">#${esc(x)}</button>`).join('')}</div>`:''}
+ ${kind==='notes'?`<div class="fchips"><button type="button" class="${!memUI.nb?'on':''}" data-act="f-nb" data-id="">${t('all')}</button>${nbTree().map(({b,d})=>`<button type="button" class="${memUI.nb===b.id?'on':''}" data-act="f-nb" data-id="${b.id}">${d?'↳ ':''}${esc(b.name)}</button>`).join('')}<button type="button" class="${memUI.nb==='none'?'on':''}" data-act="f-nb" data-id="none">${t('noNb')}</button>${tags.map(x=>`<button type="button" class="${memUI.tag===x?'on':''}" data-act="f-tag" data-id="${esc(x)}">#${esc(x)}</button>`).join('')}<button type="button" data-act="tags-mgr" aria-label="${t('tagsMgr')}">${ic('tag')} ${t('tagsMgr')}</button></div>`:''}
  <div class="ngrid ${memUI.mode==='list'?'list':''}" id="nlist">${nlist(kind)}</div>`}
 ['notes','favs','archive','trash'].forEach(k=>V[k]=()=>vNotes(k));
 
@@ -1568,7 +1578,7 @@ V.note=(id)=>{
  <button class="ib" type="button" data-act="fav-cur" id="favb" aria-label="${t('fav')}"><svg class="ic" style="${n.fav?'fill:var(--ac)':''}"><use href="#i-star"/></svg></button><button class="ib" type="button" data-act="focus" aria-label="${t('mFocus')}">${ic('focus')}</button><button class="ib" type="button" data-act="note-menu" data-id="${n.id}" data-cur="1" aria-label="menu">${ic('dots')}</button></div>
  <div class="ed"><article class="card page">${n.cover!=null?`<div class="cover" style="background:${COVERS[n.cover]}"></div>`:''}
  <div class="pg"><div class="tl"><button type="button" class="nic" data-act="pick-icon" id="nic" aria-label="icon">${esc(n.icon)}</button><input class="nt" id="nt" dir="auto" maxlength="200" placeholder="${t('untitled')}" value="${esc(n.title)}"></div>
- <div class="props">${ic('folder')}<select id="nbsel" data-in="nbsel" aria-label="${t('notebooks')}"><option value="">${t('noNb')}</option>${nbTree().map(({b,d})=>`<option value="${b.id}" ${b.id===n.nb?'selected':''}>${'\u2003'.repeat(d)}${esc(b.name)}</option>`).join('')}</select><span id="tagsw" style="display:contents">${tagsHtml(n)}</span><input class="tagin" id="tagin" placeholder="${t('addTag')}" maxlength="30"><span style="margin-inline-start:auto">${ic('clock','')} ${t('created')} ${rel(n.created)}</span></div></div>
+ <div class="props">${ic('folder')}<select id="nbsel" data-in="nbsel" aria-label="${t('notebooks')}"><option value="">${t('noNb')}</option>${nbTree().map(({b,d})=>`<option value="${b.id}" ${b.id===n.nb?'selected':''}>${'\u2003'.repeat(d)}${esc(b.name)}</option>`).join('')}</select><span id="tagsw" style="display:contents">${tagsHtml(n)}</span><input class="tagin" id="tagin" placeholder="${t('addTag')}" maxlength="30"><span id="tagsug" style="display:contents"></span><span style="margin-inline-start:auto">${ic('clock','')} ${t('created')} ${rel(n.created)}</span></div></div>
  <div class="tb" id="tb">${TB('undo','undo','b_undo')}${TB('redo','redo','b_redo')}<span class="sep"></span>
  <select id="fmt" aria-label="format"><option value="p">${t('fmtP')}</option><option value="h1">${t('fmtH1')}</option><option value="h2">${t('fmtH2')}</option><option value="h3">${t('fmtH3')}</option></select><button type="button" class="tbsel" id="ffm" aria-label="${t('b_font')}">${t('b_font')}${ic('chd')}</button><span class="sep"></span>
  ${TB('bold','bold','b_bold')}${TB('italic','italic','b_italic')}${TB('underline','underline','b_under')}${TB('strikeThrough','strike','b_strike')}${TB('color','textc','b_color')}${TB('hl','hl','b_hl')}<span class="sep"></span>
@@ -1585,7 +1595,7 @@ function setStatus(s){const e=$('#stat');if(!e)return;e.innerHTML=s==='saving'?i
 function docStats(){const d=$('#doc');if(!d)return;const tx=d.innerText||'';const w=tx.trim()?tx.trim().split(/\s+/).length:0;const e=$('#sbar');
  if(e)e.innerHTML=`<span>${ic('file')}${w} ${t('words')}</span><span>${tx.replace(/\s/g,'').length} ${t('chars')}</span><span>${ic('clock')}${Math.max(1,Math.round(w/200))} ${t('readT')}</span>`;
  d.classList.toggle('emp',!tx.trim()&&!d.querySelector('img,table,hr,pre,li'))}
-function onDoc(){const d=$('#doc');if(!d)return;fixDir(d);pendingEd=true;clearTimeout(edTimer);setStatus('saving');edTimer=setTimeout(commit,500);docStats();clearTimeout(onDoc.p);onDoc.p=setTimeout(panel,700)}
+function onDoc(){const d=$('#doc');if(!d)return;fixDir(d);pendingEd=true;clearTimeout(edTimer);setStatus('saving');edTimer=setTimeout(commit,500);docStats();clearTimeout(onDoc.p);onDoc.p=setTimeout(()=>{panel();sugTags()},700)}
 function commit(){
  clearTimeout(edTimer);pendingEd=false;const n=curNote,d=$('#doc'),ti=$('#nt');if(!n||!d)return;
  const html=d.innerHTML,title=ti?ti.value:n.title;if(html===n.html&&title===n.title){setStatus('saved');return}
@@ -1679,9 +1689,9 @@ function edInit(n){
  $('#fmt').addEventListener('change',e=>{restoreSel();ex('formatBlock','<'+e.target.value+'>')});
  $('#ffm').addEventListener('click',e=>{saveSel();fontMenu(e.currentTarget)});loadNoteFonts();fitSel($('#fmt'));docExtras(d);
  $('#tagin').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','){e.preventDefault();addTag(e.target)}});
- $('#tagin').addEventListener('blur',e=>addTag(e.target));
+ $('#tagin').addEventListener('blur',e=>addTag(e.target));sugTags();
 }
-function addTag(inp){const v=inp.value.trim().replace(/^#/,'').replace(/,/g,'');if(!v||!curNote)return;inp.value='';if(!curNote.tags.includes(v)){curNote.tags.push(v);curNote.updated=Date.now();save();$('#tagsw').innerHTML=tagsHtml(curNote)}}
+function addTag(inp){const v=inp.value.trim().replace(/^#/,'').replace(/,/g,'');if(!v||!curNote)return;inp.value='';if(!curNote.tags.includes(v)){curNote.tags.push(v);curNote.updated=Date.now();save();$('#tagsw').innerHTML=tagsHtml(curNote);sugTags()}}
 function docKey(e){
  if(slash){const m=curMenu;if(m&&['ArrowDown','ArrowUp','Enter','Escape'].includes(e.key)){e.preventDefault();const bs=[...m.querySelectorAll('button')];let i=bs.findIndex(b=>b.classList.contains('hi'));
   if(e.key==='Escape'){closeMenu();slash=null;return}
@@ -2115,7 +2125,7 @@ const A={
  'fav-cur':()=>{const n=curNote;if(!n)return;n.fav=!n.fav;save();$('#favb svg').style.fill=n.fav?'var(--ac)':''},
  'focus':()=>focusMode(true),
  'pick-icon':el=>{const m=popup(el,`<div class="emg">${EMO.map(e=>`<button type="button" data-e="${e}">${e}</button>`).join('')}</div>`);m.addEventListener('click',e=>{const b=e.target.closest('[data-e]');if(!b||!curNote)return;curNote.icon=b.dataset.e;$('#nic').textContent=b.dataset.e;curNote.updated=Date.now();save();closeMenu()})},
- 'rm-tag':el=>{if(!curNote)return;curNote.tags=curNote.tags.filter(x=>x!==el.dataset.id);save();$('#tagsw').innerHTML=tagsHtml(curNote)},
+ 'rm-tag':el=>{if(!curNote)return;curNote.tags=curNote.tags.filter(x=>x!==el.dataset.id);save();$('#tagsw').innerHTML=tagsHtml(curNote);sugTags()},
  'ptab':el=>{memUI.sideTab=el.dataset.id;panel()},
  'goto-h':el=>{const h=[...$('#doc').querySelectorAll('h1,h2,h3')].filter(x=>x.textContent.trim())[+el.dataset.id];h?.scrollIntoView({behavior:'smooth',block:'center'})},
  'restore-v':async el=>{const n=curNote,v=n?.v[+el.dataset.id];if(!v)return;flushEditor();n.v.unshift({t:Date.now(),title:n.title,html:n.html});n.html=v.html;n.title=v.title;n.updated=Date.now();save();render(1);toast(t('restoredN'))},
@@ -2900,7 +2910,7 @@ V.pomo=()=>{const p=PM(),k=dkey(),td=p.log[k]||{m:0,n:0};postRender=()=>{pmTick(
 const gStep=g=>g.target>20?Math.max(1,Math.round(g.target/20)):1;
 V.goals=()=>{const gs=(S.goals=S.goals||[]).slice().sort((a,b)=>(a.done?1:0)-(b.done?1:0)||b.created-a.created);
  return `<div class="vh"><div><h1 class="h1">${t('goals')}</h1><p class="sub">${t('goalsSub')}</p></div><div class="sp"></div><button type="button" class="btn" data-act="goal-new">${ic('plus')}${t('newGoal')}</button></div>
- <section class="card sec">${gs.length?gs.map(g=>{const p=Math.min(100,Math.round(g.cur*100/g.target)),st=gStep(g);return `<div class="goal ${g.done?'done':''}"><div class="gh"><b>${esc(g.title)}</b><button type="button" class="mo2" data-act="goal-edit" data-id="${g.id}" aria-label="${t('rename')}">${ic('dots')}</button></div>
+ <section class="card sec">${gs.length?gs.map(g=>{const p=Math.min(100,Math.round(g.cur*100/g.target)),st=gStep(g);return `<div class="goal ${g.done?'done':''}"><div class="gh"><b>${esc(g.title)}</b><button type="button" class="mo2" data-act="goal-edit" data-id="${g.id}" aria-label="${t('tagRen')}">${ic('dots')}</button></div>
   <div class="bar"><i style="width:${p}%"></i></div><div class="gn"><span>${g.cur} / ${g.target}${g.unit?' '+esc(g.unit):''} · ${p}%${g.due?' · '+dueLabel(g.due):''}</span><button type="button" class="btn ghost" data-act="goal-inc" data-id="${g.id}" data-d="-1" aria-label="-">−${st>1?st:''}</button><button type="button" class="btn" data-act="goal-inc" data-id="${g.id}" data-d="1" aria-label="+">+${st>1?st:''}</button></div></div>`}).join(''):empty(t('noGoals'),t('noGoalsH'))}</section>`};
 function goalSet(g,cur){g.cur=Math.max(0,Math.round(cur*100)/100);if(g.cur>=g.target&&!g.done){g.done=true;toast(t('goalDone'))}else if(g.cur<g.target)g.done=false}
 function goalDialog(g){const x=g||{title:'',target:10,cur:0,unit:'',due:''};
@@ -3232,6 +3242,43 @@ function qDialog(db){const q=JSON.parse(JSON.stringify(db.q||{}));q.f=q.f||[];q.
  ov.addEventListener('input',e=>{const s=e.target;if(s.dataset&&s.dataset.q==='fv'&&s.tagName==='INPUT'){const i=+s.closest('.qr').dataset.i;q.f[i].v=s.value}});
  ov.addEventListener('click',e=>{if(e.target.closest('[data-x]'))ov.remove();else if(e.target.closest('[data-ok]')){db.q=q;dbTouch(db);ov.remove();render(1)}})}
 Object.assign(A,{'db-q':()=>qDialog(dbById(memUI.dbid))});
+
+/* =====================================================================
+   Smart tags: suggestions from text + tag manager
+   ===================================================================== */
+const SW=new Set(('the and for are but not you all can had her was one our out has his how its may new now old see two way who did get him let say she too use '+
+ 'that with have this will your from they know want been good much some time very when come here just like long make many over such take than them well were what '+
+ 'les des une pour dans que qui est pas sur par avec plus sont cette mais comme nous vous ils elle son ses aux ont fait tout aussi '+
+ 'los las una por con para que del como más pero sus fue son está este esta esto entre todo muy también hay ser '+
+ 'der die das und ist nicht ein eine mit von für auf den dem des sich auch dass wie wird sind oder aber nach bei noch nur '+
+ 'في من على الى إلى عن مع هذا هذه ذلك التي الذي التى كان كانت يكون ليس لكن أن إن او أو ثم قد لقد كل بعد قبل بين حتى عند هو هي هم نحن أنا انا ما لا لم لن').split(' '));
+function tagCands(text,have){
+ const low=text.toLowerCase(),out=[];
+ const known=new Map();live().forEach(n=>n.tags.forEach(x=>known.set(x,(known.get(x)||0)+1)));
+ known.forEach((cnt,x)=>{if(!have.includes(x)&&x.length>=2&&low.includes(x.toLowerCase()))out.push([x,100+cnt])});
+ const fr=new Map();(low.match(/[\p{L}][\p{L}\p{N}]{2,}/gu)||[]).forEach(w=>{if(/^ال.{3,}/.test(w))w=w.slice(2);else if(/^و.{4,}/.test(w))w=w.slice(1);if(SW.has(w)||/^\p{N}+$/u.test(w))return;fr.set(w,(fr.get(w)||0)+1)});
+ const min=low.length>600?3:2;
+ [...fr].filter(([w,n])=>n>=min&&w.length>=3&&!have.includes(w)&&!out.some(o=>o[0].toLowerCase()===w)).sort((a,b)=>b[1]-a[1]).slice(0,6).forEach(([w,n])=>out.push([w,n]));
+ return out.sort((a,b)=>b[1]-a[1]).slice(0,5).map(o=>o[0])}
+function sugTags(){const w=$('#tagsug');if(!w||!curNote)return;const d=$('#doc');const txt=((curNote.title||'')+' '+(d?d.textContent:plain(curNote.html||''))).trim();
+ const s=txt.length<40?[]:tagCands(txt,curNote.tags);
+ w.innerHTML=s.map(x=>`<button type="button" class="tg sug" data-act="sug-tag" data-id="${esc(x)}" title="${t('tagSug')}">+ #${esc(x)}</button>`).join('')}
+function tagStats(){const m=new Map();live().forEach(n=>n.tags.forEach(x=>m.set(x,(m.get(x)||0)+1)));return [...m].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))}
+function tagsDialog(){const ov=openModal('');const draw=()=>{const st=tagStats();
+ $('.dlg',ov).innerHTML=`<h3>${ic('tag')} ${t('tagsMgr')}</h3>${st.length?`<div class="tgl">${st.map(([x,n])=>`<div class="tgr" data-t="${esc(x)}"><button type="button" class="tgn" data-go>#${esc(x)}</button><span class="tgc">${n} ${t('nNotes')}</span><button type="button" class="ib" data-rn aria-label="${t('tagRen')}">${ic('edit')}</button><button type="button" class="ib" data-dl aria-label="${t('del')}">${ic('trash')}</button></div>`).join('')}</div>`:`<div class="empty" style="padding:18px 4px">${t('noTags')}</div>`}<div class="dlg-a"><button class="btn" data-x type="button">${t('tagClose')}</button></div>`};
+ draw();
+ ov.addEventListener('click',async e=>{const r=e.target.closest('.tgr'),x=r&&r.dataset.t;
+  if(e.target.closest('[data-x]')){ov.remove();return}
+  if(!r)return;
+  if(e.target.closest('[data-go]')){memUI.tag=x;ov.remove();go('notes');return}
+  if(e.target.closest('[data-dl]')){if(await sure(t('tagDel').replace('{n}','#'+x))){live().forEach(n=>{if(n.tags.includes(x)){n.tags=n.tags.filter(z=>z!==x);n.updated=Date.now()}});if(memUI.tag===x)memUI.tag=null;bump();save();draw();render(1)}return}
+  if(e.target.closest('[data-rn]')){r.innerHTML=`<input class="in" maxlength="30" value="${esc(x)}"><button type="button" class="btn" data-ok>${t('save')}</button>`;$('input',r).focus();return}
+  if(e.target.closest('[data-ok]')){const v=$('input',r).value.trim().replace(/^#/,'').replace(/,/g,'');if(!v||v===x){draw();return}
+   live().forEach(n=>{if(n.tags.includes(x)){n.tags=[...new Set(n.tags.map(z=>z===x?v:z))];n.updated=Date.now()}});if(memUI.tag===x)memUI.tag=v;bump();save();draw();render(1)}});
+ ov.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.tgr input'))$('[data-ok]',e.target.closest('.tgr')).click()})}
+Object.assign(A,{'tags-mgr':()=>tagsDialog(),'sug-tag':el=>{if(!curNote)return;const v=el.dataset.id;if(!curNote.tags.includes(v)){curNote.tags.push(v);curNote.updated=Date.now();save();$('#tagsw').innerHTML=tagsHtml(curNote);sugTags()}}});
+
+Object.assign(L,{tagsMgr:['الوسوم','Tags'],tagSug:['وسم مقترح من النص','Suggested from text'],tagRen:['إعادة تسمية','Rename'],noTags:['لا توجد وسوم بعد','No tags yet'],tagDel:['حذف {n} من كل الملاحظات؟','Remove {n} from all notes?'],tagClose:['إغلاق','Close']});
 
 })();
 
