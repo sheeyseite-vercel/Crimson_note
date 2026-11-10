@@ -816,6 +816,7 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .rst{padding:10px 12px;border-radius:12px;background:var(--ac-soft);font-size:calc(13px*var(--fz))}.rsum{padding:10px 12px;border-radius:14px;background:var(--bg2,rgba(127,127,127,.08));font-size:calc(14px*var(--fz));line-height:1.7}.rsum h4,.rsh h4{margin:0 0 4px;font-size:calc(13px*var(--fz));color:var(--fg2)}.rhint{color:var(--fg2);font-size:calc(13px*var(--fz));margin:0}
 .rtx{display:grid;gap:2px;max-height:34vh;overflow:auto}.rl{display:flex;gap:10px;text-align:start;padding:7px 8px;border-radius:10px;align-items:flex-start;font-size:calc(14px*var(--fz));line-height:1.55}.rl i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ac);font-weight:600;flex:none;min-width:42px}.rl.on{background:var(--ac-soft)}.rl[hidden]{display:none}
 .ract{display:grid;gap:6px;margin:8px 0}.rck{display:flex;gap:10px;align-items:flex-start;font-size:calc(14px*var(--fz))}.rck small{color:var(--fg2)}.rlist{display:grid;gap:6px}.rli{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;background:var(--ac-soft);text-align:start}.rli span{flex:1}.rli small{color:var(--fg2)}.rli .ic{width:calc(18px*var(--fz));height:calc(18px*var(--fz))}
+#top[hidden]{display:none!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1339,7 +1340,7 @@ function render(keep){
  const h=location.hash.slice(1)||'home';route=h;
  let name=h,arg=null;if(h.startsWith('note-')){name='note';arg=h.slice(5)}else if(h.startsWith('doc-')){name='doc';arg=h.slice(4)}
  const v=$('#view');const sc=keep?v.scrollTop:0;postRender=null;
- if(name!=='note')curNote=null;if(name!=='doc'&&DV.d)dcleanup();
+ if(name!=='note')curNote=null;{const tp=$('#top');if(tp)tp.hidden=(name==='docs'||name==='calendar')}if(name!=='doc'&&DV.d)dcleanup();
  v.innerHTML=(V[name]||V.home)(arg);
  v.scrollTop=sc;navState(name==='note'?'notes':name==='doc'?'docs':/^ai/.test(name)?'ai':(V[name]?name:'home'));document.body.classList.toggle('aimode',name==='ai');
  $('#side').classList.remove('open');$('#scrim').classList.remove('open');
@@ -1365,7 +1366,7 @@ V.home=()=>{
  const dateStr=new Date().toLocaleDateString(dloc(),{weekday:'long',day:'numeric',month:'short'});
  return `<div class="stack">
  <section class="hero"><span class="hi">${ic(hr>=6&&hr<18?'sun':'moon')}</span><span class="hd">${ic('cal')}${esc(dateStr)}</span><div class="hline"><h1>${g}</h1><p class="hpr" id="hpr">${esc(prayerText())}</p></div></section>
- <section class="qa"><button type="button" data-act="new-daily">${ic('edit')}<span>${t('qa_daily')}</span></button><button type="button" data-act="add-img">${ic('image')}<span>${t('qa_img')}</span></button><button type="button" data-act="draw">${ic('brush')}<span>${t('qa_draw')}</span></button><button type="button" data-act="new-task">${ic('check')}<span>${t('qa_task')}</span></button><button type="button" data-act="import">${ic('up')}<span>${t('qa_import')}</span></button><button type="button" data-go="pomo">${ic('timer')}<span>${t('pomo')}</span></button></section>
+ <section class="qa"><button type="button" data-act="new-note">${ic('plus')}<span>${t('newNote')}</span></button><button type="button" data-act="add-img">${ic('image')}<span>${t('qa_img')}</span></button><button type="button" data-act="draw">${ic('brush')}<span>${t('qa_draw')}</span></button><button type="button" data-act="new-task">${ic('check')}<span>${t('qa_task')}</span></button><button type="button" data-act="import">${ic('up')}<span>${t('qa_import')}</span></button><button type="button" data-go="pomo">${ic('timer')}<span>${t('pomo')}</span></button></section>
  <section class="card sec"><div class="sec-h">${ic('book')}<h2>${t('notebooks')}</h2><a role="button" tabindex="0" data-go="notebooks">${t('viewAll')}${ic('chr','flip')}</a></div><div class="nbs">${S.notebooks.slice(0,5).map(nbCard).join('')}<button type="button" class="nbk add" data-act="new-nb">${ic('plus')}<span>${t('newNb')}</span></button></div></section>
  <div class="cols"><section class="card sec"><div class="sec-h">${ic('file')}<h2>${t('recent')}</h2><a role="button" tabindex="0" data-go="notes">${t('viewAll')}${ic('chr','flip')}</a></div><div class="rows">${recent.length?recent.map(noteRow).join(''):empty(t('noNotes'),t('noNotesH'))}</div></section>
  <div class="stack"><section class="card sec"><div class="sec-h">${ic('check')}<h2>${t('upTasks')}</h2><a role="button" tabindex="0" data-go="tasks">${t('viewAll')}${ic('chr','flip')}</a></div><div class="rows">${tasks.length?tasks.map(x=>taskRow(x,false)).join(''):empty(t('noTasks'),t('noTasksH'))}</div></section>
