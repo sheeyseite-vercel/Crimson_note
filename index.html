@@ -823,6 +823,7 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .sh{margin:0 0 6px;font-size:calc(16px*var(--fz))}.bkl{display:grid;gap:6px;width:100%}.bki{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:8px 10px;border-radius:12px;background:var(--ac-soft);font-size:calc(13px*var(--fz))}.bki small{display:block;color:var(--fg2)}.rw-b{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 #lock .lnk .ic{width:calc(16px*var(--fz));height:calc(16px*var(--fz));vertical-align:-3px}
 .rtr{display:block;font-style:normal;color:var(--fg2);font-size:calc(13px*var(--fz));margin-top:2px}.rtl{width:auto;height:40px;padding:0 8px}
+#view{padding-top:calc(26px + env(safe-area-inset-top,0px))}.ed-bar .crumbs{visibility:hidden;pointer-events:none}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1352,7 +1353,7 @@ function render(keep){
  const h=location.hash.slice(1)||'home';route=h;
  let name=h,arg=null;if(h.startsWith('note-')){name='note';arg=h.slice(5)}else if(h.startsWith('doc-')){name='doc';arg=h.slice(4)}
  const v=$('#view');const sc=keep?v.scrollTop:0;postRender=null;
- if(name!=='note')curNote=null;{const tp=$('#top');if(tp)tp.hidden=(name==='docs'||name==='calendar'||name==='note')}if(name!=='doc'&&DV.d)dcleanup();
+ if(name!=='note')curNote=null;{const tp=$('#top');if(tp)tp.hidden=true}if(name!=='doc'&&DV.d)dcleanup();
  v.innerHTML=(V[name]||V.home)(arg);
  v.scrollTop=sc;navState(name==='note'?'notes':name==='doc'?'docs':/^ai/.test(name)?'ai':(V[name]?name:'home'));document.body.classList.toggle('aimode',name==='ai');
  $('#side').classList.remove('open');$('#scrim').classList.remove('open');
@@ -3687,7 +3688,7 @@ function recBar(){let p=$('#rbar');if(!RC.on){if(p)p.remove();document.querySele
  p.classList.toggle('paused',!!RC.paused);
  p.innerHTML=`<i class="vdot"></i><b id="rt">${mmss(RC.act/1000)}</b><span class="vst">${t(RC.paused?'rPaused':'rRec')}</span><button type="button" data-r="pause" aria-label="${t('rPause')}">${ic(RC.paused?'play':'pause')}</button><button type="button" data-r="stop" class="vstop" aria-label="${t('rStop')}">${ic('check')}</button>`;
  document.querySelectorAll('[data-ex=rec]').forEach(e=>e.classList.add('recording'))}
-function recSeg(){const rec=new MediaRecorder(RC.stream,RC.mime?{mimeType:RC.mime,audioBitsPerSecond:RC.music?128000:32000}:{audioBitsPerSecond:RC.music?128000:32000});RC.rec=rec;RC.chunks=[];RC.segA0=RC.act;const chunks=RC.chunks,a0=RC.act;
+function recSeg(){const rec=new MediaRecorder(RC.stream,RC.mime?{mimeType:RC.mime,audioBitsPerSecond:RC.music?256000:32000}:{audioBitsPerSecond:RC.music?256000:32000});RC.rec=rec;RC.chunks=[];RC.segA0=RC.act;const chunks=RC.chunks,a0=RC.act;
  rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
  rec.onstop=()=>{const d=(RC.act-a0)/1000,idx=RC.segs.length,mime=RC.mime;RC.segs.push({d});const blob=new Blob(chunks,{type:mime});
   RC.q=RC.q.then(async()=>{try{await fput('rec:'+RC.id+':'+idx,await blob.arrayBuffer())}catch(e){}});
@@ -3932,6 +3933,7 @@ function asInit(){const root=$('#asv');if(!root)return;let tm=null;
 const _prefs=V.prefs;
 V.prefs=()=>{const h=_prefs();aiS();const g=S.profile&&S.profile.google;const bk=S.bkList||[];
  const c=`<section class="card sec set" id="secc"><h3 class="sh">${t('secT')}</h3>
+ <div class="rw"><div><b>${t('profile')}</b><small>${esc((S.profile&&S.profile.google&&(S.profile.google.name||S.profile.google.email))||'')}</small></div><button class="av" type="button" data-act="profile" aria-label="${t('profile')}" style="${avStyle()}">${avInner()}</button></div>
  <div class="rw rw-col"><div><b>${t('bkT')}</b><small>${t('bkD')}</small></div><div class="bkl">${bk.length?bk.map(e=>`<div class="bki"><span>${new Date(e.at).toLocaleString(dloc(),{dateStyle:'medium',timeStyle:'short'})}${e.m?' · '+t('bkMan'):''}<small>${e.n} ${t('notes')} · ${fmtBytes(e.size)}</small></span><button class="btn ghost" type="button" data-act="bk-restore" data-id="${e.id}">${t('bkRestore')}</button></div>`).join(''):`<small>${t('bkNone')}</small>`}</div><div class="rw-b"><button class="btn" type="button" data-act="bk-now">${ic('copy')}${t('bkNow')}</button><button class="btn ghost" type="button" data-act="zip-all">${ic('down')}${t('zipT')}</button></div></div>
  ${g?`<div class="rw"><div><b>${t('syncT')}</b><small>${S.sync&&S.sync.last?t('syncLast')+' '+rel(S.sync.last):t('syncNever')}</small></div><button class="btn ghost" type="button" data-act="sync-now">${t('syncNow')}</button></div>`:''}
  ${bioOK()?`<div class="rw"><div><b>${t('bioT')}</b><small>${t('bioD')}</small></div>${bioOn()?`<button class="btn ghost" type="button" data-act="bio-off">${t('bioRm')}</button>`:`<button class="btn" type="button" data-act="bio-on">${t('bioEn')}</button>`}</div>`:''}
