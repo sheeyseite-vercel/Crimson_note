@@ -858,25 +858,24 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 @media(prefers-reduced-motion:no-preference){.hero .hi{display:none}}
 .hero .hi{display:none}
 .hero .sky,.hero .sun3d{position:absolute;pointer-events:none}.hero .sky{inset:0;overflow:hidden}
-.hero .cl{position:absolute;display:block;opacity:.95;filter:drop-shadow(0 6px 8px rgba(70,130,190,.25));animation:hdrift linear infinite;will-change:transform}
-.hero .cl svg{display:block;width:100%;height:auto}
-.hero .c1{width:150px;inset-block-end:-6px;left:-160px;animation-duration:70s;animation-delay:-38s}
-.hero .c2{width:96px;inset-block-start:44%;left:-110px;opacity:.75;animation-duration:105s;animation-delay:-70s}
-.hero .c3{width:120px;inset-block-start:6px;left:-130px;opacity:.85;animation-duration:88s;animation-delay:-12s}
-@keyframes hdrift{to{transform:translateX(calc(100vw + 360px))}}
-.hero .sun3d{inset-block-start:-34px;inset-inline-end:-18px;width:150px;height:150px;display:grid;place-items:center}
+.hero .cl{position:absolute;display:block;animation:hdrift linear infinite;will-change:transform}
+.hero .cl svg{display:block;width:100%;height:auto;opacity:.55}
+.hero .c1{width:170px;inset-block-end:-14px;left:-190px;animation-duration:95s;animation-delay:-52s}
+.hero .c2{width:110px;inset-block-end:26px;left:-130px;opacity:.7;animation-duration:140s;animation-delay:-95s}
+.hero .c3{display:none}
+@keyframes hdrift{to{transform:translateX(calc(100vw + 420px))}}
+.hero .sun3d{inset-block-start:-30px;inset-inline-end:-24px;width:150px;height:150px;display:grid;place-items:center}
 .hero .sun3d i{position:absolute;display:block;border-radius:50%}
-.hero .sun3d .ra,.hero .sun3d .rb{inset:-70px;-webkit-mask:radial-gradient(circle,transparent 0 17%,#000 26%,transparent 66%);mask:radial-gradient(circle,transparent 0 17%,#000 26%,transparent 66%)}
-.hero .sun3d .ra{background:repeating-conic-gradient(rgba(255,244,160,.85) 0 5deg,transparent 5deg 15deg);animation:hspin 50s linear infinite,hpulse 3.4s ease-in-out infinite}
-.hero .sun3d .rb{background:repeating-conic-gradient(from 7deg,rgba(255,225,90,.6) 0 3deg,transparent 3deg 22deg);animation:hspin 80s linear infinite reverse,hpulse 4.6s ease-in-out infinite -1.5s}
-.hero .sun3d .halo{width:130px;height:130px;background:radial-gradient(circle,rgba(255,236,120,.95) 0,rgba(255,214,60,.5) 38%,rgba(255,200,40,0) 70%);animation:hhalo 3s ease-in-out infinite}
-.hero .sun3d .orb{width:66px;height:66px;background:radial-gradient(circle at 34% 28%,#fffde0 0,#ffe95a 24%,#ffc400 58%,#f08c00 100%);box-shadow:inset -9px -11px 18px rgba(214,110,0,.6),inset 7px 7px 12px rgba(255,255,255,.75),0 0 26px rgba(255,205,0,.95),0 0 60px rgba(255,190,0,.6);animation:hfloat 6s ease-in-out infinite}
+.hero .sun3d .ra{inset:-60px;background:repeating-conic-gradient(rgba(255,252,215,.55) 0 8deg,transparent 8deg 40deg);filter:blur(7px);-webkit-mask:radial-gradient(circle,transparent 0 15%,#000 24%,transparent 62%);mask:radial-gradient(circle,transparent 0 15%,#000 24%,transparent 62%);animation:hspin 70s linear infinite,hpulse 5s ease-in-out infinite}
+.hero .sun3d .rb{width:70px;height:70px;border:1.5px solid rgba(255,244,170,.7);animation:hring 4.5s ease-out infinite}
+.hero .sun3d .halo{width:120px;height:120px;background:radial-gradient(circle,rgba(255,244,170,.9) 0,rgba(255,226,110,.38) 40%,rgba(255,220,100,0) 70%);animation:hhalo 4s ease-in-out infinite}
+.hero .sun3d .orb{width:52px;height:52px;background:radial-gradient(circle at 35% 30%,#fffbe0 0,#ffeb70 30%,#ffd02a 66%,#f6a800 100%);box-shadow:inset -6px -8px 12px rgba(230,130,0,.45),inset 4px 4px 8px rgba(255,255,255,.7),0 0 22px rgba(255,214,60,.85)}
 @keyframes hspin{to{transform:rotate(360deg)}}
-@keyframes hpulse{0%,100%{opacity:.45}50%{opacity:1}}
-@keyframes hhalo{0%,100%{transform:scale(.92);opacity:.8}50%{transform:scale(1.2);opacity:1}}
-@keyframes hfloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(3px) scale(1.04)}}
+@keyframes hpulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes hhalo{0%,100%{transform:scale(.95);opacity:.8}50%{transform:scale(1.12);opacity:1}}
+@keyframes hring{0%{transform:scale(.8);opacity:.85}100%{transform:scale(2.4);opacity:0}}
 @media(prefers-reduced-motion:reduce){.hero .cl,.hero .sun3d i{animation:none}}
-.hero{color:#0f2f4d;background:radial-gradient(circle at 86% 16%,rgba(255,236,150,.95) 0,rgba(255,236,150,0) 34%),linear-gradient(145deg,#5db4f5 0%,#9bd4fb 50%,#d6eefc 100%);box-shadow:0 10px 28px rgba(60,140,210,.35)}
+.hero{color:#0f2f4d;background:radial-gradient(circle at 88% 12%,rgba(255,244,190,.9) 0,rgba(255,244,190,0) 40%),linear-gradient(165deg,#86c8f4 0%,#b9e1fa 52%,#fdf0d6 100%);box-shadow:0 10px 28px rgba(80,150,210,.28)}
 .hero .hd{background:rgba(255,255,255,.55);color:#0f2f4d}
 @media (prefers-color-scheme:dark){@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
 :root:not([data-theme="light"]) .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1.5px 1.5px at 12% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 52% 20%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 82%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 40%,#fff 50%,transparent 51%);opacity:.7;animation:hstar 4s ease-in-out infinite alternate}
