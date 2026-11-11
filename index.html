@@ -24,12 +24,12 @@
 <style>
 /* Layout: glass sidebar + scrolling main column; crimson on white smoke, dark wine variant */
 :root{
-  --bg:#f5f5f5; --bg-tint:#fbf2e2; --surface:rgba(255,255,255,.76); --solid:#ffffff; --solid-2:#fdf6ea; --line:rgba(120,70,0,.12);
-  --fg:#2a1d0c; --fg2:#6b5636; --fg3:#8f7a55;
+  --bg:#f7f7f8; --bg-tint:#ffffff; --surface:rgba(255,255,255,.76); --solid:#ffffff; --solid-2:#f3f3f4; --line:rgba(0,0,0,.09);
+  --fg:#1d1d20; --fg2:#5c5c63; --fg3:#8a8a92;
   --ac:#fd7903; --ac2:#fee800; --ac-text:#bd5200; --ac-soft:rgba(253,121,3,.10); --ac-soft2:rgba(253,121,3,.19); --on-ac:#2a1500;
   --ok:#1b9a5f; --warn:#d97a06; --info:#6d4be0;
-  --sh:0 14px 34px -16px rgba(170,90,0,.34); --sh-sm:0 4px 14px -6px rgba(170,90,0,.24);
-  --blob1:rgba(253,121,3,.20); --blob2:rgba(254,226,0,.30); --paper:#ffffff; --scrim:rgba(40,20,0,.45);
+  --sh:0 14px 34px -18px rgba(0,0,0,.22); --sh-sm:0 4px 14px -6px rgba(0,0,0,.14);
+  --blob1:rgba(0,0,0,0); --blob2:rgba(0,0,0,0); --paper:#ffffff; --scrim:rgba(40,20,0,.45);
   --fz:1; --f:'Outfit','Cairo',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -1369,11 +1369,11 @@ function applyAccent(){if(S.accv===2){const oid=ACCV2[S.accent||0];const ni=ACC.
  const a=ACC[S.accent||0]||ACC[0];const tc=document.querySelector('meta[name=theme-color]');
  if(!S.accent){k.forEach(x=>r.style.removeProperty(x));return}
  const c1=hex2rgb(a[3]),c2=hex2rgb(a[4]),[h,s]=rgb2hsl(c1),dk=effDark(),ss=Math.min(70,Math.max(30,s));const hs=(S2,L,al)=>`hsl(${h.toFixed(0)} ${S2}% ${L}%${al!=null?' / '+al:''})`;
- const v={'--ac':a[3],'--ac2':a[4],'--ac-text':dk?hs(Math.min(100,s),68):hs(Math.min(100,s),30),'--ac-soft':`rgba(${c1},${dk?.16:.10})`,'--ac-soft2':`rgba(${c1},${dk?.28:.19})`,'--blob1':dk?'rgba(0,0,0,0)':`rgba(${c1},.20)`,'--blob2':dk?'rgba(0,0,0,0)':`rgba(${c2},.30)`,
+ const v={'--ac':a[3],'--ac2':a[4],'--ac-text':dk?hs(Math.min(100,s),68):hs(Math.min(100,s),30),'--ac-soft':`rgba(${c1},${dk?.16:.10})`,'--ac-soft2':`rgba(${c1},${dk?.28:.19})`,'--blob1':'rgba(0,0,0,0)','--blob2':'rgba(0,0,0,0)',
   '--on-ac':(1.05/(lum(c1)+.05)>(lum(c1)+.05)/.06)?'#ffffff':hs(ss,8),
-  '--bg':dk?'#0a0a0a':hs(ss*.12,96),'--bg-tint':dk?'#0f0f0f':hs(ss*.9,95),'--surface':dk?'rgba(20,20,20,.78)':'rgba(255,255,255,.76)','--solid':dk?'#141414':'#ffffff','--solid-2':dk?'#1e1e1e':hs(ss,97),'--line':dk?'rgba(255,255,255,.10)':hs(ss,35,.12),
-  '--fg':dk?'#f2f2f2':hs(ss*.6,10),'--fg2':dk?'#b5b5b5':hs(ss*.4,34),'--fg3':dk?'#858585':hs(ss*.3,46),
-  '--sh':dk?'0 14px 34px -16px rgba(0,0,0,.75)':`0 14px 34px -16px ${hs(ss,35,.34)}`,'--sh-sm':dk?'0 4px 14px -6px rgba(0,0,0,.6)':`0 4px 14px -6px ${hs(ss,35,.24)}`};
+  '--bg':dk?'#0a0a0a':'#f7f7f8','--bg-tint':dk?'#0f0f0f':'#ffffff','--surface':dk?'rgba(20,20,20,.78)':'rgba(255,255,255,.76)','--solid':dk?'#141414':'#ffffff','--solid-2':dk?'#1e1e1e':'#f3f3f4','--line':dk?'rgba(255,255,255,.10)':'rgba(0,0,0,.09)',
+  '--fg':dk?'#f2f2f2':'#1d1d20','--fg2':dk?'#b5b5b5':'#5c5c63','--fg3':dk?'#858585':'#8a8a92',
+  '--sh':dk?'0 14px 34px -16px rgba(0,0,0,.75)':'0 14px 34px -18px rgba(0,0,0,.22)','--sh-sm':dk?'0 4px 14px -6px rgba(0,0,0,.6)':'0 4px 14px -6px rgba(0,0,0,.14)'};
  for(const x in v)r.style.setProperty(x,v[x])}
 
 
