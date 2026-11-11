@@ -2092,7 +2092,7 @@ function taskIcs(x){const [y,m,d]=x.due.split('-').map(Number),[hh,mm]=(x.time||
  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Spark//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+x.id+'@crimson-notes','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,''),'DTSTART:'+icsDT(st),'DTEND:'+icsDT(en),'SUMMARY:'+icsEsc(x.title),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+icsEsc(x.title),'TRIGGER:-PT'+(x.remind||0)+'M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n')+'\r\n'}
 async function sysNotify(x){
  if(!('Notification' in window)||Notification.permission!=='granted')return;
- const o={body:x.body||((x.time?x.time+' • ':'')+(x.due?dueLabel(x.due):'')),tag:x.id,renotify:true,vibrate:[200,100,200],lang,dir:document.documentElement.dir};
+ const o={body:x.body||((x.time?x.time+' • ':'')+(x.due?dueLabel(x.due):'')),tag:x.id,renotify:true,vibrate:[200,100,200,100,300],lang,dir:document.documentElement.dir,icon:'icon-192.png',badge:'icon-192.png',timestamp:Date.now(),data:{id:x.id,url:'./#tasks'},actions:x.id&&x.id!=='pomo'&&x.title?[{action:'done',title:'✓ '+t('doneL')},{action:'snooze',title:'⏰ '+t('snooze10')}]:[]};
  try{const reg=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration();if(reg){await reg.showNotification(x.title,o);return}}catch(e){}
  try{new Notification(x.title,o)}catch(e){}}
 let remPend=[];
@@ -3109,7 +3109,7 @@ function pmFinish(){const was=POMO.mode;pmStop();pmBeep();const p=PM();let msg;
  if(was==='w'){const k=dkey(),e=p.log[k]||{m:0,n:0};p.log[k]={m:e.m+p.w,n:e.n+1};POMO.cycle++;POMO.mode=POMO.cycle%4===0?'l':'b';msg=t('pFocusEnd');const tk=S.tasks.find(x=>x.id===POMO.task);if(tk)tk.pm=(tk.pm||0)+1}
  else{POMO.mode='w';msg=t('pBreakEnd')}
  POMO.left=null;save();pmSave();toast(msg);
- try{if(document.hidden&&'Notification' in window&&Notification.permission==='granted')new Notification('Spark',{body:msg})}catch(e){}
+ try{if(document.hidden&&'Notification' in window&&Notification.permission==='granted')sysNotify({title:'Spark',body:msg,id:'pomo'})}catch(e){}
  if(route==='pomo')render(1)}
 function pmGo(){if(POMO.run){POMO.left=pmLeft();pmStop()}else{const s=pmLeft();POMO.end=Date.now()+s*1000;POMO.run=true;POMO.tm=setInterval(pmTick,500);askNotif()}pmSave();render(1)}
 (function pmBoot(){try{const o=JSON.parse(localStorage.getItem('spark_pomo')||'null');if(!o)return;POMO.mode=o.mode||'w';POMO.cycle=o.cycle||0;POMO.task=o.task||'';POMO.left=o.left;
@@ -3808,7 +3808,7 @@ async function recFinish(){await RC.q;try{RC.stream&&RC.stream.getTracks().forEa
  const n=noteOf(nid);if(!n||dur<1){segs.forEach((s,i)=>fdel('rec:'+id+':'+i).catch(()=>{}));if(dur<1)toast(t('vShort'));return}
  n.rec=n.rec||[];const name=t(music?'rSong':'rName')+' '+(n.rec.length+1);n.rec.push({id,music,name,dur,segs,mime,created:Date.now(),tx:null,sum:null,dec:null,done:0});
  const html=`<p class="aud" data-recid="${id}" contenteditable="false">🎙 ${esc(name)} · ${mmss(dur)}</p><p><br></p>`;
- if(curNote&&curNote.id===nid&&$('#doc')){ins(html)}else{n.html=(n.html||'')+html;n.updated=Date.now();save()}
+ if(curNote&&curNote.id===nid&&$('#doc')){try{ins(html)}catch(e){}const dd=$('#doc');if(dd&&!dd.querySelector('[data-recid="'+id+'"]')){dd.insertAdjacentHTML('beforeend',html);onDoc()}}else{n.html=(n.html||'')+html;n.updated=Date.now();save()}
  save();toast(t('rSaved'))}
 /* writing marks: remember at which second of the recording each block was typed */
 document.addEventListener('input',e=>{if(!RC.on||!e.target||e.target.id!=='doc')return;const d=e.target,s=getSelection();if(!s.rangeCount)return;let n=s.anchorNode;while(n&&n.parentNode!==d)n=n.parentNode;if(!n||n.nodeType!==1||n.dataset.at||!n.textContent.trim())return;n.dataset.at=Math.floor(RC.act/1000);n.dataset.rec=RC.id},true);
@@ -4139,14 +4139,17 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='624dc06c96';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='624dc06c96')return;busy=1;
+(()=>{const BUILD='c41b09b096';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='c41b09b096')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
  document.addEventListener('keydown',()=>{window.__lastKey=Date.now()},true);
  setInterval(chk,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)chk()});window.addEventListener('focus',chk);window.addEventListener('online',chk);setTimeout(chk,5000)})();
 Object.assign(L,{updNew:['يوجد تحديث جديد، جارٍ التحديث…','New update available, updating…']});
+
+/* notification actions from the service worker */
+try{navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',e=>{const m=e.data||{};if(m.type!=='notif'||!S)return;const x=S.tasks.find(y=>y.id===m.id);if(x){if(m.action==='done'){x.done=true;x.rt=null}else if(m.action==='snooze'){x.rt=Date.now()+600000}save();remPend=remPend.filter(i=>i!==m.id);$('#remov')?.remove();render(1)}})}catch(e){}
 
 })();
 
