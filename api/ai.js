@@ -198,6 +198,16 @@ module.exports=async(req,res)=>{
       const lim=await hit(uid);if(lim)return res.status(429).json({error:'limit_'+lim});
       const mime=/^audio\/[\w.+-]+/.test(String(b.mime||''))?String(b.mime).split(';')[0]:'audio/webm';const ext=mime.includes('mp4')?'m4a':mime.includes('ogg')?'ogg':'webm';
       let last='';
+      if(b.engine==='gemini'&&KEY.gemini()){
+        try{
+          const hint=String(b.prompt||'').slice(0,300);
+          const txt='Transcribe this audio verbatim. Write every word exactly as spoken or sung, including ALL repeated words, refrains, echoes and chorus lines every time they occur: never merge, shorten or skip repetitions. '+(hint?'Language/dialect hint: '+hint+' ':'')+'Use the natural script of each language (Arabic script for Arabic dialects, keep French or English words in Latin script). Output one line per phrase formatted exactly "[m:ss] text". No commentary, no headings. If there is no speech or singing, output nothing.';
+          const gj=await call('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',{method:'POST',headers:{'x-goog-api-key':KEY.gemini(),'Content-Type':'application/json'},body:JSON.stringify({contents:[{role:'user',parts:[{text:txt},{inlineData:{mimeType:mime,data:buf.toString('base64')}}]}],generationConfig:{temperature:0.2,maxOutputTokens:8192}})},60000);
+          const raw=((gj.candidates&&gj.candidates[0]&&gj.candidates[0].content&&gj.candidates[0].content.parts)||[]).map(x=>x.text||'').join('\n').trim();
+          if(raw){const segs=[];raw.split(/\n+/).forEach(l=>{const m=l.match(/^\s*\[?(\d+):(\d{1,2})\]?\s*[-:]?\s*(.+)$/);if(m)segs.push({s:+m[1]*60+ +m[2],e:+m[1]*60+ +m[2],n:0,t:m[3].trim()});else if(l.trim()&&segs.length===0)segs.push({s:0,e:0,n:0,t:l.trim()})});
+            return res.status(200).json({text:segs.map(x=>x.t).join(' '),model:'gemini',segs:b.verbose?segs:undefined})}
+        }catch(e){}
+      }
       for(const model of ['whisper-large-v3','whisper-large-v3-turbo']){
         try{
           const fd=new FormData();fd.append('file',new Blob([buf],{type:mime}),'a.'+ext);fd.append('model',model);fd.append('temperature','0');fd.append('response_format',b.verbose?'verbose_json':'json');if(b.verbose)fd.append('timestamp_granularities[]','segment');

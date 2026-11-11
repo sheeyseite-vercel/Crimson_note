@@ -901,6 +901,19 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 .btn.ghost{background:color-mix(in srgb,var(--ac-soft2),var(--solid) 45%);box-shadow:0 5px 14px -6px rgba(0,0,0,.28),inset 0 0 0 1px var(--ac-soft2)}
 .aitabs,.aiseg{background:color-mix(in srgb,var(--ac-soft2),var(--solid) 40%);box-shadow:0 4px 12px -5px rgba(0,0,0,.25),inset 0 0 0 1px var(--ac-soft2)}
 .sel,.seg{box-shadow:0 3px 10px -5px rgba(0,0,0,.22)}
+
+/* v-fix: top gap, zoom lock, thinking, pop over modal, colour tools */
+.ed-bar .crumbs{display:none!important}
+.ed-bar{margin-bottom:6px}
+#view{padding-top:calc(8px + env(safe-area-inset-top,0px))}
+html,body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%;overscroll-behavior:none}
+body{-webkit-touch-callout:none}
+body *:not(input):not(textarea):not([contenteditable="true"]):not(.doc):not(.doc *):not(.rtx *):not(.aibb *){-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.pop{z-index:520!important}
+.aib:not(.u) .aibb:has(.dots){background:transparent;border:0;padding:6px 2px;box-shadow:none;width:auto}
+.tbc{display:inline-grid;place-items:center;font-weight:800}
+.sw.txt button{background:var(--solid-2)!important;font:800 17px/1 var(--f,inherit);display:grid;place-items:center}
+.sw.bgc button{border-radius:8px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1401,7 +1414,7 @@ const FONTS=[['Outfit · Cairo',null,"'Outfit','Cairo',system-ui,sans-serif"],['
 const FZ=[.84,.92,1,1.1,1.2];
 function loadFont(i){const f=FONTS[i];if(!f||!f[1])return;const id='gf'+i;if(document.getElementById(id))return;const l=document.createElement('link');l.id=id;l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+f[1]+'&display=swap';document.head.append(l)}
 function applyFont(){const r=document.documentElement;const i=S.fonti||0;loadFont(i);r.style.setProperty('--f',(FONTS[i]||FONTS[0])[2]);r.style.setProperty('--fz',((FZ[(S.fzi||3)-1]||1)*(S.desktop?1.25:1)).toFixed(3))}
-function applyDesktop(){applyFont();let m=document.querySelector('meta[name=viewport]');if(!m){m=document.createElement('meta');m.name='viewport';document.head.append(m)}m.content=S.desktop?'width=1280':'width=device-width,initial-scale=1,viewport-fit=cover'}
+function applyDesktop(){applyFont();let m=document.querySelector('meta[name=viewport]');if(!m){m=document.createElement('meta');m.name='viewport';document.head.append(m)}m.content=S.desktop?'width=1280':'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover'}
 function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);try{applyAccent()}catch(e){}}
 const effDark=()=>S.theme==='dark'||(S.theme==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);
 function taskSort(a,b){if(!!a.done!==!!b.done)return a.done?1:-1;const ad=a.due||'9999',bd=b.due||'9999';if(ad!==bd)return ad<bd?-1:1;return b.prio-a.prio}
@@ -1933,7 +1946,7 @@ function tool(k,anchor){
   case'colp':{const c=closest('td,th');if(!c)break;const i=[...c.parentElement.children].indexOf(c);c.closest('table').querySelectorAll('tr').forEach(r=>{const x=document.createElement(r.firstElementChild?.tagName==='TH'&&r.parentElement.firstElementChild===r?'th':'td');x.innerHTML='<br>';r.insertBefore(x,r.children[i+1]||null)});onDoc();break}
   case'clear':ex('removeFormat');break;
   case'color':case'hl':{saveSel();const cols=k==='color'?['#e0264a','#e8870e','#1f9d63','#3b82f6','#8b5cf6','#ec4899','#8a8a8a']:['rgba(255,214,10,.5)','rgba(255,64,105,.35)','rgba(52,199,89,.4)','rgba(59,130,246,.35)','rgba(139,92,246,.35)'];
-   const m=popup(anchor,`<div class="sw">${cols.map(c=>`<button type="button" data-c="${c}" style="background:${c}" aria-label="${c}"></button>`).join('')}<button type="button" data-c="" aria-label="${t('b_clear')}" style="background:var(--solid-2)">${ic('x')}</button></div>`);
+   const m=popup(anchor,`<div class="sw ${k==='color'?'txt':'bgc'}">${cols.map(c=>k==='color'?`<button type="button" data-c="${c}" style="color:${c}" aria-label="${c}">A</button>`:`<button type="button" data-c="${c}" style="background:${c}" aria-label="${c}"></button>`).join('')}<button type="button" data-c="" aria-label="${t('b_clear')}" style="background:var(--solid-2)">${ic('x')}</button></div>`);
    m.addEventListener('mousedown',e=>e.preventDefault());m.addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;closeMenu();const c=b.dataset.c;if(k==='color'){applyColor(c)}else{applyBg(c)}});break}
   case'link':{saveSel();const sel=getSelection().toString();ask({title:t('b_link'),ph:t('linkUrl')}).then(u=>{if(!u)return;if(!/^(https?:|mailto:)/i.test(u))u='https://'+u;if(/^javascript:/i.test(u))return;restoreSel();if(sel)document.execCommand('createLink',false,u);else document.execCommand('insertHTML',false,`<a href="${esc(u)}">${esc(u)}</a>&nbsp;`);onDoc()});break}
   case'img':saveSel();$('#fi').value='';$('#fi').click();break;
@@ -3034,7 +3047,7 @@ const VOICE={rec:null,chunks:[],stream:null,t0:0,iv:null,target:null,busy:false,
 function voiceUI(state){let p=$('#vrec');if(!state){if(p)p.remove();document.querySelectorAll('.recording').forEach(e=>e.classList.remove('recording'));return}
  if(!p){p=document.createElement('div');p.id='vrec';p.className='vrec';document.body.append(p);p.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.v==='cancel')voiceStop(false);else if(b.dataset.v==='done')voiceStop(true)})}
  p.classList.toggle('busy',state==='busy');
- p.innerHTML=state==='busy'?`<i class="vdot"></i><span class="vst">${t('vTrans')}</span>`:`<i class="vdot"></i><b id="vt">0:00</b><span class="vst">${t('vRec')}</span><button type="button" data-v="cancel" aria-label="${t('cancel')}">${ic('x')}</button><button type="button" class="ok" data-v="done" aria-label="${t('aiSend')}">${ic('send')}</button>`}
+ p.innerHTML=state==='busy'?`<i class="vdot"></i><span class="vst">${t('vTrans')}</span>`:`<i class="vdot"></i><b id="vt">0:00</b><span class="vst">${t('vRec')}</span><button type="button" data-v="cancel" aria-label="${t('cancel')}">${ic('x')}</button><button type="button" class="ok" data-v="done" aria-label="${VOICE.target==='chat'?t('aiSend'):t('save')}">${ic(VOICE.target==='chat'?'send':'check')}</button>`}
 async function voiceToggle(target){if(VOICE.busy)return;if(VOICE.rec){voiceStop(true);return}
  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){toast(t('vNo'));return}
  let st;try{st=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true}})}catch(e){toast(t('vDeny'));return}
@@ -3828,14 +3841,14 @@ async function recAI(r,kind){const d=await recDigest(r);
  if(kind==='sum'){const j=await aiCall({system:'You summarize recordings. Write: first a 2-3 sentence summary, then a blank line, then 4-8 key points as lines starting with "- ". Same language as the transcript. No markdown headers, no preamble.',messages:[{role:'user',content:d}],maxTokens:900,temperature:.3});return j.text.trim()}
  if(kind==='act'){const today=new Date().toISOString().slice(0,10);const j=await aiCall({system:'Extract from this meeting transcript the action items and the decisions. Reply with JSON only: {"tasks":[{"title":"short imperative task, with the owner name if stated","due":"YYYY-MM-DD or empty"}],"decisions":["..."]}. Today is '+today+'. Only include what was really said; empty arrays if none. Same language as the transcript.',messages:[{role:'user',content:d}],maxTokens:1200,temperature:.1});const o=recJson(j.text);if(!o)throw new Error('parse');return{tasks:(o.tasks||[]).filter(x=>x&&x.title).slice(0,30),decisions:(o.decisions||[]).filter(Boolean).slice(0,30)}}
  const j=await aiCall({system:'Write professional meeting minutes in Markdown from the transcript. Structure: "## Meeting minutes", a line with the date and participants (only if mentioned), "### Topics discussed" (bullets), "### Decisions" (bullets), "### Action items" (bullets "- **Owner**: task (deadline)"). Same language as the transcript. No preamble, do not invent anything.',messages:[{role:'user',content:d}],maxTokens:1600,temperature:.2});return j.text.trim()}
-async function recStt(blob,lang,music){const tok=await aiToken();const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({action:'stt',audio:await b64(blob),mime:blob.type||'audio/webm',lang,verbose:1,prompt:(RLANG[S.rlang]&&RLANG[S.rlang].p||'')+(music?' Song lyrics.':'')})});let j={};try{j=await r.json()}catch(e){}if(!r.ok)throw Object.assign(new Error(j.error||'http'),{code:j.error||'http'});return j}
+async function recStt(blob,lang,music){const tok=await aiToken();const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({action:'stt',audio:await b64(blob),mime:blob.type||'audio/webm',lang,verbose:1,engine:(music||/^(dz|ma|tn|eg)$/.test(S.rlang||''))?'gemini':'',prompt:(RLANG[S.rlang]&&RLANG[S.rlang].p||'')+(music?' Song lyrics with repeated refrains.':'')})});let j={};try{j=await r.json()}catch(e){}if(!r.ok)throw Object.assign(new Error(j.error||'http'),{code:j.error||'http'});return j}
 const HALL=/(thanks for watching|subscribe|اشتركوا|شكرا للمشاهدة|ترجمة|sous-titr|amara\.org)/i;
 const RLANG={'':{n:'rAuto'},dz:{l:'ar',n:'دارجة جزائرية',p:'كلام بالدارجة الجزائرية مع كلمات فرنسية: واش راك، برك، ماشي، بزاف، كيفاش، نتا.'},ma:{l:'ar',n:'دارجة مغربية',p:'كلام بالدارجة المغربية: شنو كاين، بزاف، دابا، ديال، فين، واخا.'},tn:{l:'ar',n:'دارجة تونسية',p:'كلام بالتونسي: شنوة، برشا، يعيشك، كيفاش، توا.'},eg:{l:'ar',n:'عامية مصرية',p:'كلام بالمصري: إزيك، دلوقتي، عايز، كده، أوي.'},ar:{l:'ar',n:'العربية الفصحى'},en:{l:'en',n:'English'},fr:{l:'fr',n:'Français'},es:{l:'es',n:'Español'},de:{l:'de',n:'Deutsch'},tr:{l:'tr',n:'Türkçe'},it:{l:'it',n:'Italiano'},pt:{l:'pt',n:'Português'},ru:{l:'ru',n:'Русский'},ja:{l:'ja',n:'日本語'},ko:{l:'ko',n:'한국어'},zh:{l:'zh',n:'中文'},hi:{l:'hi',n:'हिन्दी'},ur:{l:'ur',n:'اردو'},fa:{l:'fa',n:'فارسی'},nl:{l:'nl',n:'Nederlands'}};
 async function recTranscribe(n,r,lang,prog){const st=segStarts(r);r.tx=r.tx||[];for(let i=r.done||0;i<r.segs.length;i++){prog(i);const buf=await fget('rec:'+r.id+':'+i);if(!buf){r.done=i+1;continue}
   const blob=new Blob([buf],{type:r.mime});if(blob.size>3.2e6)throw Object.assign(new Error('big'),{code:'big'});
   if(blob.size<1500){r.done=i+1;continue}
   let j;for(let k=0;;k++){try{j=await recStt(blob,lang,r.music);break}catch(e){if(k<2&&e&&e.code==='limit_min'){prog(i,1);await new Promise(o=>setTimeout(o,25000));continue}throw e}}const base=st[i];
-  const bad=x=>(x.n>0.8)||(x.n>0.5&&HALL.test(x.t))||/^[\[(♪\s]*(music|musique|música|musik|موسيقى|instrumental)[\])♪\s.]*$/i.test(x.t);
+  const bad=x=>(x.n>(r.music?0.98:0.8))||(x.n>0.5&&HALL.test(x.t)&&!r.music)||/^[\[(♪\s]*(music|musique|música|musik|موسيقى|instrumental)[\])♪\s.]*$/i.test(x.t);
   if(j.segs&&j.segs.length)j.segs.filter(x=>!bad(x)).forEach(x=>r.tx.push({t:base+x.s,text:x.t}));else if(j.text&&!bad({n:0,t:j.text}))r.tx.push({t:base,text:j.text});
   r.done=i+1;n.updated=Date.now();save()}}
 /* ---- recording sheet ---- */
@@ -4116,6 +4129,24 @@ Object.assign(L,{pgLook:['تخصيص التطبيق','App customization'],pgLook
  pgAcc:['الحساب والأمان','Account & security'],pgAccD:['الحساب، القفل، البصمة، المزامنة','Account, lock, biometrics, sync'],
  pgData:['البيانات والنسخ الاحتياطي','Data & backup'],pgDataD:['تصدير، استرجاع، مسح','Export, restore, erase'],
  pgTools:['الصوت والتنبيهات والتطبيق','Voice, alerts & app'],pgToolsD:['لغة الصوت، الصلاة، التنبيهات، التثبيت','Voice language, prayer, notifications, install']});
+
+/* zoom + long-press lock */
+['gesturestart','gesturechange','gestureend'].forEach(e=>document.addEventListener(e,x=>x.preventDefault(),{passive:false}));
+document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
+document.addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=','0'].includes(e.key))e.preventDefault()});
+(()=>{let lt=0;document.addEventListener('touchend',e=>{const n=Date.now();if(n-lt<300&&!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault();lt=n},{passive:false})})();
+document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
+
+/* live update: poll build id, save, reload */
+(()=>{const BUILD='624dc06c96';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='624dc06c96')return;busy=1;
+  try{save()}catch(e){}
+  const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
+  toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
+ document.addEventListener('keydown',()=>{window.__lastKey=Date.now()},true);
+ setInterval(chk,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)chk()});window.addEventListener('focus',chk);window.addEventListener('online',chk);setTimeout(chk,5000)})();
+Object.assign(L,{updNew:['يوجد تحديث جديد، جارٍ التحديث…','New update available, updating…']});
 
 })();
 
