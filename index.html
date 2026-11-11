@@ -854,6 +854,25 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 .prof .big div{background:var(--ac-soft);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:2px}
 .prof .big b{font-size:calc(22px*var(--fz));color:var(--ac-text)}.prof .big span{font-size:calc(12px*var(--fz));color:var(--fg2)}
 .prof .dlg-a{display:grid;grid-template-columns:1fr 1fr;gap:10px}.prof .dlg-a .btn{justify-content:center}
+.hero .hi b{display:grid;place-items:center;font-weight:inherit}.hero .hi b.hm{display:none}.hero.hnt .hi b.hs{display:none}.hero.hnt .hi b.hm{display:grid}
+@media (prefers-color-scheme:dark){@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+:root:not([data-theme="light"]) .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1.5px 1.5px at 12% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 52% 20%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 82%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 40%,#fff 50%,transparent 51%);opacity:.7;animation:hstar 4s ease-in-out infinite alternate}
+:root:not([data-theme="light"]) .hero .hs{display:none!important}
+:root:not([data-theme="light"]) .hero .hm{display:grid!important}
+:root:not([data-theme="light"]) .hero .hi{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;width:64px;height:64px}
+:root:not([data-theme="light"]) .hero .hi .ic{width:calc(44px*var(--fz));height:calc(44px*var(--fz));color:#ffd83a;fill:#ffd83a;stroke:#ffd83a;filter:drop-shadow(0 0 8px rgba(255,216,58,.85)) drop-shadow(0 0 22px rgba(255,200,40,.55));animation:hglow 3.2s ease-in-out infinite}
+:root:not([data-theme="light"]) .hero .hd{background:rgba(255,255,255,.1);color:#f6f1e7}
+}
+:root[data-theme="dark"] .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+:root[data-theme="dark"] .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1.5px 1.5px at 12% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 52% 20%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 82%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 40%,#fff 50%,transparent 51%);opacity:.7;animation:hstar 4s ease-in-out infinite alternate}
+:root[data-theme="dark"] .hero .hs{display:none!important}
+:root[data-theme="dark"] .hero .hm{display:grid!important}
+:root[data-theme="dark"] .hero .hi{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;width:64px;height:64px}
+:root[data-theme="dark"] .hero .hi .ic{width:calc(44px*var(--fz));height:calc(44px*var(--fz));color:#ffd83a;fill:#ffd83a;stroke:#ffd83a;filter:drop-shadow(0 0 8px rgba(255,216,58,.85)) drop-shadow(0 0 22px rgba(255,200,40,.55));animation:hglow 3.2s ease-in-out infinite}
+:root[data-theme="dark"] .hero .hd{background:rgba(255,255,255,.1);color:#f6f1e7}
+@keyframes hglow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,216,58,.7)) drop-shadow(0 0 16px rgba(255,200,40,.4));transform:scale(1) rotate(-4deg)}50%{filter:drop-shadow(0 0 14px rgba(255,230,90,1)) drop-shadow(0 0 34px rgba(255,200,40,.8));transform:scale(1.07) rotate(4deg)}}
+@keyframes hstar{from{opacity:.25}to{opacity:.85}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero .hi .ic{animation:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1415,7 +1434,7 @@ V.home=()=>{
  const words=live().reduce((a,n)=>a+(plain(n.html).split(' ').filter(Boolean).length),0);
  const dateStr=new Date().toLocaleDateString(dloc(),{weekday:'long',day:'numeric',month:'short'});
  return `<div class="stack">
- <section class="hero"><span class="hi">${ic(hr>=6&&hr<18?'sun':'moon')}</span><span class="hd">${ic('cal')}${esc(dateStr)}</span><div class="hline"><h1>${g}</h1><p class="hpr" id="hpr">${esc(prayerText())}</p></div></section>
+ <section class="hero${hr>=6&&hr<18?'':' hnt'}"><span class="hi"><b class="hs">${ic('sun')}</b><b class="hm">${ic('moon')}</b></span><span class="hd">${ic('cal')}${esc(dateStr)}</span><div class="hline"><h1>${g}</h1><p class="hpr" id="hpr">${esc(prayerText())}</p></div></section>
  <section class="qa"><button type="button" data-act="new-note">${ic('plus')}<span>${t('newNote')}</span></button><button type="button" data-act="add-img">${ic('image')}<span>${t('qa_img')}</span></button><button type="button" data-act="draw">${ic('brush')}<span>${t('qa_draw')}</span></button><button type="button" data-act="new-task">${ic('check')}<span>${t('qa_task')}</span></button><button type="button" data-act="import">${ic('up')}<span>${t('qa_import')}</span></button><button type="button" data-go="pomo">${ic('timer')}<span>${t('pomo')}</span></button></section>
  
  <div class="cols"><section class="card sec hs-recent"><div class="sec-h">${ic('file')}<h2>${t('recent')}</h2><a role="button" tabindex="0" data-go="notes">${t('viewAll')}${ic('chr','flip')}</a></div><div class="rows">${recent.length?recent.map(noteRow).join(''):empty(t('noNotes'),t('noNotesH'))}</div></section>
