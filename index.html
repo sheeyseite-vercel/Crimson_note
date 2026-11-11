@@ -825,11 +825,12 @@ html *{scrollbar-width:none!important}*::-webkit-scrollbar{width:0!important;hei
 .rtr{display:block;font-style:normal;color:var(--fg2);font-size:calc(13px*var(--fz));margin-top:2px}.rtl{width:auto;height:40px;padding:0 8px}
 #view{padding-top:calc(26px + env(safe-area-inset-top,0px))}.ed-bar .crumbs{visibility:hidden;pointer-events:none}
 .rwr{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%}.ppb{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:14px;background:var(--ac-soft);font-size:calc(14px*var(--fz));max-width:62%}.ppb small{display:none}.ppb .ic{width:calc(16px*var(--fz));height:calc(16px*var(--fz));flex:none}.ppb .sw{width:44px;height:20px;border-radius:8px;flex:none}
-.ppl[hidden]{display:none!important}.accs.ppl{display:flex;flex-wrap:wrap;gap:8px;padding:10px;border-radius:16px;background:var(--ac-soft);margin-top:8px}.fonts.ppl{margin-top:8px}
+.ppl[hidden]{display:none!important}.accs.ppl{margin-top:8px}.fonts.ppl{margin-top:8px}
 .dvbar.col>*:not(.dvtg){display:none!important}.dvbar.col{width:auto;max-width:max-content;padding:4px}.dvbar:not(.col) .dvtg .ic{transform:scaleX(-1)}.dvtg .ic{transition:transform .2s}
 .kbt.on{background:var(--ac);color:var(--on-ac)}.kbt .ic{width:calc(20px*var(--fz));height:calc(20px*var(--fz))}
 body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-recent,body[data-hh~="tasks"] .hs-tasks{display:none}
 .tb button[hidden]{display:none!important}.tpls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.tpl{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;border-radius:16px;background:var(--ac-soft);font-size:calc(14px*var(--fz))}.tpl span{font-size:calc(28px*var(--fz))}.tgl{max-height:55vh;overflow:auto}
+.wm.wmp{flex-direction:row;justify-content:flex-start;align-items:center;gap:12px;direction:ltr;padding:6px 4px 16px}.wm.wmp b{font-size:calc(18px*var(--fz));letter-spacing:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1343,7 +1344,7 @@ function avInner(){const p=S.profile||{};if(p.avatar)return `<img alt="" src="${
 const NAV=[['home','home'],['notes','file'],['asearch','search'],['notebooks','book'],['tasks','check'],['habits','habit'],['goals','target'],['dbs','table'],['pomo','timer'],['docs','pdf'],['ai','spark'],['calendar','cal'],['favs','star'],['archive','archive'],['trash','trash'],['prefs','sliders']];
 let route='home',postRender=null,pendingEd=false,curNote=null,edTimer=null;
 function shell(){
- $('#side').innerHTML=`<div class="wm"><button class="av" type="button" data-act="profile" id="avb" aria-label="${t('profile')}" style="${avStyle()}">${avInner()}</button></div>`+
+ $('#side').innerHTML=`<div class="wm wmp"><button class="av" type="button" data-act="profile" id="avb" aria-label="${t('profile')}" style="${avStyle()}">${avInner()}</button><b id="wmn">${esc((S.profile&&(S.profile.name||(S.profile.google&&S.profile.google.name)))||'')}</b></div>`+
   NAV.filter(([r])=>!(S.hnav||[]).includes(r)).map(([r,i])=>`<button class="nav" type="button" data-go="${r}" data-nav="${r}">${ic(i)}<span>${t(r)}</span>${r==='tasks'?'<span class="bd" id="tbd" hidden></span>':''}</button>`).join('')+
   `<div class="sp"></div><div class="stor" id="stor">${storHtml()}</div><div class="sync${storeOK?'':' bad'}" id="sync">${storeOK?t('savedDev'):t('noStore')}</div>
   <div class="theme" id="theme"><button type="button" data-act="theme-light" aria-label="${t('light')}">${ic('sun')}</button><button type="button" data-act="theme-dark" aria-label="${t('dark')}">${ic('moon')}</button></div>`;
