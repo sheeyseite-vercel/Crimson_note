@@ -855,6 +855,18 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 .prof .big b{font-size:calc(22px*var(--fz));color:var(--ac-text)}.prof .big span{font-size:calc(12px*var(--fz));color:var(--fg2)}
 .prof .dlg-a{display:grid;grid-template-columns:1fr 1fr;gap:10px}.prof .dlg-a .btn{justify-content:center}
 .hero .hi b{display:grid;place-items:center;font-weight:inherit}.hero .hi b.hm{display:none}.hero.hnt .hi b.hs{display:none}.hero.hnt .hi b.hm{display:grid}
+.hero{color:#0f2f4d;background:radial-gradient(circle at 86% 16%,rgba(255,236,150,.95) 0,rgba(255,236,150,0) 34%),linear-gradient(145deg,#5db4f5 0%,#9bd4fb 50%,#d6eefc 100%);box-shadow:0 10px 28px rgba(60,140,210,.35)}
+.hero::before,.hero::after{content:"";position:absolute;pointer-events:none;border-radius:999px;background:rgba(255,255,255,.85);filter:blur(1px);box-shadow:26px -10px 0 6px rgba(255,255,255,.85),54px 2px 0 0 rgba(255,255,255,.85);animation:hcloud 22s linear infinite}
+.hero::before{width:54px;height:20px;inset-block-end:34px;inset-inline-start:-90px}
+.hero::after{width:40px;height:15px;inset-block-start:56px;inset-inline-start:-120px;opacity:.7;animation-duration:30s;animation-delay:-12s}
+@keyframes hcloud{to{transform:translateX(560px)}}
+.hero .hi b.hm{display:none!important}.hero .hi b.hs{display:grid!important}
+.hero .hi{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;width:70px;height:70px}
+.hero .hi .ic{width:calc(50px*var(--fz));height:calc(50px*var(--fz));color:#ffb800;fill:#ffd21f;stroke:#ffb000;stroke-width:2;filter:drop-shadow(0 0 8px rgba(255,200,0,.9)) drop-shadow(0 0 24px rgba(255,190,0,.6));animation:hsun 9s linear infinite,hshine 2.8s ease-in-out infinite}
+.hero .hd{background:rgba(255,255,255,.55);color:#0f2f4d}
+@keyframes hsun{to{transform:rotate(360deg)}}
+@keyframes hshine{0%,100%{filter:drop-shadow(0 0 6px rgba(255,200,0,.7)) drop-shadow(0 0 16px rgba(255,190,0,.4))}50%{filter:drop-shadow(0 0 14px rgba(255,220,40,1)) drop-shadow(0 0 36px rgba(255,190,0,.85))}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero .hi .ic{animation:none}}
 @media (prefers-color-scheme:dark){@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
 :root:not([data-theme="light"]) .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1.5px 1.5px at 12% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 52% 20%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 82%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 40%,#fff 50%,transparent 51%);opacity:.7;animation:hstar 4s ease-in-out infinite alternate}
 :root:not([data-theme="light"]) .hero .hs{display:none!important}
@@ -873,6 +885,8 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 @keyframes hglow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,216,58,.7)) drop-shadow(0 0 16px rgba(255,200,40,.4));transform:scale(1) rotate(-4deg)}50%{filter:drop-shadow(0 0 14px rgba(255,230,90,1)) drop-shadow(0 0 34px rgba(255,200,40,.8));transform:scale(1.07) rotate(4deg)}}
 @keyframes hstar{from{opacity:.25}to{opacity:.85}}
 @media(prefers-reduced-motion:reduce){.hero::before,.hero .hi .ic{animation:none}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero::before{width:auto;height:auto;border-radius:0;box-shadow:none;filter:none;inset-inline-start:0}:root:not([data-theme="light"]) .hero::after{display:none}}
+:root[data-theme="dark"] .hero::before{width:auto;height:auto;border-radius:0;box-shadow:none;filter:none;inset-inline-start:0}:root[data-theme="dark"] .hero::after{display:none}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
