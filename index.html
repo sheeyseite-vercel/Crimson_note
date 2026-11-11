@@ -24,7 +24,7 @@
 <style>
 /* Layout: glass sidebar + scrolling main column; crimson on white smoke, dark wine variant */
 :root{
-  --bg:#f7f7f8; --bg-tint:#ffffff; --surface:rgba(255,255,255,.76); --solid:#ffffff; --solid-2:#f3f3f4; --line:rgba(0,0,0,.09);
+  --bg:#eeeff1; --bg-tint:#f4f4f6; --surface:rgba(255,255,255,.82); --solid:#fbfbfc; --solid-2:#ebebee; --line:rgba(0,0,0,.09);
   --fg:#1d1d20; --fg2:#5c5c63; --fg3:#8a8a92;
   --ac:#fd7903; --ac2:#fee800; --ac-text:#bd5200; --ac-soft:rgba(253,121,3,.10); --ac-soft2:rgba(253,121,3,.19); --on-ac:#2a1500;
   --ok:#1b9a5f; --warn:#d97a06; --info:#6d4be0;
@@ -840,9 +840,8 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 .pgt b{font-size:calc(16px*var(--fz))}.pgt small{color:var(--fg2);font-size:calc(13px*var(--fz));line-height:1.4}
 .pgrp summary>.ic{width:calc(18px*var(--fz));height:calc(18px*var(--fz));color:var(--fg3);transition:transform .2s;flex:none}
 .pgrp[open] summary>.ic{transform:rotate(180deg)}
-.pgrp .pgb{padding:0 18px 8px;max-width:none;display:block}
-.pgrp .pgb .rw:first-child{border-top:1px solid var(--line)}
-@media(min-width:1000px){.pgrp .pgb{display:block}}
+.pgrp .pgx{padding:0 18px 8px;max-width:none;display:block;background:none;height:auto;width:auto}
+.pgrp .pgx .rw:first-child{border-top:1px solid var(--line)}
 .dlg.prof{border-radius:28px;overflow:hidden}
 .pbn{height:130px}
 .pavrow{justify-content:center;margin-top:-50px}
@@ -1371,7 +1370,7 @@ function applyAccent(){if(S.accv===2){const oid=ACCV2[S.accent||0];const ni=ACC.
  const c1=hex2rgb(a[3]),c2=hex2rgb(a[4]),[h,s]=rgb2hsl(c1),dk=effDark(),ss=Math.min(70,Math.max(30,s));const hs=(S2,L,al)=>`hsl(${h.toFixed(0)} ${S2}% ${L}%${al!=null?' / '+al:''})`;
  const v={'--ac':a[3],'--ac2':a[4],'--ac-text':dk?hs(Math.min(100,s),68):hs(Math.min(100,s),30),'--ac-soft':`rgba(${c1},${dk?.16:.10})`,'--ac-soft2':`rgba(${c1},${dk?.28:.19})`,'--blob1':'rgba(0,0,0,0)','--blob2':'rgba(0,0,0,0)',
   '--on-ac':(1.05/(lum(c1)+.05)>(lum(c1)+.05)/.06)?'#ffffff':hs(ss,8),
-  '--bg':dk?'#0a0a0a':'#f7f7f8','--bg-tint':dk?'#0f0f0f':'#ffffff','--surface':dk?'rgba(20,20,20,.78)':'rgba(255,255,255,.76)','--solid':dk?'#141414':'#ffffff','--solid-2':dk?'#1e1e1e':'#f3f3f4','--line':dk?'rgba(255,255,255,.10)':'rgba(0,0,0,.09)',
+  '--bg':dk?'#0a0a0a':'#eeeff1','--bg-tint':dk?'#0f0f0f':'#f4f4f6','--surface':dk?'rgba(20,20,20,.78)':'rgba(255,255,255,.76)','--solid':dk?'#141414':'#ffffff','--solid-2':dk?'#1e1e1e':'#ebebee','--line':dk?'rgba(255,255,255,.10)':'rgba(0,0,0,.09)',
   '--fg':dk?'#f2f2f2':'#1d1d20','--fg2':dk?'#b5b5b5':'#5c5c63','--fg3':dk?'#858585':'#8a8a92',
   '--sh':dk?'0 14px 34px -16px rgba(0,0,0,.75)':'0 14px 34px -18px rgba(0,0,0,.22)','--sh-sm':dk?'0 4px 14px -6px rgba(0,0,0,.6)':'0 4px 14px -6px rgba(0,0,0,.14)'};
  for(const x in v)r.style.setProperty(x,v[x])}
@@ -4107,7 +4106,7 @@ V.prefs=()=>{const h=_prefs3();const tp=document.createElement('template');tp.in
  const bk={};PGR.forEach(g=>bk[g[0]]=[]);
  rows.forEach(r=>{const x=r.outerHTML;let k=null;for(const g of PGR){if(g[4].test(x)){k=g[0];break}}if(!k)k=/pwaT|setKeys/.test(x)||r.textContent.includes(t('setKeys'))?'data':'tools';bk[k].push(x)});
  const op=memUI.pg||(memUI.pg={});
- return (head?head.outerHTML:'')+PGR.map(g=>`<details class="card pgrp" data-g="${g[0]}"${op[g[0]]?' open':''}><summary><span class="pgi">${ic(g[1])}</span><span class="pgt"><b>${t(g[2])}</b><small>${t(g[3])}</small></span>${ic('chd')}</summary><div class="set pgb">${bk[g[0]].join('')}</div></details>`).join('')};
+ return (head?head.outerHTML:'')+PGR.map(g=>`<details class="card pgrp" data-g="${g[0]}"${op[g[0]]?' open':''}><summary><span class="pgi">${ic(g[1])}</span><span class="pgt"><b>${t(g[2])}</b><small>${t(g[3])}</small></span>${ic('chd')}</summary><div class="set pgx">${bk[g[0]].join('')}</div></details>`).join('')};
 document.addEventListener('toggle',e=>{const d=e.target;if(d&&d.classList&&d.classList.contains('pgrp')){(memUI.pg||(memUI.pg={}))[d.dataset.g]=d.open}},true);
 Object.assign(L,{pgLook:['تخصيص التطبيق','App customization'],pgLookD:['اللغة، الخط، الألوان، المظهر، القائمة والرئيسية','Language, font, colors, theme, sidebar, home'],
  pgAi:['المساعد الذكي','AI assistant'],pgAiD:['إعدادات الذكاء الاصطناعي والمحادثات','AI settings and conversations'],
