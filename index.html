@@ -876,7 +876,7 @@ body[data-hh~="hero"] .hero,body[data-hh~="qa"] .qa,body[data-hh~="recent"] .hs-
 @media(prefers-reduced-motion:reduce){.hero .cl,.hero .sun3d i{animation:none}}
 .hero{color:#0f2f4d;background:radial-gradient(circle at 88% 12%,rgba(255,244,190,.9) 0,rgba(255,244,190,0) 40%),linear-gradient(165deg,#86c8f4 0%,#b9e1fa 52%,#fdf0d6 100%);box-shadow:0 10px 28px rgba(80,150,210,.28)}
 .hero .hd{background:rgba(255,255,255,.55);color:#0f2f4d}
-@media (prefers-color-scheme:dark){@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{color:#f6f1e7;background:radial-gradient(circle at 88% 14%,rgba(255,216,74,.16) 0,rgba(255,216,74,0) 38%),linear-gradient(135deg,#050507 0%,#0d0a1a 55%,#17102b 100%);box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
 :root:not([data-theme="light"]) .hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1.5px 1.5px at 12% 28%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 30% 70%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 52% 20%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 58%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 82%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 40%,#fff 50%,transparent 51%);opacity:.7;animation:hstar 4s ease-in-out infinite alternate}
 :root:not([data-theme="light"]) .hero .hs{display:none!important}
 :root:not([data-theme="light"]) .hero .hm{display:grid!important}
@@ -914,6 +914,20 @@ body *:not(input):not(textarea):not([contenteditable="true"]):not(.doc):not(.doc
 .tbc{display:inline-grid;place-items:center;font-weight:800}
 .sw.txt button{background:var(--solid-2)!important;font:800 17px/1 var(--f,inherit);display:grid;place-items:center}
 .sw.bgc button{border-radius:8px}
+
+/* v-hero: plain accent card, slim, no shadow; customise dialogs as switches */
+.hero .sky,.hero .sun3d,.hero .hi,.hero::before,.hero::after{display:none!important}
+.hero,:root:not([data-theme="light"]) .hero,:root[data-theme="dark"] .hero{color:var(--on-ac)!important;min-height:0!important;padding:14px 20px 16px!important;gap:8px!important;border-radius:24px;box-shadow:none!important;filter:none!important;background:linear-gradient(115deg,var(--ac) 0%,color-mix(in srgb,var(--ac),var(--ac2)) 52%,var(--ac2) 100%)!important}
+.hero h1{font-size:calc(30px*var(--fz))!important}
+.hero .hd,:root:not([data-theme="light"]) .hero .hd,:root[data-theme="dark"] .hero .hd{background:rgba(255,255,255,.28)!important;color:var(--on-ac)!important}
+.tgl{gap:8px;padding:2px}
+.rck{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border-radius:16px;background:var(--solid-2);border:1px solid var(--line);font-weight:600;cursor:pointer}
+.rck span{flex:1;min-width:0}
+.rck input[type=checkbox]{-webkit-appearance:none;appearance:none;order:2;flex:none;width:44px;height:26px;border-radius:99px;background:color-mix(in srgb,var(--fg3),transparent 55%);position:relative;transition:background .2s;margin:0;accent-color:var(--ac)}
+.rck input[type=checkbox]::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.rck input[type=checkbox]:checked{background:var(--ac)}
+.rck input[type=checkbox]:checked::after{transform:translateX(18px)}
+[dir=rtl] .rck input[type=checkbox]:checked::after{transform:translateX(-18px)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -4139,8 +4153,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='c41b09b096';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='c41b09b096')return;busy=1;
+(()=>{const BUILD='560e8a06bb';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='560e8a06bb')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
