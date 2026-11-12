@@ -20,7 +20,7 @@
 <body>
 <title>Spark</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=Fredoka:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=Fredoka:wght@500;600&family=Caveat:wght@600;700&display=swap">
 <style>
 /* Layout: glass sidebar + scrolling main column; crimson on white smoke, dark wine variant */
 :root{
@@ -928,6 +928,7 @@ body *:not(input):not(textarea):not([contenteditable="true"]):not(.doc):not(.doc
 .rck input[type=checkbox]:checked{background:var(--ac)}
 .rck input[type=checkbox]:checked::after{transform:translateX(18px)}
 [dir=rtl] .rck input[type=checkbox]:checked::after{transform:translateX(-18px)}
+.hero h1{font-family:'Caveat','Cairo',cursive!important;font-weight:700!important;font-size:calc(44px*var(--fz))!important;letter-spacing:0!important;line-height:1}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -4153,8 +4154,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='560e8a06bb';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='560e8a06bb')return;busy=1;
+(()=>{const BUILD='94deab1173';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='94deab1173')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
