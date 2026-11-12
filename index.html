@@ -934,6 +934,10 @@ body *:not(input):not(textarea):not([contenteditable="true"]):not(.doc):not(.doc
 .card.page{position:relative}.cvpen{top:12px;right:12px;z-index:3}[dir=rtl] .cvpen{right:auto;left:12px}
 .dropm[data-drop=b]{box-shadow:0 -4px 0 var(--ac)}.dropm[data-drop=a]{box-shadow:0 4px 0 var(--ac)}
 .imbar button.on{background:var(--ac);color:var(--on-ac)}
+.nic{overflow:hidden}.nic img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+.cpk{display:flex;gap:10px;padding:2px}.cpk button{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 16px;border-radius:16px;background:var(--solid-2);border:1px solid var(--line);cursor:pointer;min-width:96px;font-size:calc(12.5px*var(--fz));font-weight:600}
+.cpk b{font-size:calc(24px*var(--fz));line-height:1}.cpk .hlb{background:rgba(255,214,10,.55);padding:0 6px;border-radius:6px}
+.sw.txt,.sw.bgc{display:grid!important;grid-template-columns:repeat(5,1fr);gap:8px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1817,11 +1821,11 @@ V.note=(id)=>{
  return `<div class="ed-bar"><div class="crumbs"><button type="button" data-go="home" aria-label="${t('home')}">${ic('home')}</button>${ic('chr','flip')}<button type="button" data-go="notes">${esc(nb?nb.name:t('notes'))}</button>${ic('chr','flip')}<b id="crt">${esc(n.title||t('untitled'))}</b></div><span class="saved" id="stat"></span>
  <button class="ib" type="button" data-act="fav-cur" id="favb" aria-label="${t('fav')}"><svg class="ic" style="${n.fav?'fill:var(--ac)':''}"><use href="#i-star"/></svg></button><button class="ib" type="button" data-act="focus" aria-label="${t('mFocus')}">${ic('focus')}</button><button class="ib" type="button" data-act="note-menu" data-id="${n.id}" data-cur="1" aria-label="menu">${ic('dots')}</button></div>
  <div class="ed"><article class="card page"><button class="pe cvpen" type="button" data-act="cover-edit" aria-label="${t('mCover')}">${ic('edit')}</button>${n.cover!=null?`<div class="cover" style="background:${COVERS[n.cover]}"></div>`:''}
- <div class="pg"><div class="tl"><button type="button" class="nic" data-act="pick-icon" id="nic" aria-label="icon">${esc(n.icon)}</button><input class="nt" id="nt" dir="auto" maxlength="200" placeholder="${t('untitled')}" value="${esc(n.title)}"></div>
+ <div class="pg"><div class="tl"><button type="button" class="nic" data-act="pick-icon" id="nic" aria-label="icon">${n.iconImg?`<img src="${n.iconImg}" alt="">`:esc(n.icon)}</button><input class="nt" id="nt" dir="auto" maxlength="200" placeholder="${t('untitled')}" value="${esc(n.title)}"></div>
  <div class="props">${ic('folder')}<select id="nbsel" data-in="nbsel" aria-label="${t('notebooks')}"><option value="">${t('noNb')}</option>${nbTree().map(({b,d})=>`<option value="${b.id}" ${b.id===n.nb?'selected':''}>${'\u2003'.repeat(d)}${esc(b.name)}</option>`).join('')}</select><span id="tagsw" style="display:contents">${tagsHtml(n)}</span><input class="tagin" id="tagin" placeholder="${t('addTag')}" maxlength="30"><span id="tagsug" style="display:contents"></span><span style="margin-inline-start:auto">${ic('clock','')} ${t('created')} ${rel(n.created)}</span></div></div>
  <div class="tb" id="tb">${TB('undo','undo','b_undo')}${TB('redo','redo','b_redo')}<span class="sep"></span>
  <select id="fmt" aria-label="format"><option value="p">${t('fmtP')}</option><option value="h1">${t('fmtH1')}</option><option value="h2">${t('fmtH2')}</option><option value="h3">${t('fmtH3')}</option></select><button type="button" class="tbsel" id="ffm" aria-label="${t('b_font')}">${t('b_font')}${ic('chd')}</button><button type="button" class="tbsel kbt" id="kbt" aria-label="${t('b_kb')}" title="${t('b_kb')}">${ic('kbd')}</button><span class="sep"></span>
- ${TB('bold','bold','b_bold')}${TB('italic','italic','b_italic')}${TB('underline','underline','b_under')}${TB('strikeThrough','strike','b_strike')}${TB('color','textc','b_color')}${TB('hl','hl','b_hl')}<span class="sep"></span>
+ ${TB('bold','bold','b_bold')}${TB('italic','italic','b_italic')}${TB('underline','underline','b_under')}${TB('strikeThrough','strike','b_strike')}${TB('color','brush','b_color')}<span class="sep"></span>
  ${TB('justifyLeft','al','b_al')}${TB('justifyCenter','ac','b_ac')}${TB('justifyRight','ar','b_ar')}<span class="sep"></span>
  ${TB('insertUnorderedList','ul','b_ul')}${TB('insertOrderedList','ol','b_ol')}${TB('todo','todo','b_todo')}<span class="sep"></span>
  ${TB('quote','quote','b_quote')}${TB('code','code','b_code')}${TB('call','spark','b_call')}${TB('toggle','chd','b_toggle')}${TB('mic','mic','b_mic')}${TB('rec','rec','b_rec')}${TB('table','table','b_table')}${TB('hr','minus','b_hr')}${TB('rowp','rowp','b_rowp','class="tbl"')}${TB('colp','colp','b_colp','class="tbl"')}<span class="sep"></span>
@@ -1874,7 +1878,7 @@ function selColShow(){selColHide();const d=$('#doc');if(!d)return;const s=getSel
  const w=el.offsetWidth;let top=r.bottom+40;if(top>innerHeight-90)top=Math.max(8,r.top-56);el.style.top=top+'px';el.style.left=Math.max(8,Math.min(innerWidth-w-8,r.left+r.width/2-w/2))+'px';
  el.addEventListener('mousedown',e=>e.preventDefault());el.addEventListener('pointerdown',e=>e.preventDefault());
  el.addEventListener('click',e=>{const b=e.target.closest('[data-c],[data-bg]');if(!b)return;if(b.dataset.bg!==undefined)applyBg(b.dataset.bg);else applyColor(b.dataset.c);selColHide()})}
-document.addEventListener('selectionchange',()=>{clearTimeout(scT);selColHide();scT=setTimeout(selColShow,420)});
+document.addEventListener('selectionchange',()=>{clearTimeout(scT);selColHide()});
 document.addEventListener('scroll',selColHide,true);
 function imHide(){document.querySelectorAll('.imbar').forEach(x=>x.remove());document.querySelectorAll('#doc img.imsel').forEach(i=>i.classList.remove('imsel'))}
 function imShow(img){imHide();img.classList.add('imsel');const r=img.getBoundingClientRect(),bar=document.createElement('div');bar.className='imbar';bar.innerHTML=`<button type="button" data-i="-" aria-label="-">${ic('minus')}</button><button type="button" data-i="+" aria-label="+">${ic('plus')}</button><button type="button" data-i="s" aria-label="shape">${ic('shape')}</button><button type="button" data-i="a" aria-label="align">${ic('ac')}</button><button type="button" data-i="m" aria-label="move">${ic('move')}</button><button type="button" data-i="x" aria-label="${t('del')}">${ic('trash')}</button>`;document.body.append(bar);
@@ -1889,7 +1893,7 @@ function imShow(img){imHide();img.classList.add('imsel');const r=img.getBounding
  bar.addEventListener('mousedown',e=>e.preventDefault());
  bar.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;const d=$('#doc');if(b.dataset.i==='m')return;
   if(b.dataset.i==='x'){img.remove();imHide();onDoc();return}
-  if(b.dataset.i==='s'){const SH=[['','',''],['18px','',''],['50%','1/1','cover'],['50%','4/3','cover']],k=((+img.dataset.sh||0)+1)%SH.length;img.dataset.sh=k;img.style.borderRadius=SH[k][0];img.style.aspectRatio=SH[k][1];img.style.objectFit=SH[k][2];onDoc();setTimeout(()=>imShow(img),30);return}
+  if(b.dataset.i==='s'){const SH=[['','',''],['12px','1/1','cover'],['12px','16/9','cover'],['12px','3/4','cover']],k=((+img.dataset.sh||0)+1)%SH.length;img.dataset.sh=k;img.style.borderRadius=SH[k][0];img.style.aspectRatio=SH[k][1];img.style.objectFit=SH[k][2];onDoc();setTimeout(()=>imShow(img),30);return}
   if(b.dataset.i==='a'){const AL=['0 auto 0 0','auto','0 0 0 auto'],k=((+img.dataset.al||0)+1)%3;img.dataset.al=k;img.style.display='block';img.style.marginInline=['0 auto','auto','auto 0'][k];onDoc();setTimeout(()=>imShow(img),30);return}
   const cur=img.getBoundingClientRect().width/Math.max(1,d.clientWidth-(parseFloat(getComputedStyle(d).paddingLeft)||0)-(parseFloat(getComputedStyle(d).paddingRight)||0))*100;
   const nv=Math.max(15,Math.min(100,Math.round(cur+(b.dataset.i==='+'?15:-15))));img.style.width=nv+'%';img.style.height='auto';onDoc();setTimeout(()=>imShow(img),30)})}
@@ -1902,7 +1906,8 @@ function docExtras(d){
   if(empty||(d._pend&&Date.now()-d._pend<5000)){kbOn();return}
   d._pend=Date.now();if(!memUI.kbh){memUI.kbh=1;toast(t('kbHint'))}});
  d.addEventListener('focusout',()=>setTimeout(()=>{if(document.activeElement!==d&&d._kb)kbOff()},300));
- d.addEventListener('click',e=>{const im=e.target.closest&&e.target.closest('img');if(im&&d.contains(im)){if(im.dataset.sk&&curNote&&curNote.sk&&curNote.sk[im.dataset.sk])drawDialog(im.dataset.sk);else imShow(im)}else imHide()});
+ d.addEventListener('mousedown',e=>{if(e.target.closest&&e.target.closest('img')){e.preventDefault();if(document.activeElement===d)d.blur()}},true);
+ d.addEventListener('click',e=>{const im=e.target.closest&&e.target.closest('img');if(im&&d.contains(im)){d.blur();try{getSelection().removeAllRanges()}catch(x){}if(im.dataset.sk&&curNote&&curNote.sk&&curNote.sk[im.dataset.sk])drawDialog(im.dataset.sk);else imShow(im)}else imHide()});
  document.addEventListener('scroll',imHide,true)}
 function ex(c,v){const d=$('#doc');if(!d)return;restoreSel();document.execCommand(c,false,v==null?null:v);onDoc();tbState()}
 function ins(html){restoreSel();document.execCommand('insertHTML',false,html);onDoc()}
@@ -1975,9 +1980,11 @@ function tool(k,anchor){
   case'rowp':tblRow();break;
   case'colp':{const c=closest('td,th');if(!c)break;const i=[...c.parentElement.children].indexOf(c);c.closest('table').querySelectorAll('tr').forEach(r=>{const x=document.createElement(r.firstElementChild?.tagName==='TH'&&r.parentElement.firstElementChild===r?'th':'td');x.innerHTML='<br>';r.insertBefore(x,r.children[i+1]||null)});onDoc();break}
   case'clear':ex('removeFormat');break;
-  case'color':case'hl':{saveSel();const cols=k==='color'?['#e0264a','#e8870e','#1f9d63','#3b82f6','#8b5cf6','#ec4899','#8a8a8a']:['rgba(255,214,10,.5)','rgba(255,64,105,.35)','rgba(52,199,89,.4)','rgba(59,130,246,.35)','rgba(139,92,246,.35)'];
-   const m=popup(anchor,`<div class="sw ${k==='color'?'txt':'bgc'}">${cols.map(c=>k==='color'?`<button type="button" data-c="${c}" style="color:${c}" aria-label="${c}">A</button>`:`<button type="button" data-c="${c}" style="background:${c}" aria-label="${c}"></button>`).join('')}<button type="button" data-c="" aria-label="${t('b_clear')}" style="background:var(--solid-2)">${ic('x')}</button></div>`);
-   m.addEventListener('mousedown',e=>e.preventDefault());m.addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;closeMenu();const c=b.dataset.c;if(k==='color'){applyColor(c)}else{applyBg(c)}});break}
+  case'color':case'hl':{saveSel();const TXC=['#e0264a','#e8870e','#f2c200','#1f9d63','#14b8a6','#3b82f6','#8b5cf6','#ec4899','#8a8a8a','#1a1a1a'];
+   const m=popup(anchor,`<div class="cpk"><button type="button" data-kind="c" aria-label="${t('b_color')}"><b style="color:var(--ac-text)">A</b><span>${t('b_color')}</span></button><button type="button" data-kind="h" aria-label="${t('b_hl')}"><b class="hlb">A</b><span>${t('b_hl')}</span></button></div>`);
+   m.addEventListener('mousedown',e=>e.preventDefault());
+   m.addEventListener('click',e=>{const kb=e.target.closest('[data-kind]');if(kb){const tx=kb.dataset.kind==='c';m.innerHTML=`<div class="sw ${tx?'txt':'bgc'}">${(tx?TXC:SELBG).map(x=>tx?`<button type="button" data-c="${x}" style="color:${x}" aria-label="${x}">A</button>`:`<button type="button" data-c="${x}" style="background:${x}" aria-label="bg"></button>`).join('')}${tx?'':`<button type="button" data-c="" aria-label="clear" style="background:var(--solid-2)">${ic('x')}</button>`}</div>`;m.dataset.k=tx?'c':'h';return}
+    const b=e.target.closest('[data-c]');if(!b)return;closeMenu();if(m.dataset.k==='c')applyColor(b.dataset.c);else applyBg(b.dataset.c)});break}
   case'link':{saveSel();const sel=getSelection().toString();ask({title:t('b_link'),ph:t('linkUrl')}).then(u=>{if(!u)return;if(!/^(https?:|mailto:)/i.test(u))u='https://'+u;if(/^javascript:/i.test(u))return;restoreSel();if(sel)document.execCommand('createLink',false,u);else document.execCommand('insertHTML',false,`<a href="${esc(u)}">${esc(u)}</a>&nbsp;`);onDoc()});break}
   case'img':saveSel();$('#fi').value='';$('#fi').click();break;
   case'draw':saveSel();drawDialog();break;
@@ -2374,7 +2381,8 @@ const A={
  'note-menu':(el)=>noteMenu(el,el.dataset.id,!!el.dataset.cur),
  'fav-cur':()=>{const n=curNote;if(!n)return;n.fav=!n.fav;save();$('#favb svg').style.fill=n.fav?'var(--ac)':''},
  'focus':()=>focusMode(true),
- 'pick-icon':el=>{const m=popup(el,`<div class="emg">${EMO.map(e=>`<button type="button" data-e="${e}">${e}</button>`).join('')}</div>`);m.addEventListener('click',e=>{const b=e.target.closest('[data-e]');if(!b||!curNote)return;curNote.icon=b.dataset.e;$('#nic').textContent=b.dataset.e;curNote.updated=Date.now();save();closeMenu()})},
+ 'pick-icon':el=>{const m=popup(el,`<button type="button" class="btn ghost" data-ph style="width:100%;justify-content:center;margin-bottom:8px">${ic('image')} ${t('iconPhoto')}</button><div class="emg">${EMO.map(e=>`<button type="button" data-e="${e}">${e}</button>`).join('')}</div>`);m.addEventListener('click',e=>{if(!curNote)return;if(e.target.closest('[data-ph]')){closeMenu();const f=document.createElement('input');f.type='file';f.accept='image/*';f.onchange=async()=>{const fl=f.files&&f.files[0];if(!fl)return;const u=await readImg(fl,256);curNote.iconImg=u;const nb=$('#nic');if(nb)nb.innerHTML=`<img src="${u}" alt="">`;curNote.updated=Date.now();save()};f.click();return}
+ const b=e.target.closest('[data-e]');if(!b)return;curNote.icon=b.dataset.e;delete curNote.iconImg;$('#nic').textContent=b.dataset.e;curNote.updated=Date.now();save();closeMenu()})},
  'rm-tag':el=>{if(!curNote)return;curNote.tags=curNote.tags.filter(x=>x!==el.dataset.id);save();$('#tagsw').innerHTML=tagsHtml(curNote);sugTags()},
  'ptab':el=>{memUI.sideTab=el.dataset.id;panel()},
  'goto-h':el=>{const h=[...$('#doc').querySelectorAll('h1,h2,h3')].filter(x=>x.textContent.trim())[+el.dataset.id];h?.scrollIntoView({behavior:'smooth',block:'center'})},
@@ -4169,8 +4177,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='b8a24252e7';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='b8a24252e7')return;busy=1;
+(()=>{const BUILD='469fff118f';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='469fff118f')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
@@ -4183,6 +4191,9 @@ try{navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',
 
 A['cover-edit']=b=>{const n=curNote;if(!n)return;const m=popup(b,`<div class="sw">${COVERS.map((c,i)=>`<button type="button" data-i="${i}" style="background:${c}" aria-label="${t('mCover')}"></button>`).join('')}<button type="button" data-i="-1" aria-label="${t('mNoCover')}" style="background:var(--solid-2)">${ic('x')}</button></div><button type="button" class="btn ghost" data-dev style="width:100%;margin-top:10px;justify-content:center">${ic('image')} ${t('mCoverImg')}</button>`);
  m.addEventListener('click',e=>{if(e.target.closest('[data-dev]')){closeMenu();coverImage(n);return}const x=e.target.closest('[data-i]');if(!x)return;closeMenu();flushEditor();const v=+x.dataset.i;n.cover=v<0?null:v;n.cimg=null;n.updated=Date.now();save();render(1)})};
+
+Object.assign(L,{iconPhoto:['صورة من الهاتف','Photo from device']});
+document.addEventListener('contextmenu',e=>e.preventDefault(),true);
 
 })();
 
