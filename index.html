@@ -929,6 +929,18 @@ body *:not(input):not(textarea):not([contenteditable="true"]):not(.doc):not(.doc
 .rck input[type=checkbox]:checked::after{transform:translateX(18px)}
 [dir=rtl] .rck input[type=checkbox]:checked::after{transform:translateX(-18px)}
 .hero h1{font-family:'Caveat','Cairo',cursive!important;font-weight:700!important;font-size:calc(44px*var(--fz))!important;letter-spacing:0!important;line-height:1}
+
+/* v-tg: customise dialogs */
+.tgw{display:flex;flex-direction:column;gap:8px;max-height:56vh;overflow:auto;margin:12px 0 4px;padding:2px}
+.tgr{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border-radius:18px;background:var(--solid-2);border:1px solid var(--line);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,border-color .2s}
+.tgr .tgn{flex:1;min-width:0;font-weight:600;font-size:calc(15px*var(--fz));color:var(--fg)}
+.tgr:not(.on) .tgn{color:var(--fg3)}
+.tgr .tgs{flex:none;position:relative;width:46px;height:28px;border-radius:99px;background:color-mix(in srgb,var(--fg3),transparent 60%);transition:background .2s}
+.tgr .tgs::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.28);transition:inset-inline-start .2s}
+.tgr.on{background:color-mix(in srgb,var(--ac),transparent 90%);border-color:color-mix(in srgb,var(--ac),transparent 60%)}
+.tgr.on .tgs{background:var(--ac)}
+.tgr.on .tgs::after{inset-inline-start:21px}
+.tgr:active{transform:scale(.99)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -4092,9 +4104,9 @@ function applyTb(){(S.tbhide||[]).forEach(k=>$$('#tb [data-ex="'+k+'"]').forEach
 const _home=V.home;V.home=()=>{applyHH();return _home()};
 const _note=V.note;V.note=id=>{const h=_note(id);const p=postRender;postRender=()=>{p&&p();applyTb()};return h};
 setTimeout(()=>{try{applyHH()}catch(e){}},300);
-function togDialog(title,items,key,after){const ov=openModal(`<h3>${title}</h3><div class="ract tgl">${items.map(([k,l])=>`<label class="rck"><input type="checkbox" data-k="${k}" ${(S[key]||[]).includes(k)?'':'checked'}><span>${l}</span></label>`).join('')}</div><div class="dlg-a"><button class="btn ghost" data-rs type="button">${t('cReset')}</button><button class="btn" data-x type="button">${t('cDone')}</button></div>`);
- ov.addEventListener('change',e=>{const i=e.target.closest('input[data-k]');if(!i)return;const set=new Set(S[key]||[]);i.checked?set.delete(i.dataset.k):set.add(i.dataset.k);S[key]=[...set];save();after()});
- ov.addEventListener('click',e=>{if(e.target.closest('[data-x]')){ov.remove();return}if(e.target.closest('[data-rs]')){S[key]=[];save();after();ov.querySelectorAll('input[data-k]').forEach(i=>i.checked=true)}})}
+function togDialog(title,items,key,after){const hid=()=>new Set(S[key]||[]);const ov=openModal(`<h3>${title}</h3><div class="tgw">${items.map(([k,l])=>`<button type="button" class="tgr${hid().has(k)?'':' on'}" data-k="${k}" role="switch" aria-checked="${hid().has(k)?'false':'true'}"><span class="tgn">${l}</span><i class="tgs"></i></button>`).join('')}</div><div class="dlg-a"><button class="btn ghost" data-rs type="button">${t('cReset')}</button><button class="btn" data-x type="button">${t('cDone')}</button></div>`);
+ ov.addEventListener('click',e=>{const r=e.target.closest('.tgr');if(r){const set=hid(),on=r.classList.toggle('on');on?set.delete(r.dataset.k):set.add(r.dataset.k);r.setAttribute('aria-checked',on);S[key]=[...set];save();after();return}
+  if(e.target.closest('[data-x]')){ov.remove();return}if(e.target.closest('[data-rs]')){S[key]=[];save();after();ov.querySelectorAll('.tgr').forEach(x=>{x.classList.add('on');x.setAttribute('aria-checked','true')})}})}
 /* ---- templates ---- */
 const TPLS=[
  ['journal','📔','cTjournal',()=>L2('<h2>I am grateful for</h2><ul class="todo"><li><br></li></ul><h2>Top three priorities</h2><ul><li><br></li><li><br></li><li><br></li></ul><h2>How I feel</h2><p><br></p><h2>What I learned today</h2><p><br></p>','<h2>أنا ممتن لـ</h2><ul><li><br></li></ul><h2>أهم ثلاث أولويات</h2><ul><li><br></li><li><br></li><li><br></li></ul><h2>كيف أشعر</h2><p><br></p><h2>ماذا تعلمت اليوم</h2><p><br></p>')],
@@ -4154,8 +4166,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='94deab1173';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='94deab1173')return;busy=1;
+(()=>{const BUILD='0cecd8f7d3';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='0cecd8f7d3')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
