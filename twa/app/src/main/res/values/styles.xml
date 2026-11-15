@@ -1,0 +1,1 @@
+<resources><style name="Theme.Spark" parent="Theme.AppCompat.Light.NoActionBar"><item name="android:statusBarColor">@color/bar</item></style></resources>
