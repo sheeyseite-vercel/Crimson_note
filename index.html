@@ -1437,9 +1437,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('.ddb');document.
 const FONTS=[['Outfit · Cairo',null,"'Outfit','Cairo',system-ui,sans-serif"],['Inter · Noto Sans Arabic','Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700',"'Inter','Noto Sans Arabic',system-ui,sans-serif"],['Poppins · Tajawal','Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700',"'Poppins','Tajawal',system-ui,sans-serif"],['IBM Plex Sans','IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700',"'IBM Plex Sans','IBM Plex Sans Arabic',system-ui,sans-serif"],['Nunito · Almarai','Nunito:wght@400;600;700&family=Almarai:wght@400;700;800',"'Nunito','Almarai',system-ui,sans-serif"],['Manrope · Readex Pro','Manrope:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600',"'Manrope','Readex Pro',system-ui,sans-serif"],['Lora · Amiri (serif)','Lora:wght@400;500;600;700&family=Amiri:wght@400;700',"'Lora','Amiri',Georgia,serif"],['Lato · El Messiri','Lato:wght@400;700&family=El+Messiri:wght@400;600;700',"'Lato','El Messiri',system-ui,sans-serif"]];
 const FZ=[.84,.92,1,1.1,1.2];
 function loadFont(i){const f=FONTS[i];if(!f||!f[1])return;const id='gf'+i;if(document.getElementById(id))return;const l=document.createElement('link');l.id=id;l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+f[1]+'&display=swap';document.head.append(l)}
-function isDesk(){try{return localStorage.getItem('spark_desk')==='1'}catch(e){return false}}
-function applyFont(){const r=document.documentElement;const i=S.fonti||0;loadFont(i);r.style.setProperty('--f',(FONTS[i]||FONTS[0])[2]);r.style.setProperty('--fz',((FZ[(S.fzi||3)-1]||1)*(isDesk()?1.25:1)).toFixed(3))}
-function applyDesktop(){applyFont();let m=document.querySelector('meta[name=viewport]');if(!m){m=document.createElement('meta');m.name='viewport';document.head.append(m)}m.content=isDesk()?'width=1280':'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover'}
+function applyFont(){const r=document.documentElement;const i=S.fonti||0;loadFont(i);r.style.setProperty('--f',(FONTS[i]||FONTS[0])[2]);r.style.setProperty('--fz',((FZ[(S.fzi||3)-1]||1)).toFixed(3))}
+function applyDesktop(){applyFont();let m=document.querySelector('meta[name=viewport]');if(!m){m=document.createElement('meta');m.name='viewport';document.head.append(m)}m.content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover'}
 function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);try{applyAccent()}catch(e){}}
 const effDark=()=>S.theme==='dark'||(S.theme==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);
 function taskSort(a,b){if(!!a.done!==!!b.done)return a.done?1:-1;const ad=a.due||'9999',bd=b.due||'9999';if(ad!==bd)return ad<bd?-1:1;return b.prio-a.prio}
@@ -1803,7 +1802,6 @@ V.prefs=()=>{postRender=()=>FONTS.forEach((f,i)=>loadFont(i));return `<div class
  ${S.profile&&S.profile.google?`<div class="rw"><div><b>${t('setAcct')}</b><small dir="ltr">${esc(S.profile.google.email||S.profile.google.name||'')}</small></div><button class="btn ghost so" type="button" data-act="signout">${t('soT')}</button></div>`:''}
  <div class="rw"><div><b>${t('ai')}</b><small>${t('aiSet')}</small></div><button class="btn" type="button" data-go="aiset">${t('aiSet')}</button></div>
  <div class="rw"><div><b>${t('setLock')}</b><small>${t('setLockD')} · <b style="color:var(--ac-text)">${lkGet()?t('lkIsOn'):t('lkIsOff')}</b></small></div>${lkGet()?`<button class="btn" type="button" data-act="lock-change">${t('lkChange')}</button><button class="btn ghost" type="button" data-act="lock-off">${t('lkRemove')}</button>`:`<button class="btn" type="button" data-act="lock-set">${ic('lock')}${t('lkSet')}</button>`}</div>
- <div class="rw"><div><b>${t('setDesk')}</b><small>${t('setDeskD')}</small></div><div class="sel"><button type="button" class="${isDesk()?'':'on'}" data-act="set-desk" data-id="0">${t('deskOff')}</button><button type="button" class="${isDesk()?'on':''}" data-act="set-desk" data-id="1">${t('deskOn')}</button></div></div>
  <div class="rw"><div><b>${t('pwaT')}</b><small>${(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)?t('pwaOn'):t('pwaD')+' '+(/iphone|ipad|ipod/i.test(navigator.userAgent)?t('pwaIos'):(deferredPrompt?'':t('pwaHow')))}</small></div>${deferredPrompt?`<button class="btn" type="button" data-act="pwa-install">${t('pwaBtn')}</button>`:''}</div>
  <div class="rw"><div><b>${t('notifTitle')}</b><small>${t('notifD')}</small><small style="display:block;margin-top:4px;color:var(--ac-text);font-weight:600">${notifStatus()}</small></div><button class="btn" type="button" data-act="notif-on">${ic('bell')}${t('enable')}</button><button class="btn ghost" type="button" data-act="notif-test">${t('testN')}</button></div>
  <div class="rw"><div><b>${t('setBackup')}</b><small>${t('setBackupD')}</small></div><button class="btn" type="button" data-act="export-all">${ic('down')}${t('exportAll')}</button><button class="btn ghost" type="button" data-act="import">${ic('up')}${t('importBk')}</button></div>
@@ -2412,7 +2410,6 @@ const A={
  'lock-change':async()=>{const r=await askPin({title:t('lkTitle'),sub:'',validate:lkCheck,cancelable:true});if(r){await lkCreate();render(1)}},
  'lock-off':async()=>{const r=await askPin({title:t('lkTitle'),sub:'',validate:lkCheck,cancelable:true});if(r){lkSet(null);toast(t('lkOff'));render(1)}},
  'signout':async()=>{if(!(await sure(t('soQ'))))return;try{await syncNow(true)}catch(e){}try{const f=await fb();await f.auth.signOut(f.a)}catch(e){}const p=S.profile||(S.profile={});delete p.google;delete S.sync;S.skipAuth=false;await persist();location.reload()},
- 'set-desk':el=>{try{localStorage.setItem('spark_desk',el.dataset.id==='1'?'1':'0')}catch(e){}S.desktop=el.dataset.id==='1';save();applyDesktop();setTimeout(()=>{shell();render(1)},250)},
  'edit-task':el=>taskDialog(S.tasks.find(x=>x.id===el.dataset.id)),
  'add-task':()=>{const title=$('#tt').value.trim();if(!title){$('#tt').focus();return}const due=$('#td').value||null,time=$('#tm').value||'',lead=$('#tr').value;if(lead!==''&&!due){toast(t('rNeedDate'));return}const remind=lead===''?null:+lead;let rt=remind==null?null:computeRt(due,time,remind);if(rt!=null&&rt<Date.now()){rt=null;toast(t('rPast'))}if(rt!=null)askNotif();S.tasks.push({id:uid(),title,due,time,remind,rt,prio:+$('#tp').value,nb:$('#tn').value||null,done:false,created:Date.now()});save();render(1);$('#tt')?.focus()}, 'tgl':el=>{const x=S.tasks.find(y=>y.id===el.dataset.id);if(x)taskToggle(x)},
  'del-task':el=>{S.tasks=S.tasks.filter(x=>x.id!==el.dataset.id);save();render(1)},
@@ -4151,7 +4148,7 @@ Object.assign(L,{cT:['التخصيص','Customization'],cNav:['أقسام الق�
 
 /* ===== Settings: grouped accordion ===== */
 const _prefs3=V.prefs;
-const PGR=[['look','sliders','pgLook','pgLookD',/set-lang|set-fz|set-font|set-theme|set-acc|set-desk|c-nav|c-home|c-tb|tpl|data-id="font"|data-id="acc"/],
+const PGR=[['look','sliders','pgLook','pgLookD',/set-lang|set-fz|set-font|set-theme|set-acc|c-nav|c-home|c-tb|tpl|data-id="font"|data-id="acc"/],
  ['ai','ai','pgAi','pgAiD',/aiset|ai-off|ai-clear/],
  ['acc','lock','pgAcc','pgAccD',/signout|lock-|bio-|pw-reset|del-acct|sync-now/],
  ['data','down','pgData','pgDataD',/export-all|import|bk-|zip-all|reset/],
@@ -4178,8 +4175,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='f053d8b920';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='f053d8b920')return;busy=1;
+(()=>{const BUILD='32fb010999';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='32fb010999')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
@@ -4197,7 +4194,7 @@ Object.assign(L,{iconPhoto:['صورة من الهاتف','Photo from device']});
 document.addEventListener('contextmenu',e=>e.preventDefault(),true);
 
 /* detect browser-forced desktop site */
-setTimeout(()=>{try{if(innerWidth>=900&&screen.width<=700&&!isDesk()&&!document.getElementById('dsknote')){const b=document.createElement('div');b.id='dsknote';b.style.cssText='position:fixed;z-index:9999;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top,0px));background:#1d1d20;color:#fff;border-radius:16px;padding:14px 16px;font:600 14px/1.5 system-ui;box-shadow:0 8px 30px rgba(0,0,0,.35)';b.innerHTML=t('dskNote')+'<br><button type="button" style="margin-top:10px;background:#fff;color:#111;border:0;border-radius:99px;padding:8px 18px;font:700 13px system-ui">OK</button>';b.querySelector('button').onclick=()=>b.remove();document.body.append(b)}}catch(e){}},2500);
+setTimeout(()=>{try{if(innerWidth>=900&&screen.width<=700&&!document.getElementById('dsknote')){const b=document.createElement('div');b.id='dsknote';b.style.cssText='position:fixed;z-index:9999;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top,0px));background:#1d1d20;color:#fff;border-radius:16px;padding:14px 16px;font:600 14px/1.5 system-ui;box-shadow:0 8px 30px rgba(0,0,0,.35)';b.innerHTML=t('dskNote')+'<br><button type="button" style="margin-top:10px;background:#fff;color:#111;border:0;border-radius:99px;padding:8px 18px;font:700 13px system-ui">OK</button>';b.querySelector('button').onclick=()=>b.remove();document.body.append(b)}}catch(e){}},2500);
 Object.assign(L,{dskNote:['كروم يعرض الموقع بوضع «موقع سطح المكتب». افتح قائمة كروم ⋮ ثم ألغِ تحديد «موقع سطح المكتب» (Desktop site) وأعد فتح التطبيق.','Chrome is showing this site in Desktop site mode. Open Chrome menu ⋮, untick “Desktop site”, then reopen the app.']});
 
 })();
