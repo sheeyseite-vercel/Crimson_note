@@ -4178,8 +4178,8 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=',
 document.addEventListener('contextmenu',e=>{if(!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault()});
 
 /* live update: poll build id, save, reload */
-(()=>{const BUILD='3446b56f24';let busy=0;
- async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='3446b56f24')return;busy=1;
+(()=>{const BUILD='f053d8b920';let busy=0;
+ async function chk(){if(busy||!navigator.onLine)return;try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const j=await r.json();if(!j.v||j.v===BUILD||BUILD==='f053d8b920')return;busy=1;
   try{save()}catch(e){}
   const go=async()=>{try{const rg=await navigator.serviceWorker.getRegistration();if(rg){await rg.update();const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}location.reload()};
   toast(t('updNew'));const wait=()=>{const a=document.activeElement;if(a&&a.matches&&a.matches('input,textarea,[contenteditable="true"]')&&Date.now()-(window.__lastKey||0)<4000){setTimeout(wait,2000);return}setTimeout(go,1200)};wait()}catch(e){}}
@@ -4195,6 +4195,10 @@ A['cover-edit']=b=>{const n=curNote;if(!n)return;const m=popup(b,`<div class="sw
 
 Object.assign(L,{iconPhoto:['صورة من الهاتف','Photo from device']});
 document.addEventListener('contextmenu',e=>e.preventDefault(),true);
+
+/* detect browser-forced desktop site */
+setTimeout(()=>{try{if(innerWidth>=900&&screen.width<=700&&!isDesk()&&!document.getElementById('dsknote')){const b=document.createElement('div');b.id='dsknote';b.style.cssText='position:fixed;z-index:9999;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top,0px));background:#1d1d20;color:#fff;border-radius:16px;padding:14px 16px;font:600 14px/1.5 system-ui;box-shadow:0 8px 30px rgba(0,0,0,.35)';b.innerHTML=t('dskNote')+'<br><button type="button" style="margin-top:10px;background:#fff;color:#111;border:0;border-radius:99px;padding:8px 18px;font:700 13px system-ui">OK</button>';b.querySelector('button').onclick=()=>b.remove();document.body.append(b)}}catch(e){}},2500);
+Object.assign(L,{dskNote:['كروم يعرض الموقع بوضع «موقع سطح المكتب». افتح قائمة كروم ⋮ ثم ألغِ تحديد «موقع سطح المكتب» (Desktop site) وأعد فتح التطبيق.','Chrome is showing this site in Desktop site mode. Open Chrome menu ⋮, untick “Desktop site”, then reopen the app.']});
 
 })();
 
